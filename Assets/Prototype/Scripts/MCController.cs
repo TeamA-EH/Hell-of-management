@@ -30,7 +30,7 @@ public class MCController : MonoBehaviour, IDragger
     public bool holdingItem { private set; get; } = false;
 
     /*DragOperation*/
-    public bool canDrag { private set; get; } = false;
+    public bool canDrag => (hands[0].available || hands[1].available);
     
     [System.Serializable]
     public struct Hand
@@ -52,9 +52,9 @@ public class MCController : MonoBehaviour, IDragger
         }
     }
 
-    void Move(Vector3 _direction, float speed)
+    void Move(Vector3 _direction)
     {
-        cc.Move(((_direction * (speed - inertialSpeed)) + gravityForce) * Time.deltaTime);
+        cc.Move(((_direction * (walkingSpeed - inertialSpeed)) + gravityForce) * Time.deltaTime);
     }
     void Dash(Vector3 _direction)
     {
@@ -77,9 +77,6 @@ public class MCController : MonoBehaviour, IDragger
         dashEnable = true;
         Debug.Log("Dash Enabled!");
     }
-
-    public void EnableDragOperation() => canDrag = true;
-    public void DisableDragOperation() => canDrag = false;
 
     /* DRAG METHODS */
     public void Drag(GameObject item, float dragTime)
@@ -147,25 +144,45 @@ public class MCController : MonoBehaviour, IDragger
     private void Update()
     {
 
-        if (Input.GetKeyDown(dashKey) && dashEnable) dash = true;
+        //if (Input.GetKeyDown(dashKey) && dashEnable) dash = true;
+        //
+        //if(dashEnable && dash && !holdingItem)
+        //{
+        //    if (Input.GetKey(KeyCode.W)) Dash(Camera.main.transform.forward);
+        //    if (Input.GetKey(KeyCode.S)) Dash(-Camera.main.transform.forward);
+        //    if (Input.GetKey(KeyCode.D)) Dash(Camera.main.transform.right);
+        //    if (Input.GetKey(KeyCode.A)) Dash(-Camera.main.transform.right);
+        //}
+        //else
+        //{
+        //    /* Walking */
+        //    if (Input.GetKey(KeyCode.W)) Move(Camera.main.transform.forward, walkingSpeed);
+        //    else if (Input.GetKey(KeyCode.S)) Move(-Camera.main.transform.forward, walkingSpeed);
+        //
+        //    if (Input.GetKey(KeyCode.D)) Move(Camera.main.transform.right, walkingSpeed);
+        //    else if (Input.GetKey(KeyCode.A)) Move(-Camera.main.transform.right, walkingSpeed);
+        //}
 
-        if(dashEnable && dash && !holdingItem)
+        if (Input.GetKey(KeyCode.W))
         {
-            if (Input.GetKey(KeyCode.W)) Dash(Camera.main.transform.forward);
-            if (Input.GetKey(KeyCode.S)) Dash(-Camera.main.transform.forward);
-            if (Input.GetKey(KeyCode.D)) Dash(Camera.main.transform.right);
-            if (Input.GetKey(KeyCode.A)) Dash(-Camera.main.transform.right);
-
-            Debug.Log("DAAAAASH!");
+            if (Input.GetKeyDown(dashKey) && dashEnable && !holdingItem) Dash(Camera.main.transform.forward);
+            else Move(Camera.main.transform.forward);
+        }    
+        else if (Input.GetKey(KeyCode.S))
+        {
+            if (Input.GetKeyDown(dashKey) && dashEnable && !holdingItem) Dash(-Camera.main.transform.forward);
+            else Move(-Camera.main.transform.forward);
         }
-        else
+        
+        if (Input.GetKey(KeyCode.D))
         {
-            /* Walking */
-            if (Input.GetKey(KeyCode.W)) Move(Camera.main.transform.forward, walkingSpeed);
-            else if (Input.GetKey(KeyCode.S)) Move(-Camera.main.transform.forward, walkingSpeed);
-
-            if (Input.GetKey(KeyCode.D)) Move(Camera.main.transform.right, walkingSpeed);
-            else if (Input.GetKey(KeyCode.A)) Move(-Camera.main.transform.right, walkingSpeed);
+            if (Input.GetKeyDown(dashKey) && dashEnable && !holdingItem) Dash(Camera.main.transform.right);
+            else Move(Camera.main.transform.right);
+        }
+        else if (Input.GetKey(KeyCode.A))
+        {
+            if (Input.GetKeyDown(dashKey) && dashEnable && !holdingItem) Dash(-Camera.main.transform.right);
+            else Move(-Camera.main.transform.right);
         }
         
     }

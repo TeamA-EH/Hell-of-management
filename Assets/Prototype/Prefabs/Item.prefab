@@ -121,6 +121,7 @@ GameObject:
   - component: {fileID: 4019372820848674300}
   - component: {fileID: 4019372820848674302}
   - component: {fileID: 4019372820848674301}
+  - component: {fileID: 2364581681591912118}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -170,3 +171,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 1.5
   dragTime: 0.2
+  maxDistanceFromPlayer: 0
+--- !u!114 &2364581681591912118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4019372820848674275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76bb13593a2d22340bb180aae3017097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColor: {r: 1, g: 1, b: 1, a: 0.5019608}
+  highlightColor: {r: 0.28120947, g: 0.8396226, b: 0.19010323, a: 0.5019608}

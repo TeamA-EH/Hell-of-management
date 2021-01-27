@@ -8,6 +8,24 @@ public class ItemController : MonoBehaviour
     public float weight;
     [Tooltip("Tempo in secondi per completare l'operazione di dragging di quest'oggetto")]
     [SerializeField] float dragTime = 0.2f;
+    [Tooltip("Massima distanza rispetto al giocatore entro la quale l'oggetto puo essere raccolto")]
+    [SerializeField] float maxDistanceFromPlayer = 3;
+    float currentDistance
+    {
+        get
+        {
+            var playerPos = new Vector3(
+                MCController.GetIstance.gameObject.transform.position.x,
+                0,
+                MCController.GetIstance.gameObject.transform.position.z);
+            var itemPos = new Vector3(
+                gameObject.transform.position.x,
+                0,
+                gameObject.transform.position.z);
+
+            return (playerPos - itemPos).magnitude;
+        }
+    }
     MCController pc;
 
     private void Start()
@@ -16,7 +34,8 @@ public class ItemController : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Mouse0) && pc.canDrag)
+
+        if (Input.GetKeyDown(KeyCode.Mouse0) && pc.canDrag && currentDistance <= maxDistanceFromPlayer)
         {
             var r = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -33,11 +52,11 @@ public class ItemController : MonoBehaviour
                 }
                 catch
                 {
-                    Debug.Log("can't hold other items");
+                    Debug.Log(hit.collider.gameObject);
                 }
             }
         }
-        if(Input.GetKeyDown(KeyCode.Mouse1))
+        if(Input.GetKeyDown(KeyCode.Mouse1) && pc.canDrag && currentDistance <= maxDistanceFromPlayer)
         {
             var r = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
