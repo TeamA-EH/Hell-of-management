@@ -66,12 +66,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkingSpeed: 5
   gravityForce: {x: 0, y: -9.81, z: 0}
-  dashDistance: 5
-  dashDuration: 0.25
+  dashDistance: 3
+  dashDuration: 0.2
   dashDowntime: 3
+  dashKey: 32
   inertialSpeed: 0
-  holdingItem: 0
-  draggingTime: 0.2
   hands:
   - transform: {fileID: 1186444059089583384}
     available: 1

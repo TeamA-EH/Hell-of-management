@@ -4,6 +4,7 @@ using System.Collections;
 
 public class MCController : MonoBehaviour, IDragger
 {
+    public static MCController GetIstance;
     CharacterController cc;
 
     [Header("Walking Settings"), Space(20)]
@@ -19,25 +20,25 @@ public class MCController : MonoBehaviour, IDragger
     [SerializeField] float dashDuration = .25f;
     [Tooltip("Indica quanto tempo bisogni attendere prima di poter utilizzare nuovamente il DASH")]
     [SerializeField] float dashDowntime = 3f;
+    [SerializeField] KeyCode dashKey = KeyCode.Space;
     bool dash = false;
     bool dashEnable = true;
 
     [Header("Object Holding Movement"), Space(20)]
     [Tooltip("Definisce la scalabilita del movimento del personaggio rispetto al peso dell'oggetto")]
     [SerializeField] float inertialSpeed = 0;
-    [SerializeField] bool holdingItem = false;
+    public bool holdingItem { private set; get; } = false;
 
-    [Header("Drag Operation"), Space(20)]
-    [Tooltip("La distanza massima entro la quale si puo prendere un oggetto")]
-    [SerializeField] float grabberDistance = 5;
+    /*DragOperation*/
+    public bool canDrag { private set; get; } = false;
     
     [System.Serializable]
-    struct Hand
+    public struct Hand
     {
         public Transform transform;
         public bool available;
     }
-    [SerializeField] Hand[] hands = new Hand[2];
+    public Hand[] hands = new Hand[2];
     public bool hasFreeHand
     {
         get
@@ -77,43 +78,91 @@ public class MCController : MonoBehaviour, IDragger
         Debug.Log("Dash Enabled!");
     }
 
+    public void EnableDragOperation() => canDrag = true;
+    public void DisableDragOperation() => canDrag = false;
+
+    /* DRAG METHODS */
     public void Drag(GameObject item, float dragTime)
     {
-        Hand freeHand = hands[0].available ? hands[0] : hands[1];
-        Vector3 position = freeHand.transform.position;
+        if (hands[0].available)
+        {
+            item.transform.DOJump(hands[0].transform.position, 1, 1, dragTime)
+                .OnComplete(() =>
+                {
+                    item.transform.SetParent(hands[0].transform);
+                    hands[0].available = false;
+                    holdingItem = true;
+                    inertialSpeed += item.GetComponent<ItemController>().weight;
+                });
+        }
+        else
+        {
+            item.transform.DOJump(hands[1].transform.position, 1, 1, dragTime)
+                .OnComplete(() =>
+                {
+                    item.transform.SetParent(hands[1].transform);
+                    hands[1].available = false;
+                    holdingItem = true;
+                    inertialSpeed += item.GetComponent<ItemController>().weight;
+                });
+        }
 
-        item.transform.DOJump(position, 1, 1, dragTime)
-            .OnComplete(() =>
-            {
-                item.transform.SetParent(freeHand.transform);
-            });
-
-        freeHand.available = false;
+    }
+    public void DragToLeftHand(GameObject item, float dragTime)
+    {
+        item.transform.DOJump(hands[0].transform.position, 1, 1, dragTime)
+                .OnComplete(() =>
+                {
+                    item.transform.SetParent(hands[0].transform);
+                    hands[0].available = false;
+                    holdingItem = true;
+                    inertialSpeed += item.GetComponent<ItemController>().weight;
+                    item.transform.DOKill();
+                });
+        
+    }
+    public void DragToRightHand(GameObject item, float dragTime)
+    {
+        item.transform.DOJump(hands[1].transform.position, 1, 1, dragTime)
+                .OnComplete(() =>
+                {
+                    item.transform.SetParent(hands[1].transform);
+                    hands[1].available = false;
+                    holdingItem = true;
+                    inertialSpeed += item.GetComponent<ItemController>().weight;
+                    item.transform.DOKill();
+                });
     }
 
 
+
     #region UnityCallbacks
-    private void Start()
+    private void Awake()
     {
         cc = GetComponent<CharacterController>();
+
+        if (!GetIstance) GetIstance = this;         //Singleton pattern
+
     }
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.LeftShift)) dash = true;
+        if (Input.GetKeyDown(dashKey) && dashEnable) dash = true;
 
         if(dashEnable && dash && !holdingItem)
         {
-            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift)) Dash(Camera.main.transform.forward);
-            if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.LeftShift)) Dash(-Camera.main.transform.forward);
-            if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.LeftShift)) Dash(Camera.main.transform.right);
-            if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.LeftShift)) Dash(-Camera.main.transform.right);
+            if (Input.GetKey(KeyCode.W)) Dash(Camera.main.transform.forward);
+            if (Input.GetKey(KeyCode.S)) Dash(-Camera.main.transform.forward);
+            if (Input.GetKey(KeyCode.D)) Dash(Camera.main.transform.right);
+            if (Input.GetKey(KeyCode.A)) Dash(-Camera.main.transform.right);
+
+            Debug.Log("DAAAAASH!");
         }
         else
         {
             /* Walking */
             if (Input.GetKey(KeyCode.W)) Move(Camera.main.transform.forward, walkingSpeed);
-            else if (Input.GetKey(KeyCode.S)) Move(-Camera.main.transform.forward * 0.5f, walkingSpeed);
+            else if (Input.GetKey(KeyCode.S)) Move(-Camera.main.transform.forward, walkingSpeed);
 
             if (Input.GetKey(KeyCode.D)) Move(Camera.main.transform.right, walkingSpeed);
             else if (Input.GetKey(KeyCode.A)) Move(-Camera.main.transform.right, walkingSpeed);
