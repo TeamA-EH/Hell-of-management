@@ -72,8 +72,9 @@ public class MCController : MonoBehaviour, IDragger
         dashEnable = false;
         dash = true;
         PlayerSpeed = dashDistance / dashDuration;
-        yield return new WaitForSeconds(dashDowntime);
+        yield return new WaitForSeconds(dashDuration);
         dash = false;
+        yield return new WaitForSeconds(dashDowntime);
         dashEnable = true;
 
     }
