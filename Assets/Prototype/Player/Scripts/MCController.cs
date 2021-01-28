@@ -6,12 +6,12 @@ public class MCController : MonoBehaviour, IDragger
 {
     public static MCController GetIstance;
     CharacterController cc;
-    Animator animator;
+    //Animator animator;                            DISATTIVATO - CAUSA: RICHIESTA DESIGNER
 
     public Vector3 inputDirection { private set; get; } = Vector3.zero;
     public float PlayerSpeed { private set; get; } = 0.0f;
     public float CameraAngularDirection { private set; get; } = 0.0f;
-    public float PlayerAngularDirection => Vector3.SignedAngle(animator.gameObject.transform.forward, inputDirection.normalized, Vector3.up);
+    //public float PlayerAngularDirection => Vector3.SignedAngle(animator.gameObject.transform.forward, inputDirection.normalized, Vector3.up);
 
     [Header("Walking Settings"), Space(20)]
     [Tooltip("Velocita di movimento del personaggio")]
@@ -170,7 +170,7 @@ public class MCController : MonoBehaviour, IDragger
 
         if (!GetIstance) GetIstance = this;         //Singleton pattern
 
-        animator = gameObject.GetComponentInChildren<Animator>();
+        //animator = gameObject.GetComponentInChildren<Animator>();
 
     }
     private void Update()
@@ -188,8 +188,8 @@ public class MCController : MonoBehaviour, IDragger
         PlayerSpeed = ((horizontal * Input.GetAxis("Horizontal")) + (vertical * Input.GetAxis("Vertical"))).magnitude * (walkingSpeed - decelleration);
         inputDirection = (Camera.main.transform.forward * Input.GetAxis("Vertical") + Camera.main.transform.right * Input.GetAxis("Horizontal")) * PlayerSpeed;
 
-        animator.SetFloat("speed", PlayerSpeed);
-        animator.SetFloat("Camera Angle", CameraAngularDirection);
+        //animator.SetFloat("speed", PlayerSpeed);
+        //animator.SetFloat("Camera Angle", CameraAngularDirection);
 
         Move(inputDirection);
 
@@ -209,7 +209,7 @@ public class MCController : MonoBehaviour, IDragger
                     break;
                 case ItemUsabilityManager.UsabilityModes.Throw:
 
-
+                    // [ITEM THROW]
 
                     break;
             }
@@ -230,7 +230,7 @@ public class MCController : MonoBehaviour, IDragger
                     break;
                 case ItemUsabilityManager.UsabilityModes.Throw:
 
-
+                    // [ITEM THROW]
 
                     break;
             }
