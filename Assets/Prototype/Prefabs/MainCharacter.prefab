@@ -70,11 +70,13 @@ MonoBehaviour:
   dashDuration: 0.2
   dashDowntime: 3
   dashKey: 32
-  inertialSpeed: 0
+  decelleration: 0
   hands:
   - transform: {fileID: 1186444059089583384}
+    holdedItem: {fileID: 0}
     available: 1
   - transform: {fileID: 1280431955043413449}
+    holdedItem: {fileID: 0}
     available: 1
 --- !u!1 &2517017047366239754
 GameObject:
@@ -205,7 +207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8272638489252675927
 Transform:
   m_ObjectHideFlags: 0
@@ -379,6 +381,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 20518580125d527429749f5a10f8a582,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20518580125d527429749f5a10f8a582, type: 3}

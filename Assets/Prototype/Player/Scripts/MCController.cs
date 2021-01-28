@@ -6,12 +6,12 @@ public class MCController : MonoBehaviour, IDragger
 {
     public static MCController GetIstance;
     CharacterController cc;
-    Animator animator;
+    //Animator animator;                            DISATTIVATO - CAUSA: RICHIESTA DESIGNER
 
     public Vector3 inputDirection { private set; get; } = Vector3.zero;
     public float PlayerSpeed { private set; get; } = 0.0f;
     public float CameraAngularDirection { private set; get; } = 0.0f;
-    public float PlayerAngularDirection => Vector3.SignedAngle(animator.gameObject.transform.forward, inputDirection.normalized, Vector3.up);
+    //public float PlayerAngularDirection => Vector3.SignedAngle(animator.gameObject.transform.forward, inputDirection.normalized, Vector3.up);
 
     [Header("Walking Settings"), Space(20)]
     [Tooltip("Velocita di movimento del personaggio")]
@@ -27,8 +27,8 @@ public class MCController : MonoBehaviour, IDragger
     [Tooltip("Indica quanto tempo bisogni attendere prima di poter utilizzare nuovamente il DASH")]
     [SerializeField] float dashDowntime = 3f;
     public KeyCode dashKey = KeyCode.Space;
-    bool dash = false;
-    bool dashEnable = true;
+    [SerializeField] bool dash = false;
+    [SerializeField] bool dashEnable = true;
 
     [Header("Object Holding Movement"), Space(20)]
     [Tooltip("Definisce la scalabilita del movimento del personaggio rispetto al peso dell'oggetto")]
@@ -61,28 +61,21 @@ public class MCController : MonoBehaviour, IDragger
 
     public void Move(Vector3 _direction)
     {
-        cc.Move(((_direction * (walkingSpeed - decelleration)) + gravityForce) * Time.deltaTime);
-    }
-    void Dash(Vector3 _direction)
-    {
-        Debug.Log("Dash");
+        _direction = new Vector3(_direction.x, 0, _direction.z);
 
-        Vector3 endpoint = gameObject.transform.position + (new Vector3(_direction.x, 0, _direction.z).normalized * dashDistance);
-        gameObject.transform.DOMove(endpoint, dashDuration)
-            .OnComplete(() =>
-            {
-                dash = false;
-                StartCoroutine(PlayDashCooldown());
-            });
-        dash = false;
+        //cc.Move(((_direction * (walkingSpeed - decelleration)) + gravityForce) * Time.deltaTime);
+        cc.Move((_direction  + gravityForce) * Time.deltaTime);
     }
-    IEnumerator PlayDashCooldown()
+    
+    IEnumerator Dash()
     {
         dashEnable = false;
-        Debug.Log("Dash Disabled!");
+        dash = true;
+        PlayerSpeed = dashDistance / dashDuration;
         yield return new WaitForSeconds(dashDowntime);
+        dash = false;
         dashEnable = true;
-        Debug.Log("Dash Enabled!");
+
     }
 
     /* DRAG METHODS */
@@ -170,7 +163,7 @@ public class MCController : MonoBehaviour, IDragger
 
         if (!GetIstance) GetIstance = this;         //Singleton pattern
 
-        animator = gameObject.GetComponentInChildren<Animator>();
+        //animator = gameObject.GetComponentInChildren<Animator>();
 
     }
     private void Update()
@@ -185,11 +178,13 @@ public class MCController : MonoBehaviour, IDragger
         else if (Input.GetKey(KeyCode.A)) horizontal = -Camera.main.transform.right;
 
         CameraAngularDirection = Vector3.SignedAngle(Camera.main.transform.forward, horizontal + vertical, Vector3.up);
-        PlayerSpeed = ((horizontal * Input.GetAxis("Horizontal")) + (vertical * Input.GetAxis("Vertical"))).magnitude * (walkingSpeed - decelleration);
+        if(!dash) PlayerSpeed = ((horizontal * Input.GetAxis("Horizontal")) + (vertical * Input.GetAxis("Vertical"))).magnitude * (walkingSpeed - decelleration);
         inputDirection = (Camera.main.transform.forward * Input.GetAxis("Vertical") + Camera.main.transform.right * Input.GetAxis("Horizontal")) * PlayerSpeed;
 
-        animator.SetFloat("speed", PlayerSpeed);
-        animator.SetFloat("Camera Angle", CameraAngularDirection);
+        //animator.SetFloat("speed", PlayerSpeed);
+        //animator.SetFloat("Camera Angle", CameraAngularDirection);
+
+        if (dashEnable && Input.GetKeyDown(dashKey)) StartCoroutine(Dash());
 
         Move(inputDirection);
 
@@ -209,7 +204,7 @@ public class MCController : MonoBehaviour, IDragger
                     break;
                 case ItemUsabilityManager.UsabilityModes.Throw:
 
-
+                    // [ITEM THROW]
 
                     break;
             }
@@ -230,7 +225,7 @@ public class MCController : MonoBehaviour, IDragger
                     break;
                 case ItemUsabilityManager.UsabilityModes.Throw:
 
-
+                    // [ITEM THROW]
 
                     break;
             }
