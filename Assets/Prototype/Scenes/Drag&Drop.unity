@@ -531,6 +531,52 @@ MonoBehaviour:
     orangeSouls: 0
   orderThumbnailPrefab: {fileID: 309323803655843189, guid: d62e01734f5d47d4695c08439080252c,
     type: 3}
+--- !u!1 &296787820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 296787821}
+  - component: {fileID: 296787822}
+  m_Layer: 0
+  m_Name: Item Usability Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &296787821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296787820}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1459754809}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &296787822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296787820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c576941b086ff3444aae3583c9839bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThrowModeBinding: 101
+  DropModeBinding: 113
+  activeMode: 0
 --- !u!1001 &370927249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2832,6 +2878,7 @@ Transform:
   - {fileID: 1260066635}
   - {fileID: 1532582212}
   - {fileID: 232590209}
+  - {fileID: 296787821}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

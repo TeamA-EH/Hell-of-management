@@ -193,24 +193,48 @@ public class MCController : MonoBehaviour, IDragger
 
         Move(inputDirection);
 
-        /* HOLDING SYSTEM */
+        /* THROW/DROP SYSTEM */
         if (Input.GetKeyUp(KeyCode.Mouse0) && !hands[0].available)
         {
-            // [RELEASE ITEM ]
-            Debug.Log("item dropped!");
-            DropItem(hands[0].holdedItem);
-            hands[0].holdedItem = null;
-            hands[0].available = true;
+            switch(ItemUsabilityManager.GetInstance.ActiveMode)
+            {
+                case ItemUsabilityManager.UsabilityModes.Drop:
+
+                    DropItem(hands[0].holdedItem);
+                    hands[0].holdedItem = null;
+                    hands[0].available = true;
+
+                    Debug.Log("item dropped!");
+
+                    break;
+                case ItemUsabilityManager.UsabilityModes.Throw:
+
+
+
+                    break;
+            }
         }
         if (Input.GetKeyUp(KeyCode.Mouse1) && !hands[1].available)
         {
-            // [RELEASE ITEM ]
-            Debug.Log("item dropped!");
-            DropItem(hands[1].holdedItem);
-            hands[1].holdedItem = null;
-            hands[1].available = true;
+            switch (ItemUsabilityManager.GetInstance.ActiveMode)
+            {
+                case ItemUsabilityManager.UsabilityModes.Drop:
+
+                    // [RELEASE ITEM ]
+                    DropItem(hands[1].holdedItem);
+                    hands[1].holdedItem = null;
+                    hands[1].available = true;
+
+                    Debug.Log("item dropped!");
+
+                    break;
+                case ItemUsabilityManager.UsabilityModes.Throw:
+
+
+
+                    break;
+            }
         }
     }
     #endregion
-
 }
