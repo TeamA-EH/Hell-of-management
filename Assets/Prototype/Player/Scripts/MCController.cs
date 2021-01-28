@@ -32,8 +32,8 @@ public class MCController : MonoBehaviour, IDragger
 
     [Header("Object Holding Movement"), Space(20)]
     [Tooltip("Definisce la scalabilita del movimento del personaggio rispetto al peso dell'oggetto")]
-    [SerializeField] float inertialSpeed = 0;
-    public bool holdingItem { private set; get; } = false;
+    [SerializeField] float decelleration = 0;
+    public bool holdingItem => hands[0].holdedItem != null || hands[1].holdedItem != null;
 
     /* Drag Operation */
     public bool canDrag => (hands[0].available || hands[1].available);
@@ -42,6 +42,7 @@ public class MCController : MonoBehaviour, IDragger
     public struct Hand
     {
         public Transform transform;
+        public GameObject holdedItem;
         public bool available;
     }
     public Hand[] hands = new Hand[2];
@@ -60,7 +61,7 @@ public class MCController : MonoBehaviour, IDragger
 
     public void Move(Vector3 _direction)
     {
-        cc.Move(((_direction * (walkingSpeed - inertialSpeed)) + gravityForce) * Time.deltaTime);
+        cc.Move(((_direction * (walkingSpeed - decelleration)) + gravityForce) * Time.deltaTime);
     }
     void Dash(Vector3 _direction)
     {
@@ -85,7 +86,7 @@ public class MCController : MonoBehaviour, IDragger
     }
 
     /* DRAG METHODS */
-    #region Drag Operation
+    #region Drag&Drop Operation
     public void Drag(GameObject item, float dragTime)
     {
         if (hands[0].available)
@@ -94,9 +95,9 @@ public class MCController : MonoBehaviour, IDragger
                 .OnComplete(() =>
                 {
                     item.transform.SetParent(hands[0].transform);
+                    hands[0].holdedItem = item;
                     hands[0].available = false;
-                    holdingItem = true;
-                    inertialSpeed += item.GetComponent<ItemController>().weight;
+                    decelleration += item.GetComponent<ItemController>().weight;
                 });
         }
         else
@@ -105,41 +106,62 @@ public class MCController : MonoBehaviour, IDragger
                 .OnComplete(() =>
                 {
                     item.transform.SetParent(hands[1].transform);
+                    hands[1].holdedItem = item;
                     hands[1].available = false;
-                    holdingItem = true;
-                    inertialSpeed += item.GetComponent<ItemController>().weight;
+                    decelleration += item.GetComponent<ItemController>().weight;
                 });
         }
 
     }
     public void DragToLeftHand(GameObject item, float dragTime)
     {
+        hands[0].available = false;
+
+        // disable physics
+        var rb = item.GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+        rb.useGravity = false;
+
         item.transform.DOJump(hands[0].transform.position, 1, 1, dragTime)
                 .OnComplete(() =>
                 {
                     item.transform.SetParent(hands[0].transform);
-                    hands[0].available = false;
-                    holdingItem = true;
-                    inertialSpeed += item.GetComponent<ItemController>().weight;
+                    hands[0].holdedItem = item;
+                    decelleration += item.GetComponent<ItemController>().weight;
                     item.transform.DOKill();
                 });
         
     }
     public void DragToRightHand(GameObject item, float dragTime)
     {
+        hands[1].available = false;
+
+        // disable physics
+        var rb = item.GetComponent<Rigidbody>();
+        rb.isKinematic = true;
+        rb.useGravity = false;
+
         item.transform.DOJump(hands[1].transform.position, 1, 1, dragTime)
                 .OnComplete(() =>
                 {
                     item.transform.SetParent(hands[1].transform);
-                    hands[1].available = false;
-                    holdingItem = true;
-                    inertialSpeed += item.GetComponent<ItemController>().weight;
+                    hands[1].holdedItem = item;
+                    decelleration += item.GetComponent<ItemController>().weight;
                     item.transform.DOKill();
                 });
     }
-    #endregion
+    void DropItem(GameObject item)
+    {
+        item.transform.SetParent(null);
 
-  
+        // enable physics
+        var rb = item.GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.useGravity = true;
+
+        decelleration -= item.GetComponent<ItemController>().weight;
+    }
+    #endregion
 
     #region UnityCallbacks
     private void Awake()
@@ -163,7 +185,7 @@ public class MCController : MonoBehaviour, IDragger
         else if (Input.GetKey(KeyCode.A)) horizontal = -Camera.main.transform.right;
 
         CameraAngularDirection = Vector3.SignedAngle(Camera.main.transform.forward, horizontal + vertical, Vector3.up);
-        PlayerSpeed = ((horizontal * Input.GetAxis("Horizontal")) + (vertical * Input.GetAxis("Vertical"))).magnitude * (walkingSpeed - inertialSpeed);
+        PlayerSpeed = ((horizontal * Input.GetAxis("Horizontal")) + (vertical * Input.GetAxis("Vertical"))).magnitude * (walkingSpeed - decelleration);
         inputDirection = (Camera.main.transform.forward * Input.GetAxis("Vertical") + Camera.main.transform.right * Input.GetAxis("Horizontal")) * PlayerSpeed;
 
         animator.SetFloat("speed", PlayerSpeed);
@@ -171,9 +193,48 @@ public class MCController : MonoBehaviour, IDragger
 
         Move(inputDirection);
 
-        Debug.Log(PlayerAngularDirection);
+        /* THROW/DROP SYSTEM */
+        if (Input.GetKeyUp(KeyCode.Mouse0) && !hands[0].available)
+        {
+            switch(ItemUsabilityManager.GetInstance.ActiveMode)
+            {
+                case ItemUsabilityManager.UsabilityModes.Drop:
 
+                    DropItem(hands[0].holdedItem);
+                    hands[0].holdedItem = null;
+                    hands[0].available = true;
+
+                    Debug.Log("item dropped!");
+
+                    break;
+                case ItemUsabilityManager.UsabilityModes.Throw:
+
+
+
+                    break;
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse1) && !hands[1].available)
+        {
+            switch (ItemUsabilityManager.GetInstance.ActiveMode)
+            {
+                case ItemUsabilityManager.UsabilityModes.Drop:
+
+                    // [RELEASE ITEM ]
+                    DropItem(hands[1].holdedItem);
+                    hands[1].holdedItem = null;
+                    hands[1].available = true;
+
+                    Debug.Log("item dropped!");
+
+                    break;
+                case ItemUsabilityManager.UsabilityModes.Throw:
+
+
+
+                    break;
+            }
+        }
     }
     #endregion
-
 }

@@ -52,7 +52,7 @@ public class ItemController : MonoBehaviour
                 }
                 catch
                 {
-                    Debug.Log(hit.collider.gameObject);
+                    //Debug.Log(hit.collider.gameObject);
                 }
             }
         }
