@@ -9,7 +9,6 @@ public sealed class PlayerIdle : StateMachineBehaviour
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         playerDirection = animator.gameObject.transform.forward;
-        Debug.Log(playerDirection);
 
         if (!controller) controller = animator.gameObject.GetComponentInParent<MCController>();
 
