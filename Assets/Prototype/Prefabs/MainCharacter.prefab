@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3107764076470306502}
   - component: {fileID: 8835077112313719597}
   - component: {fileID: 2962328261158991438}
+  - component: {fileID: 227653814221621926}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Untagged
@@ -70,6 +71,9 @@ MonoBehaviour:
   dashDuration: 0.2
   dashDowntime: 3
   dashKey: 32
+  dash: 0
+  dashEnable: 1
+  itemSpeed: 1
   decelleration: 0
   hands:
   - transform: {fileID: 1186444059089583384}
@@ -78,6 +82,18 @@ MonoBehaviour:
   - transform: {fileID: 1280431955043413449}
     holdedItem: {fileID: 0}
     available: 1
+--- !u!114 &227653814221621926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177070606077517362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f53539f8e10f14fa9f1bc85c08e33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2517017047366239754
 GameObject:
   m_ObjectHideFlags: 0

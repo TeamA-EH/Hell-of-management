@@ -2,6 +2,7 @@
 using DG.Tweening;
 using System.Collections;
 
+[RequireComponent(typeof(ItemThrow))]
 public class MCController : MonoBehaviour, IDragger
 {
     public static MCController GetIstance;
@@ -29,6 +30,11 @@ public class MCController : MonoBehaviour, IDragger
     public KeyCode dashKey = KeyCode.Space;
     [SerializeField] bool dash = false;
     [SerializeField] bool dashEnable = true;
+
+    [Header("Item Throw"), Space(20)]
+    [SerializeField] float throwDistance = 3;
+    [SerializeField] float ThrowDuration = .5f;
+    ItemThrow throwSystem;
 
     [Header("Object Holding Movement"), Space(20)]
     [Tooltip("Definisce la scalabilita del movimento del personaggio rispetto al peso dell'oggetto")]
@@ -160,9 +166,10 @@ public class MCController : MonoBehaviour, IDragger
     #region UnityCallbacks
     private void Awake()
     {
-        cc = GetComponent<CharacterController>();
-
         if (!GetIstance) GetIstance = this;         //Singleton pattern
+        cc = GetComponent<CharacterController>();
+        if (!throwSystem) throwSystem = GetComponent<ItemThrow>();
+
 
         //animator = gameObject.GetComponentInChildren<Animator>();
 
@@ -206,6 +213,24 @@ public class MCController : MonoBehaviour, IDragger
                 case ItemUsabilityManager.UsabilityModes.Throw:
 
                     // [ITEM THROW]
+                    Vector3 direction = Vector3.zero;
+
+                    var Ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
+                    if(Physics.Raycast(Ray, out hit))
+                    {
+                        var point = new Vector3(hit.point.x, gameObject.transform.position.y, hit.point.z);
+                        direction = (point - gameObject.transform.position).normalized;    
+                    }
+                        
+                    Debug.DrawLine(gameObject.transform.position, gameObject.transform.position + direction * throwDistance, Color.red, 5f);
+
+                    throwSystem.ThrowItem(hands[0].holdedItem, direction, ThrowDuration, throwDistance);
+
+                    decelleration -= hands[0].holdedItem.GetComponent<ItemController>().weight;
+
+                    hands[0].holdedItem = null;
+                    hands[0].available = true;
 
                     break;
             }
@@ -227,6 +252,25 @@ public class MCController : MonoBehaviour, IDragger
                 case ItemUsabilityManager.UsabilityModes.Throw:
 
                     // [ITEM THROW]
+                    Vector3 direction = Vector3.zero;
+
+                    var Ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
+                    if (Physics.Raycast(Ray, out hit))
+                    {
+                        var point = new Vector3(hit.point.x, gameObject.transform.position.y, hit.point.z);
+                        direction = (point - gameObject.transform.position).normalized;
+                    }
+
+                    Debug.DrawLine(gameObject.transform.position, gameObject.transform.position + direction * throwDistance, Color.red, 5f);
+
+                    throwSystem.ThrowItem(hands[1].holdedItem, direction, ThrowDuration, throwDistance);
+
+                    decelleration -= hands[1].holdedItem.GetComponent<ItemController>().weight;
+
+                    hands[1].holdedItem = null;
+                    hands[1].available = true;
+
 
                     break;
             }
