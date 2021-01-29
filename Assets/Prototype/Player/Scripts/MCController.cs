@@ -179,7 +179,7 @@ public class MCController : MonoBehaviour, IDragger
         else if (Input.GetKey(KeyCode.A)) horizontal = -Camera.main.transform.right;
 
         CameraAngularDirection = Vector3.SignedAngle(Camera.main.transform.forward, horizontal + vertical, Vector3.up);
-        if(!dash) PlayerSpeed = ((horizontal * Input.GetAxis("Horizontal")) + (vertical * Input.GetAxis("Vertical"))).magnitude * (walkingSpeed - decelleration);
+        if(!dash) PlayerSpeed = Mathf.Clamp(((horizontal * Input.GetAxis("Horizontal")) + (vertical * Input.GetAxis("Vertical"))).magnitude * (walkingSpeed - decelleration),0, (walkingSpeed - decelleration));
         inputDirection = (Camera.main.transform.forward * Input.GetAxis("Vertical") + Camera.main.transform.right * Input.GetAxis("Horizontal")) * PlayerSpeed;
 
         //animator.SetFloat("speed", PlayerSpeed);
