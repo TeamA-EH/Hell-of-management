@@ -31,6 +31,12 @@ public class MCController : MonoBehaviour, IDragger
     [SerializeField] bool dash = false;
     [SerializeField] bool dashEnable = true;
 
+    [Header("Item Drop"), Space(20)]
+    [Tooltip("Indica quanto lontano viene droppa l'oggetto in metri di unity")]
+    [SerializeField] float dropDistance;
+    [Tooltip("Indica in quanto tempo l'oggetto raggiunge la propria destinazione finale")]
+    [SerializeField] float dropDuration;
+
     [Header("Item Throw"), Space(20)]
     [SerializeField] float throwDistance = 3;
     [SerializeField] float ThrowDuration = .5f;
@@ -154,10 +160,20 @@ public class MCController : MonoBehaviour, IDragger
     {
         item.transform.SetParent(null);
 
-        // enable physics
-        var rb = item.GetComponent<Rigidbody>();
-        rb.isKinematic = false;
-        rb.useGravity = true;
+        Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        Vector3 direction = Vector3.zero;
+
+        if(Physics.Raycast(r, out hit))
+        {
+            var point = new Vector3(hit.point.x, 0, hit.point.z);
+
+            /*CALCULATE DIRECTION*/
+            direction = (point - gameObject.transform.position).normalized;
+        }
+
+
+        throwSystem.ThrowItem(item, direction, dropDuration, dropDistance);
 
         decelleration -= item.GetComponent<ItemController>().weight;
     }
@@ -270,7 +286,6 @@ public class MCController : MonoBehaviour, IDragger
 
                     hands[1].holdedItem = null;
                     hands[1].available = true;
-
 
                     break;
             }
