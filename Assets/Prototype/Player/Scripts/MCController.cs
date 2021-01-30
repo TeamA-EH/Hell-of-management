@@ -210,6 +210,13 @@ public class MCController : MonoBehaviour, IDragger
 
         if (dashEnable && Input.GetKeyDown(dashKey)) StartCoroutine(Dash());
 
+        /* Player Rotation */
+        float angleFromOrigin = Vector3.SignedAngle(gameObject.transform.forward, Camera.main.transform.forward, Vector3.up);
+        float inputAngle = Vector3.SignedAngle(Camera.main.transform.forward, inputDirection.normalized, Vector3.up);
+        //Debug.Log($"angle from origin: {angleFromOrigin}, input angle: {inputAngle}");
+
+        gameObject.transform.DORotateQuaternion(Quaternion.Euler(0, inputAngle, 0), .5f);
+
         Move(inputDirection);
 
         /* THROW/DROP SYSTEM */
