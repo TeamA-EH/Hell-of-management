@@ -5185,6 +5185,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2962328261158991438, guid: 46db1973ac5d10742bc6ef0836ee07f5,
         type: 3}
+      propertyPath: dropDistance
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962328261158991438, guid: 46db1973ac5d10742bc6ef0836ee07f5,
+        type: 3}
+      propertyPath: dropDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962328261158991438, guid: 46db1973ac5d10742bc6ef0836ee07f5,
+        type: 3}
       propertyPath: walkingSpeed
       value: 2
       objectReference: {fileID: 0}
