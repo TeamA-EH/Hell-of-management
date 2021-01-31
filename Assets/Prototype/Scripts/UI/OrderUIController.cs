@@ -13,6 +13,15 @@ public class OrderUIController : MonoBehaviour
     [SerializeField] Text greenSoulText;
     [SerializeField] Text orangeSoulText;
 
+    private void Update()
+    {
+        if(OrderManager.GetIstance.ActiveOrder == null)
+        {
+            DeactivateVignette();
+            return;
+        }
+    }
+
     public void ActivateVignette()
     {
         vignette.SetActive(true);

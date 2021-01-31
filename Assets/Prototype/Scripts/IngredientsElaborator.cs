@@ -20,7 +20,7 @@ public class IngredientsElaborator : MonoBehaviour
                 var cocktail = Instantiate(outputAsset);
 
                 var cocktailIngredients = cocktail.GetComponent<IngredientsDescription>();
-                cocktailIngredients.SetIngredientsQuantity(redSouls, greenSouls, orangeSouls);
+                cocktailIngredients.SetIngredientsQuantity(OrderRequest.OrderType.Cocktail,  redSouls, greenSouls, orangeSouls);
 
                 cocktail.transform.position = gameObject.transform.position + new Vector3(0, 3, 0);
 
@@ -33,7 +33,7 @@ public class IngredientsElaborator : MonoBehaviour
                 var dish = Instantiate(outputAsset);
 
                 var dishIngredients = dish.GetComponent<IngredientsDescription>();
-                dishIngredients.SetIngredientsQuantity(redSouls, greenSouls, orangeSouls);
+                dishIngredients.SetIngredientsQuantity(OrderRequest.OrderType.Dish, redSouls, greenSouls, orangeSouls);
 
                 dish.transform.position = gameObject.transform.position + new Vector3(0, 3, 0);
 

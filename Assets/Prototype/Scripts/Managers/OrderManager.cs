@@ -9,8 +9,15 @@ public sealed class OrderManager : MonoBehaviour
     /// Restituisce TRUE se si prendere un ordine altrimenti resituise FALSE
     /// </summary>
     public bool CanBringOrder => ActiveOrder == null;
+    /// <summary>
+    /// L'ospite che ha dato l'ordine al giocatore
+    /// </summary>
+    public GameObject OrderOwner { private set; get; } = null;
 
-    public static event System.Action<OrderRequest> OnOrderReceived = (evtargs) => GetIstance.ActiveOrder = evtargs;
+    public static event System.Action<OrderRequest> OnOrderReceived = (evtargs) =>
+    {
+        GetIstance.ActiveOrder = evtargs;
+    };
 
     public static event System.Action<OrderManager, OrderRequest> OnOrderCompleted = (sender, order) =>
     {
@@ -39,7 +46,7 @@ public sealed class OrderManager : MonoBehaviour
         int greenSouls = 100;
         int orangeSouls = 100;
 
-        var orderType = (OrderRequest.OrderType)Random.Range(0, 2);
+        OrderRequest.OrderType orderType = (OrderRequest.OrderType)Random.Range(0, 2);
 
         while ((redSouls + greenSouls + orangeSouls) != 3)
         {
@@ -156,11 +163,28 @@ public sealed class OrderManager : MonoBehaviour
     /// <summary>
     /// Completa con successo l'ordine attualmente attivo
     /// </summary>
-    public static void CompleteOrder() => OnOrderCompleted?.Invoke(GetIstance, GetIstance.ActiveOrder);
+    public static void CompleteOrder()
+    {
+        GetIstance.OrderOwner.SetActive(false);
+        GetIstance.OrderOwner = null;
+
+        OnOrderCompleted?.Invoke(GetIstance, GetIstance.ActiveOrder);
+    }
     /// <summary>
     /// Fallisce l'ordine attualmente attivo
     /// </summary>
-    public static void FailOrder() => OnOrderFailed?.Invoke(GetIstance, GetIstance.ActiveOrder);
+    public static void FailOrder()
+    {
+        GetIstance.OrderOwner.SetActive(false);
+        GetIstance.OrderOwner = null;
+
+        OnOrderFailed?.Invoke(GetIstance, GetIstance.ActiveOrder);
+    }
+
+    /// <summary>
+    /// Assegna il possessore dell'ordine
+    /// </summary>
+    public static void AssignOrderOwner(GameObject guest) => GetIstance.OrderOwner = guest;
 
     /// <summary>
     /// Stampa nella console le informazioni dell'ordine appena generato

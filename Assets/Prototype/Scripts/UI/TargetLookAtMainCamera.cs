@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 
-public sealed class TargetLookAtGameObject : MonoBehaviour
+public sealed class TargetLookAtMainCamera : MonoBehaviour
 {
     [Header("Settings"), Space(20)]
     [Tooltip("Indica l'oggetto di gioco verso cui l'oggetto a cui e' attaccato questo script deve guardare")]
-    [SerializeField] GameObject cameraBoomObject;
+     GameObject cameraBoomObject;
 
     #region UnityCallbacks
-
+    private void Start()
+    {
+        cameraBoomObject = Camera.main.gameObject;
+    }
     private void Update()
     {
         gameObject.transform.LookAt(cameraBoomObject.transform);
