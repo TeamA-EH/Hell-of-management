@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System;
 
-public class ItemController : MonoBehaviour
+/// <summary>
+/// Il GAMEOBJECT a cui e' attaccato quest'oggetto puo essere raccolto(picked-up) dal giocatore
+/// </summary>
+public class ItemDragOperator : MonoBehaviour
 {
     [Header("Settings"), Space(20)]
     [Tooltip("il peso di un oggetto affligge il movimento del giocatore")]
@@ -44,8 +47,8 @@ public class ItemController : MonoBehaviour
             {
                 try
                 {
-                    var item = hit.collider.gameObject.GetComponent<ItemController>().gameObject;
-                    if (hit.collider.gameObject.GetComponent<ItemController>())
+                    var item = hit.collider.gameObject.GetComponent<ItemDragOperator>().gameObject;
+                    if (hit.collider.gameObject.GetComponent<ItemDragOperator>())
                     {
                         if (pc.hands[0].available) pc.DragToLeftHand(item, dragTime);
                     }
@@ -65,7 +68,7 @@ public class ItemController : MonoBehaviour
             {
                 try
                 {
-                    var item = hit.collider.gameObject.GetComponent<ItemController>().gameObject;
+                    var item = hit.collider.gameObject.GetComponent<ItemDragOperator>().gameObject;
                     if (item)
                     {
                         if (pc.hands[1].available) pc.DragToRightHand(item, dragTime);

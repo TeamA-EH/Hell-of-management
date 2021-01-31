@@ -156,11 +156,11 @@ public sealed class OrderManager : MonoBehaviour
     /// <summary>
     /// Completa con successo l'ordine attualmente attivo
     /// </summary>
-    public void CompleteOrder() => OnOrderCompleted?.Invoke(this, ActiveOrder);
+    public static void CompleteOrder() => OnOrderCompleted?.Invoke(GetIstance, GetIstance.ActiveOrder);
     /// <summary>
     /// Fallisce l'ordine attualmente attivo
     /// </summary>
-    public void FailOrder() => OnOrderFailed?.Invoke(this, ActiveOrder);
+    public static void FailOrder() => OnOrderFailed?.Invoke(GetIstance, GetIstance.ActiveOrder);
 
     /// <summary>
     /// Stampa nella console le informazioni dell'ordine appena generato

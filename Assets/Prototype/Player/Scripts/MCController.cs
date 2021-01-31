@@ -103,7 +103,7 @@ public class MCController : MonoBehaviour, IDragger
                     item.transform.SetParent(hands[0].transform);
                     hands[0].holdedItem = item;
                     hands[0].available = false;
-                    decelleration += item.GetComponent<ItemController>().weight;
+                    decelleration += item.GetComponent<ItemDragOperator>().weight;
                 });
         }
         else
@@ -114,7 +114,7 @@ public class MCController : MonoBehaviour, IDragger
                     item.transform.SetParent(hands[1].transform);
                     hands[1].holdedItem = item;
                     hands[1].available = false;
-                    decelleration += item.GetComponent<ItemController>().weight;
+                    decelleration += item.GetComponent<ItemDragOperator>().weight;
                 });
         }
 
@@ -133,7 +133,7 @@ public class MCController : MonoBehaviour, IDragger
                 {
                     item.transform.SetParent(hands[0].transform);
                     hands[0].holdedItem = item;
-                    decelleration += item.GetComponent<ItemController>().weight;
+                    decelleration += item.GetComponent<ItemDragOperator>().weight;
                     item.transform.DOKill();
                 });
         
@@ -152,7 +152,7 @@ public class MCController : MonoBehaviour, IDragger
                 {
                     item.transform.SetParent(hands[1].transform);
                     hands[1].holdedItem = item;
-                    decelleration += item.GetComponent<ItemController>().weight;
+                    decelleration += item.GetComponent<ItemDragOperator>().weight;
                     item.transform.DOKill();
                 });
     }
@@ -175,7 +175,7 @@ public class MCController : MonoBehaviour, IDragger
 
         throwSystem.ThrowItem(item, direction, dropDuration, dropDistance);
 
-        decelleration -= item.GetComponent<ItemController>().weight;
+        decelleration -= item.GetComponent<ItemDragOperator>().weight;
     }
     #endregion
 
@@ -250,7 +250,7 @@ public class MCController : MonoBehaviour, IDragger
 
                     throwSystem.ThrowItem(hands[0].holdedItem, direction, ThrowDuration, throwDistance);
 
-                    decelleration -= hands[0].holdedItem.GetComponent<ItemController>().weight;
+                    decelleration -= hands[0].holdedItem.GetComponent<ItemDragOperator>().weight;
 
                     hands[0].holdedItem = null;
                     hands[0].available = true;
@@ -289,7 +289,7 @@ public class MCController : MonoBehaviour, IDragger
 
                     throwSystem.ThrowItem(hands[1].holdedItem, direction, ThrowDuration, throwDistance);
 
-                    decelleration -= hands[1].holdedItem.GetComponent<ItemController>().weight;
+                    decelleration -= hands[1].holdedItem.GetComponent<ItemDragOperator>().weight;
 
                     hands[1].holdedItem = null;
                     hands[1].available = true;
