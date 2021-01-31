@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/URP/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Prototype/Scenes/DesignTesting.unity
+    guid: 0f4c0b641b281094e89b409a47e68e4b
+  - enabled: 1
+    path: Assets/Prototype/Scenes/DesignTestingIsometric.unity
+    guid: 9db44082ca9cf8d489a4e2f962993f52
   m_configObjects: {}
