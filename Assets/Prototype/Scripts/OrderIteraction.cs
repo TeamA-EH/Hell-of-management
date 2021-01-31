@@ -10,11 +10,14 @@ public class OrderIteraction : MonoBehaviour
     {
         if(OrderManager.GetIstance.CanBringOrder)
         {
-            OrderManager.CreateCocktailRequest();
+            OrderManager.CreateRandomRequest();
+            OrderManager.AssignOrderOwner(gameObject);
 
             // Attiva la scheda informazioni dell'ordine di un personaggio
             var vignetteController = GetComponentInChildren<OrderUIController>();
             vignetteController.ActivateVignette();
+
+
         }
     }
     #endregion
