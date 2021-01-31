@@ -103,7 +103,7 @@ public class MCController : MonoBehaviour, IDragger
                     item.transform.SetParent(hands[0].transform);
                     hands[0].holdedItem = item;
                     hands[0].available = false;
-                    decelleration += item.GetComponent<ItemController>().weight;
+                    decelleration += item.GetComponent<ItemDragOperator>().weight;
                 });
         }
         else
@@ -114,7 +114,7 @@ public class MCController : MonoBehaviour, IDragger
                     item.transform.SetParent(hands[1].transform);
                     hands[1].holdedItem = item;
                     hands[1].available = false;
-                    decelleration += item.GetComponent<ItemController>().weight;
+                    decelleration += item.GetComponent<ItemDragOperator>().weight;
                 });
         }
 
@@ -133,7 +133,7 @@ public class MCController : MonoBehaviour, IDragger
                 {
                     item.transform.SetParent(hands[0].transform);
                     hands[0].holdedItem = item;
-                    decelleration += item.GetComponent<ItemController>().weight;
+                    decelleration += item.GetComponent<ItemDragOperator>().weight;
                     item.transform.DOKill();
                 });
         
@@ -152,7 +152,7 @@ public class MCController : MonoBehaviour, IDragger
                 {
                     item.transform.SetParent(hands[1].transform);
                     hands[1].holdedItem = item;
-                    decelleration += item.GetComponent<ItemController>().weight;
+                    decelleration += item.GetComponent<ItemDragOperator>().weight;
                     item.transform.DOKill();
                 });
     }
@@ -166,16 +166,18 @@ public class MCController : MonoBehaviour, IDragger
 
         if(Physics.Raycast(r, out hit))
         {
-            var point = new Vector3(hit.point.x, 0, hit.point.z);
+            var point = new Vector3(hit.point.x, 1, hit.point.z);
 
             /*CALCULATE DIRECTION*/
             direction = (point - gameObject.transform.position).normalized;
+            float angle = Vector3.SignedAngle(Camera.main.transform.forward, direction, Vector3.up);
+            gameObject.transform.rotation = Quaternion.Euler(0, angle, 0);
         }
 
 
         throwSystem.ThrowItem(item, direction, dropDuration, dropDistance);
 
-        decelleration -= item.GetComponent<ItemController>().weight;
+        decelleration -= item.GetComponent<ItemDragOperator>().weight;
     }
     #endregion
 
@@ -215,7 +217,10 @@ public class MCController : MonoBehaviour, IDragger
         float inputAngle = Vector3.SignedAngle(Camera.main.transform.forward, inputDirection.normalized, Vector3.up);
         //Debug.Log($"angle from origin: {angleFromOrigin}, input angle: {inputAngle}");
 
-        gameObject.transform.DORotateQuaternion(Quaternion.Euler(0, inputAngle, 0), .5f);
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+        {
+            gameObject.transform.DORotateQuaternion(Quaternion.Euler(0, inputAngle, 0), .5f);
+        }
 
         Move(inputDirection);
 
@@ -250,7 +255,7 @@ public class MCController : MonoBehaviour, IDragger
 
                     throwSystem.ThrowItem(hands[0].holdedItem, direction, ThrowDuration, throwDistance);
 
-                    decelleration -= hands[0].holdedItem.GetComponent<ItemController>().weight;
+                    decelleration -= hands[0].holdedItem.GetComponent<ItemDragOperator>().weight;
 
                     hands[0].holdedItem = null;
                     hands[0].available = true;
@@ -283,13 +288,16 @@ public class MCController : MonoBehaviour, IDragger
                     {
                         var point = new Vector3(hit.point.x, gameObject.transform.position.y, hit.point.z);
                         direction = (point - gameObject.transform.position).normalized;
+                        float angle = Vector3.SignedAngle(Camera.main.transform.forward, direction, Vector3.up);
+
+                        gameObject.transform.rotation = Quaternion.Euler(0, angle, 0);
                     }
 
                     Debug.DrawLine(gameObject.transform.position, gameObject.transform.position + direction * throwDistance, Color.red, 5f);
 
                     throwSystem.ThrowItem(hands[1].holdedItem, direction, ThrowDuration, throwDistance);
 
-                    decelleration -= hands[1].holdedItem.GetComponent<ItemController>().weight;
+                    decelleration -= hands[1].holdedItem.GetComponent<ItemDragOperator>().weight;
 
                     hands[1].holdedItem = null;
                     hands[1].available = true;
