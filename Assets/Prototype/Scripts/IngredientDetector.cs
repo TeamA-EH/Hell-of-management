@@ -15,7 +15,7 @@ public class IngredientDetector : MonoBehaviour
     #region UnityCallbacks
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<IngredientDescription>())
+        if (other.gameObject.GetComponent<IngredientDescription>() && other.gameObject.GetComponent<ThrowableItemStates>().state == ThrowableItemStates.States.Floating)
         {
             OnIngredientDetected?.Invoke(other.gameObject);
         }

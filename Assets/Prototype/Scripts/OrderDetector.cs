@@ -12,7 +12,7 @@ public class OrderDetector : MonoBehaviour
     #region UnityCallabacks
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<IngredientsDescription>())
+        if (other.gameObject.GetComponent<IngredientsDescription>() && other.gameObject.GetComponent<ThrowableItemStates>().state == ThrowableItemStates.States.Floating)
         {
             OnOrderDetected?.Invoke(other.gameObject);
         }

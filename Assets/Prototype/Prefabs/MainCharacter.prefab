@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 3107764076470306502}
   - component: {fileID: 8835077112313719597}
   - component: {fileID: 2962328261158991438}
+  - component: {fileID: 3093159152684233342}
+  - component: {fileID: 1241909953797729631}
+  - component: {fileID: 1800276610573450145}
   - component: {fileID: 227653814221621926}
   m_Layer: 0
   m_Name: MainCharacter
@@ -65,19 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2bc4d196822e954eb464d115f19b291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 5
-  gravityForce: {x: 0, y: -9.81, z: 0}
-  dashDistance: 3
-  dashDuration: 0.2
-  dashDowntime: 3
-  dashKey: 32
-  dash: 0
-  dashEnable: 1
-  dropDistance: 0
-  dropDuration: 0
-  throwDistance: 3
-  ThrowDuration: 0.5
-  decelleration: 0
   hands:
   - transform: {fileID: 1186444059089583384}
     holdedItem: {fileID: 0}
@@ -85,6 +75,50 @@ MonoBehaviour:
   - transform: {fileID: 1280431955043413449}
     holdedItem: {fileID: 0}
     available: 1
+--- !u!114 &3093159152684233342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177070606077517362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 080e39dfb810f8c49aed8c74725c06d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMovementSpeed: 1.5
+  dashKey: 32
+  maxDashSpeed: 5
+  dashDuration: 0.2
+  dashCooldown: 3
+--- !u!114 &1241909953797729631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177070606077517362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9935890a20df1d47a217983177c5aff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationTime: 0.5
+--- !u!114 &1800276610573450145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177070606077517362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40d52ba89e0ad14d8f571356b55c2a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropDuration: 0.5
+  dropDistance: 3
 --- !u!114 &227653814221621926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f53539f8e10f14fa9f1bc85c08e33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throwDuration: 0.25
+  throwDistance: 5
 --- !u!1 &1592351461707099462
 GameObject:
   m_ObjectHideFlags: 0

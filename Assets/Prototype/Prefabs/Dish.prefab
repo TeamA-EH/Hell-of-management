@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1642256555687827391}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 7863559470265100165}
@@ -121,9 +121,11 @@ GameObject:
   - component: {fileID: 6410342709767622943}
   - component: {fileID: 7211488678146678164}
   - component: {fileID: 8768274773226621667}
+  - component: {fileID: 3007109173110191644}
   - component: {fileID: 8372449465053435587}
   - component: {fileID: 8130847110328624814}
   - component: {fileID: 3231859660083624437}
+  - component: {fileID: -3109805135342992631}
   m_Layer: 0
   m_Name: Dish
   m_TagString: Untagged
@@ -174,7 +176,20 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &3007109173110191644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3458312134850088397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2a1e37522987c4dbca638b588ff81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistanceFromGround: 0.05
 --- !u!114 &8372449465053435587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51cf4ca15aa872d41992a79d22cbf994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
 --- !u!114 &8130847110328624814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,10 +212,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3458312134850088397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50dcc6af1b71a184e9c8cbc654074150, type: 3}
+  m_Script: {fileID: 11500000, guid: a8a4a095989392e488050b574005301a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0.1
   dragTime: 0.2
   maxDistanceFromPlayer: 3
 --- !u!114 &3231859660083624437
@@ -216,3 +231,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultColor: {r: 0.12949446, g: 0.14150941, b: 0.14125164, a: 0}
   highlightColor: {r: 0.15699537, g: 0.73263264, b: 0.7924528, a: 0}
+--- !u!114 &-3109805135342992631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3458312134850088397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2810a6ef00e50194aad785a64b040471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
