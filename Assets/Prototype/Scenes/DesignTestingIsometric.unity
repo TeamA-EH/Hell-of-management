@@ -7259,6 +7259,21 @@ PrefabInstance:
       propertyPath: throwDistance
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3093159152684233342, guid: 46db1973ac5d10742bc6ef0836ee07f5,
+        type: 3}
+      propertyPath: dashDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093159152684233342, guid: 46db1973ac5d10742bc6ef0836ee07f5,
+        type: 3}
+      propertyPath: maxDashSpeed
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3093159152684233342, guid: 46db1973ac5d10742bc6ef0836ee07f5,
+        type: 3}
+      propertyPath: maxMovementSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3107764076470306502, guid: 46db1973ac5d10742bc6ef0836ee07f5,
         type: 3}
       propertyPath: m_RootOrder

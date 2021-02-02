@@ -3,33 +3,19 @@ using DG.Tweening;
 using System.Collections;
 
 [RequireComponent(typeof(ItemThrow))]
+[RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerRotation))]
 public class MCController : MonoBehaviour, IDragger
 {
     public static MCController GetIstance;
-    CharacterController cc;
     //Animator animator;                            DISATTIVATO - CAUSA: RICHIESTA DESIGNER
+    PlayerMovement movementComponent;
+    PlayerRotation rotationComponent;
 
     public Vector3 inputDirection { private set; get; } = Vector3.zero;
     public float PlayerSpeed { private set; get; } = 0.0f;
     public float CameraAngularDirection { private set; get; } = 0.0f;
     //public float PlayerAngularDirection => Vector3.SignedAngle(animator.gameObject.transform.forward, inputDirection.normalized, Vector3.up);
-
-    [Header("Walking Settings"), Space(20)]
-    [Tooltip("Velocita di movimento del personaggio")]
-    [SerializeField] float walkingSpeed = 5;
-    [Tooltip("La forza di gravita applicata al personaggio quando si muove")]
-    [SerializeField] Vector3 gravityForce = new Vector3(0, -9.81f, 0);
-
-    [Header("Dash Settings"), Space(20)]
-    [Tooltip("Indica quanto spazio percorre il personaggio in base alla direzine di movimento")]
-    [SerializeField] float dashDistance = 5;
-    [Tooltip("Indica in quanto tempo il personaggio percorre la distanza")]
-    [SerializeField] float dashDuration = .25f;
-    [Tooltip("Indica quanto tempo bisogni attendere prima di poter utilizzare nuovamente il DASH")]
-    [SerializeField] float dashDowntime = 3f;
-    public KeyCode dashKey = KeyCode.Space;
-    [SerializeField] bool dash = false;
-    [SerializeField] bool dashEnable = true;
 
     [Header("Item Drop"), Space(20)]
     [Tooltip("Indica quanto lontano viene droppa l'oggetto in metri di unity")]
@@ -69,26 +55,6 @@ public class MCController : MonoBehaviour, IDragger
 
             return false;
         }
-    }
-
-    public void Move(Vector3 _direction)
-    {
-        _direction = new Vector3(_direction.x, 0, _direction.z);
-
-        //cc.Move(((_direction * (walkingSpeed - decelleration)) + gravityForce) * Time.deltaTime);
-        cc.Move((_direction  + gravityForce) * Time.deltaTime);
-    }
-    
-    IEnumerator Dash()
-    {
-        dashEnable = false;
-        dash = true;
-        PlayerSpeed = dashDistance / dashDuration;
-        yield return new WaitForSeconds(dashDuration);
-        dash = false;
-        yield return new WaitForSeconds(dashDowntime);
-        dashEnable = true;
-
     }
 
     /* DRAG METHODS */
@@ -184,45 +150,19 @@ public class MCController : MonoBehaviour, IDragger
     #region UnityCallbacks
     private void Awake()
     {
+        /* CONTROLLER INITIALIZATION */
         if (!GetIstance) GetIstance = this;         //Singleton pattern
-        cc = GetComponent<CharacterController>();
         if (!throwSystem) throwSystem = GetComponent<ItemThrow>();
-
+        if (!movementComponent) movementComponent = GetComponent<PlayerMovement>();
+        if (!rotationComponent) rotationComponent = GetComponent<PlayerRotation>();
 
         //animator = gameObject.GetComponentInChildren<Animator>();
 
     }
     private void Update()
     {
-        Vector3 horizontal = Vector3.zero;
-        Vector3 vertical = Vector3.zero;
-
-        if (Input.GetKey(KeyCode.W)) vertical = Camera.main.transform.forward;
-        else if (Input.GetKey(KeyCode.S)) vertical = -Camera.main.transform.forward;
-
-        if (Input.GetKey(KeyCode.D)) horizontal = Camera.main.transform.right;
-        else if (Input.GetKey(KeyCode.A)) horizontal = -Camera.main.transform.right;
-
-        CameraAngularDirection = Vector3.SignedAngle(Camera.main.transform.forward, horizontal + vertical, Vector3.up);
-        if(!dash) PlayerSpeed = Mathf.Clamp(((horizontal * Input.GetAxis("Horizontal")) + (vertical * Input.GetAxis("Vertical"))).magnitude * (walkingSpeed - decelleration),0, (walkingSpeed - decelleration));
-        inputDirection = (Camera.main.transform.forward * Input.GetAxis("Vertical") + Camera.main.transform.right * Input.GetAxis("Horizontal")) * PlayerSpeed;
-
-        //animator.SetFloat("speed", PlayerSpeed);
-        //animator.SetFloat("Camera Angle", CameraAngularDirection);
-
-        if (dashEnable && Input.GetKeyDown(dashKey)) StartCoroutine(Dash());
-
-        /* Player Rotation */
-        float angleFromOrigin = Vector3.SignedAngle(gameObject.transform.forward, Camera.main.transform.forward, Vector3.up);
-        float inputAngle = Vector3.SignedAngle(Camera.main.transform.forward, inputDirection.normalized, Vector3.up);
-        //Debug.Log($"angle from origin: {angleFromOrigin}, input angle: {inputAngle}");
-
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
-        {
-            gameObject.transform.DORotateQuaternion(Quaternion.Euler(0, inputAngle, 0), .5f);
-        }
-
-        Move(inputDirection);
+        movementComponent.UpdateMovement();
+        rotationComponent.UpdateRotation();
 
         /* THROW/DROP SYSTEM */
         if (Input.GetKeyUp(KeyCode.Mouse0) && !hands[0].available)
