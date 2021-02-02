@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 
-public class ItemThrow : MonoBehaviour
+public class ItemDrop : MonoBehaviour
 {
-    [Header("Throw Settings"), Space(20)]
-    [SerializeField] float throwDuration;
-    [SerializeField] float throwDistance;
+    [Header("Drop Settings"), Space(20)]
+    [SerializeField] float dropDuration;
+    [SerializeField] float dropDistance;
 
-    public void ThrowItem(GameObject item, Vector3 direction)
+    public void DropItem(GameObject item, Vector3 direction)
     {
-        float speed = throwDistance / throwDuration;
+        float speed = dropDistance / dropDuration;
+
         Rigidbody rb = item.GetComponent<Rigidbody>();
 
         rb.useGravity = true;
