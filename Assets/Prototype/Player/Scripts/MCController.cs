@@ -75,7 +75,7 @@ public class MCController : MonoBehaviour
                 if(Physics.Raycast(r, out hit))
                 {
                     Vector3 point = new Vector3(hit.point.x, 0, hit.point.z);
-                    direction = (point - gameObject.transform.position).normalized;
+                    direction = (point - hands[0].transform.position).normalized;
                 }
 
                 switch (ItemUsabilityManager.GetInstance.ActiveMode)
@@ -113,7 +113,7 @@ public class MCController : MonoBehaviour
                 if (Physics.Raycast(r, out hit))
                 {
                     Vector3 point = new Vector3(hit.point.x, 0, hit.point.z);
-                    direction = (point - gameObject.transform.position).normalized;
+                    direction = (point - hands[1].transform.position).normalized;
                 }
 
                 switch (ItemUsabilityManager.GetInstance.ActiveMode)
