@@ -165,6 +165,11 @@ public sealed class OrderManager : MonoBehaviour
     /// </summary>
     public static void CompleteOrder()
     {
+        if (WasteGenerator.CanGenerateWaste())
+        {
+            WasteGenerator.CreateWaste(GetIstance.OrderOwner.transform.position + GetIstance.OrderOwner.transform.forward + Vector3.up * 2);
+        }
+
         GetIstance.OrderOwner.SetActive(false);
         GetIstance.OrderOwner = null;
 
@@ -175,6 +180,11 @@ public sealed class OrderManager : MonoBehaviour
     /// </summary>
     public static void FailOrder()
     {
+        if (WasteGenerator.CanGenerateWaste())
+        {
+            WasteGenerator.CreateWaste(GetIstance.OrderOwner.transform.position + GetIstance.OrderOwner.transform.forward + Vector3.up * 2);
+        }
+
         GetIstance.OrderOwner.SetActive(false);
         GetIstance.OrderOwner = null;
 
