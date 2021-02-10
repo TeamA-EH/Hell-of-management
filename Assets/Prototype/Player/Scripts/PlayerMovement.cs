@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement Settings"), Space(20)]
     [Tooltip("La massima velocita durante il movimento base")]
-    [SerializeField] float maxMovementSpeed;
+    public float maxMovementSpeed;
 
     [Header("Dash Settings"), Space(20)]
     [Tooltip("The key for activating player's dash")]
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     float maxSpeed;
     public float MaxSpeed
     {
-        private set
+        set
         {
             if(value == 0)
             {
