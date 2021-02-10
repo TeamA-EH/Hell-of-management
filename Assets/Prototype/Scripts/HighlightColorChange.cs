@@ -15,6 +15,7 @@ public class HighlightColorChange : MonoBehaviour
         mr = gameObject.GetComponentInChildren<MeshRenderer>();
         mr.material.color = defaultColor;
     }
+
     private void OnMouseEnter()
     {
         mr.material.color = highlightColor;
