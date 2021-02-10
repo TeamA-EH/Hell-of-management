@@ -12,7 +12,7 @@ public class SpeedModifier : MonoBehaviour, IModifier
     public void Modify(GameObject gameObject, float value)
     {
         movement = gameObject.GetComponent <PlayerMovement> ();
-        movement.maxMovementSpeed = value;
+        movement.MaxSpeed = value;
     }
 
     IEnumerator modifySpeed()
