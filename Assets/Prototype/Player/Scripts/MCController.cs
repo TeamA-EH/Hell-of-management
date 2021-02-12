@@ -54,7 +54,6 @@ public class MCController : MonoBehaviour
         if (!dropSystem) dropSystem = GetComponent<ItemDrop>();
 
         //animator = gameObject.GetComponentInChildren<Animator>();
-
     }
     private void Update()
     {

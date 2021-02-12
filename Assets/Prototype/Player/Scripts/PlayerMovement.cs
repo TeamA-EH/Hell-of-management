@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement Settings"), Space(20)]
     [Tooltip("La massima velocita durante il movimento base")]
-    [SerializeField] float maxMovementSpeed;
+    public float maxMovementSpeed;
 
     [Header("Dash Settings"), Space(20)]
     [Tooltip("The key for activating player's dash")]
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     float maxSpeed;
     public float MaxSpeed
     {
-        private set
+        set
         {
             if(value == 0)
             {
@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void UpdateMovement()
     {
-        cc.Move(new Vector3(inputDirection.x, 0, inputDirection.z) * playerSpeed * Time.deltaTime);
+        cc.Move((new Vector3(inputDirection.x, 0, inputDirection.z) - new Vector3(0,9.81f,0)) * playerSpeed * Time.deltaTime);
 
         OnMovement?.Invoke();
     }

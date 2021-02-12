@@ -19,7 +19,7 @@ public class PlayerRotation : MonoBehaviour
             float angle = Vector3.SignedAngle(Vector3.forward, direction, Vector3.up);
 
             gameObject.transform.DORotateQuaternion(Quaternion.Euler(0, angle - 90, 0), rotationTime);
-            Debug.Log(angle);
+            //Debug.Log(angle);
         }
     }
 }
