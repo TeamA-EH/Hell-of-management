@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5078981856189292336}
   - component: {fileID: 734132981095344404}
   m_Layer: 0
-  m_Name: Surface
+  m_Name: Slippery Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,8 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c556399eb3181a4498813c7b9e6967e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifierSpeed: 10
-  duration: 0.5
+  surfaceMass: -10
 --- !u!114 &5078981856189292336
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -33,7 +33,7 @@ public class SurfaceController : MonoBehaviour
 
     void OnPlayerExit(GameObject player)
     {
-        modifier.Modify(player, player.GetComponent<PlayerMovement>().maxMovementSpeed);
+        modifier.Modify(player, 0);
         Debug.Log("exit");
     }
 }

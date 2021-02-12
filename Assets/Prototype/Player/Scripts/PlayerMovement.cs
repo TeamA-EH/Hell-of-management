@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
             return maxSpeed;
         }
     }
-    float decellaration;
+    public float decellaration;
 
     Vector3 direction;
     Vector3 inputDirection = Vector3.zero;
@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void UpdateMovement()
     {
-        cc.Move((new Vector3(inputDirection.x, 0, inputDirection.z) - new Vector3(0,9.81f,0)) * playerSpeed * Time.deltaTime);
+        cc.Move((new Vector3(inputDirection.x, 0, inputDirection.z) - new Vector3(0,9.81f,0)) * (playerSpeed - decellaration) * Time.deltaTime);
 
         OnMovement?.Invoke();
     }
