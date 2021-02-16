@@ -27,13 +27,15 @@ public class SurfaceController : MonoBehaviour
 
     void OnPlayerDetected(GameObject player)
     {
-        modifier.Modify(player, modifier.value);
+        //modifier.Modify(player, modifier.value);
+        player.GetComponent<PlayerMovement>().SetTerrainSurface(PlayerMovement.TerrainSurface.Ice);
         Debug.Log("enter");
     }
 
     void OnPlayerExit(GameObject player)
     {
-        modifier.Modify(player, 0);
+        player.GetComponent<PlayerMovement>().SetTerrainSurface(PlayerMovement.TerrainSurface.Ground);
+        //modifier.Modify(player, 0);
         Debug.Log("exit");
     }
 }

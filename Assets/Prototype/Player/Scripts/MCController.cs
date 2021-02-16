@@ -138,4 +138,12 @@ public class MCController : MonoBehaviour
         }
     }
     #endregion
+
+    public void DropItem(uint _hand, Vector3 _direction)
+    {
+        dropSystem.DropItem(hands[_hand].holdedItem, _direction);
+
+        hands[_hand].holdedItem = null;
+        hands[_hand].available = true;
+    }
 }

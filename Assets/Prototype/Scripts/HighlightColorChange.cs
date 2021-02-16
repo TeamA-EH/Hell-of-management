@@ -19,6 +19,7 @@ public class HighlightColorChange : MonoBehaviour
     private void OnMouseEnter()
     {
         mr.material.color = highlightColor;
+        Debug.Log("enter");
     }
     private void OnMouseExit()
     {
