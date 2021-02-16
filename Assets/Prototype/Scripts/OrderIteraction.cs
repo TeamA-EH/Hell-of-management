@@ -8,10 +8,9 @@ public class OrderIteraction : MonoBehaviour
     #region UnityCallbacks
     private void OnMouseDown()
     {
-        if(OrderManager.GetIstance.CanBringOrder)
+        if(OrderManager.self.m_canBringOrder)
         {
-            OrderManager.CreateRandomRequest();
-            OrderManager.AssignOrderOwner(gameObject);
+            OrderManager.CreateRandomOrder(gameObject);
 
             // Attiva la scheda informazioni dell'ordine di un personaggio
             var vignetteController = GetComponentInChildren<OrderUIController>();

@@ -120,7 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62724421a5d712c42b5652cb963d73e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraBoomObject: {fileID: 0}
 --- !u!114 &7765253955190250920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,10 +133,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vignette: {fileID: 7765253955754046267}
-  recipeTypeText: {fileID: 7765253956392442509}
-  redSoulText: {fileID: 7765253955266041251}
-  greenSoulText: {fileID: 7765253956954439588}
-  orangeSoulText: {fileID: 7765253955376644266}
 --- !u!1 &7765253955266041261
 GameObject:
   m_ObjectHideFlags: 0
@@ -412,6 +407,7 @@ GameObject:
   - component: {fileID: 7765253955754046271}
   - component: {fileID: 7765253955754046270}
   - component: {fileID: 7765253955754046265}
+  - component: {fileID: 3403501148736319200}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -499,6 +495,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3403501148736319200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7765253955754046267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ea9c2b5bde8f5419fe777938c654b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_orderTypeText: {fileID: 7765253956392442509}
+  m_redSoulsText: {fileID: 7765253955266041251}
+  m_greenSoulsText: {fileID: 7765253956954439588}
+  m_orangeSoulsText: {fileID: 7765253955376644266}
 --- !u!1 &7765253955764115697
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,25 +15,20 @@ public class DeliveryController : MonoBehaviour
     }
     #endregion
 
-    protected void OnOrderDetected(GameObject order)
+    protected void OnOrderDetected(GameObject _order)
     {
-        var orderIngredients = order.GetComponent<IngredientsDescription>();
-        var activeOrder = OrderManager.GetIstance.ActiveOrder;
-
-        if (activeOrder.redSouls == orderIngredients.redSouls &&
-            activeOrder.greenSouls == orderIngredients.greenSouls &&
-            activeOrder.orangeSouls == orderIngredients.orangeSouls && 
-            activeOrder.orderType == orderIngredients.type)
+        var ingredients = _order.GetComponent<IngredientsDescription>();
+        var orders = OrderManager.self.m_activeOrders;
+        for(int i = 0; i < OrderManager.self.m_activeOrders.Count; i++)
         {
-            OrderManager.CompleteOrder();
-
-            Destroy(order);
-        }
-        else
-        {
-            OrderManager.FailOrder();
-
-            Destroy(order);
+            if (ingredients.type == orders[i].orderType &&
+                ingredients.redSouls == orders[i].redSouls &&
+                ingredients.greenSouls == orders[i].greenSouls &&
+                ingredients.orangeSouls == orders[i].orangeSouls)
+            {
+                OrderManager.CompeteOrder(orders[i]);
+                Destroy(_order);
+            }
         }
 
     }

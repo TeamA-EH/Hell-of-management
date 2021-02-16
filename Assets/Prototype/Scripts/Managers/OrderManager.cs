@@ -1,209 +1,93 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 public sealed class OrderManager : MonoBehaviour
 {
-    public static OrderManager GetIstance;
-
-    public OrderRequest ActiveOrder { private set; get; }
     /// <summary>
-    /// Restituisce TRUE se si prendere un ordine altrimenti resituise FALSE
+    /// Singleton reference
     /// </summary>
-    public bool CanBringOrder => ActiveOrder == null;
+    public static OrderManager self;
+
     /// <summary>
-    /// L'ospite che ha dato l'ordine al giocatore
+    /// Active orders for the player
     /// </summary>
-    public GameObject OrderOwner { private set; get; } = null;
+    public List<OrderRequest> m_activeOrders { private set; get; } = new List<OrderRequest>();
+    public bool m_canBringOrder => m_activeOrders.Count < 2;
 
-    public static event System.Action<OrderRequest> OnOrderReceived = (evtargs) =>
-    {
-        GetIstance.ActiveOrder = evtargs;
-    };
+    #region Order Events
+    /// <summary>
+    /// Called when the user sent the input to receive an order
+    /// </summary>
+    public event Action<OrderManager, OrderRequest> OnOrderCreated;
+    /// <summary>
+    /// Called when the user delivers the right order to the order owner
+    /// </summary>
+    public event Action<OrderManager, OrderRequest> OnOrderCompleted;
+    /// <summary>
+    /// Called when the user delivers the wrong order to the order owner
+    /// </summary>
+    public event Action<OrderManager, OrderRequest> OnOrderFailed;
 
-    public static event System.Action<OrderManager, OrderRequest> OnOrderCompleted = (sender, order) =>
-    {
-        // Add Score
-        GetIstance.ActiveOrder = null;
-    };
-    public static event System.Action<OrderManager, OrderRequest> OnOrderFailed = (sender, order) =>
-    {
-        GetIstance.ActiveOrder = null;
-    };
+    #endregion
 
-    #region UnityCallbacks
+    #region Unity Callbacks
     private void Awake()
     {
-        if (!GetIstance) GetIstance = this;
+        if (!self) self = this;
     }
     #endregion
 
-    /// <summary>
-    /// Crea casualmente un ordine tra cocktail e drink con ingredienti random
-    /// </summary>
-    /// <returns> Ordine Random</returns>
-    public static OrderRequest CreateRandomRequest()
+    public static void CreateDrinkOrder(uint _redSouls, uint _greenSouls, uint _orangeSouls, GameObject _orderOwner)
     {
-        int redSouls = 100;
-        int greenSouls = 100;
-        int orangeSouls = 100;
+        var order = new OrderRequest(OrderRequest.OrderType.Cocktail, _redSouls, _greenSouls, _orangeSouls, _orderOwner);
 
-        OrderRequest.OrderType orderType = (OrderRequest.OrderType)Random.Range(0, 2);
+        self.m_activeOrders.Add(order);
+        self.OnOrderCreated?.Invoke(self, order);
+    }
+    public static void CreateDishOrder(uint _redSouls, uint _greenSouls, uint _orangeSouls, GameObject _orderOwner)
+    {
+        var order = new OrderRequest(OrderRequest.OrderType.Dish, _redSouls, _greenSouls, _orangeSouls, _orderOwner);
 
-        while ((redSouls + greenSouls + orangeSouls) != 3)
+        self.m_activeOrders.Add(order);
+        self.OnOrderCreated?.Invoke(self, order);
+    }
+    public static void CreateRandomOrder(GameObject _orderOwner)
+    {
+        uint r = 0;
+        uint g = 0;
+        uint o = 0;
+
+        while(r + g + o != 3)
         {
-            redSouls = Random.Range(0, 4);
-            greenSouls = Random.Range(0, 4);
-            orangeSouls = Random.Range(0, 4);
+            r = (uint)UnityEngine.Random.Range(0, 4);
+            g = (uint)UnityEngine.Random.Range(0, 4);
+            o = (uint)UnityEngine.Random.Range(0, 4);
         }
 
-        var Order = new OrderRequest(orderType, (uint)redSouls, (uint)greenSouls, (uint)orangeSouls);
+        OrderRequest.OrderType type = (OrderRequest.OrderType)UnityEngine.Random.Range(0, 2);
 
-        OnOrderReceived?.Invoke(Order);
-
-        return new OrderRequest(orderType, (uint)redSouls, (uint)greenSouls, (uint)orangeSouls);
-    }
-    /// <summary>
-    /// Crea un ordine casuale tra Coktail e Dish con i parametri di anime specificati
-    /// </summary>
-    /// <param name="redSouls"></param>
-    /// <param name="greenSouls"></param>
-    /// <param name="orangeSouls"></param>
-    /// <returns></returns>
-    public static OrderRequest CreateRandomRequest(uint redSouls, uint greenSouls, uint orangeSouls)
-    {
-        var orderType = (OrderRequest.OrderType)Random.Range(0, 2);
-
-        var order = new OrderRequest(orderType, redSouls, greenSouls, orangeSouls);
-
-        OnOrderReceived?.Invoke(order);
-
-        return order;
-    }
-    /// <summary>
-    /// Crea un ordine per un cocktail con ingredienti casuali
-    /// </summary>
-    /// <returns> Ordine Cocktail</returns>
-    public static OrderRequest CreateCocktailRequest()
-    {
-        int redSouls = 100;
-        int greenSouls = 100;
-        int orangeSouls = 100;
-
-        var orderType = OrderRequest.OrderType.Cocktail;
-
-        while ((redSouls + greenSouls + orangeSouls) != 3)
-        {
-            redSouls = Random.Range(0, 4);
-            greenSouls = Random.Range(0, 4);
-            orangeSouls = Random.Range(0, 4);
-        }
-
-        var Order = new OrderRequest(orderType, (uint)redSouls, (uint)greenSouls, (uint)orangeSouls);
-
-        OnOrderReceived?.Invoke(Order);
-
-        return new OrderRequest(orderType, (uint)redSouls, (uint)greenSouls, (uint)orangeSouls);
-    }
-    /// <summary>
-    /// Crea un ordine per un cocktail con l'ammontare di ingredienti specificato
-    /// </summary>
-    /// <param name="redSouls"></param>
-    /// <param name="greenSouls"></param>
-    /// <param name="orangeSouls"></param>
-    /// <returns></returns>
-    public static OrderRequest CreateCocktailRequest(uint redSouls, uint greenSouls, uint orangeSouls)
-    {
-        var orderType = OrderRequest.OrderType.Cocktail;
-
-        var order = new OrderRequest(orderType, redSouls, greenSouls, orangeSouls);
-
-        OnOrderReceived?.Invoke(order);
-
-        return order;
-    }
-    /// <summary>
-    /// Crea un ordine per un piatto con ingredienti casuali
-    /// </summary>
-    /// <returns></returns>
-    public static OrderRequest CreateDishRequest()
-    {
-        int redSouls = 100;
-        int greenSouls = 100;
-        int orangeSouls = 100;
-
-        var orderType = OrderRequest.OrderType.Dish;
-
-        while ((redSouls + greenSouls + orangeSouls) != 3)
-        {
-            redSouls = Random.Range(0, 4);
-            greenSouls = Random.Range(0, 4);
-            orangeSouls = Random.Range(0, 4);
-        }
-
-        var Order = new OrderRequest(orderType, (uint)redSouls, (uint)greenSouls, (uint)orangeSouls);
-
-        OnOrderReceived?.Invoke(Order);
-
-        return new OrderRequest(orderType, (uint)redSouls, (uint)greenSouls, (uint)orangeSouls);
-    }
-    /// <summary>
-    /// Crea un ordine per un piatto con l'ammontare di ingredienti specificato
-    /// </summary>
-    /// <returns></returns>
-    public static OrderRequest CreateDishRequest(uint redSouls, uint greenSouls, uint orangeSouls)
-    {
-        var orderType = OrderRequest.OrderType.Dish;
-
-        var order = new OrderRequest(orderType, redSouls, greenSouls, orangeSouls);
-
-        OnOrderReceived?.Invoke(order);
-
-        return order;
+        var order = new OrderRequest(type, r, g, o, _orderOwner);
+        self.m_activeOrders.Add(order);
+        self.OnOrderCreated?.Invoke(self, order);
     }
 
-    /// <summary>
-    /// Completa con successo l'ordine attualmente attivo
-    /// </summary>
-    public static void CompleteOrder()
+    public static void CompeteOrder(OrderRequest _order)
     {
+        _order.owner.SetActive(false);
+
+        /* GENERATE WASTE */
         if (WasteGenerator.CanGenerateWaste())
         {
-            WasteGenerator.CreateWaste(GetIstance.OrderOwner.transform.position + GetIstance.OrderOwner.transform.forward + Vector3.up * 2);
+            WasteGenerator.CreateWaste(_order.owner.transform.position + (_order.owner.transform.forward * 2) + Vector3.up * 3);
         }
 
-        GetIstance.OrderOwner.SetActive(false);
-        GetIstance.OrderOwner = null;
-
-        OnOrderCompleted?.Invoke(GetIstance, GetIstance.ActiveOrder);
+        self.m_activeOrders.Remove(_order);
+        self.OnOrderCompleted?.Invoke(self, _order);
     }
-    /// <summary>
-    /// Fallisce l'ordine attualmente attivo
-    /// </summary>
-    public static void FailOrder()
+    public static void FailOrder(OrderRequest _order)
     {
-        if (WasteGenerator.CanGenerateWaste())
-        {
-            WasteGenerator.CreateWaste(GetIstance.OrderOwner.transform.position + GetIstance.OrderOwner.transform.forward + Vector3.up * 2);
-        }
-
-        GetIstance.OrderOwner.SetActive(false);
-        GetIstance.OrderOwner = null;
-
-        OnOrderFailed?.Invoke(GetIstance, GetIstance.ActiveOrder);
-    }
-
-    /// <summary>
-    /// Assegna il possessore dell'ordine
-    /// </summary>
-    public static void AssignOrderOwner(GameObject guest) => GetIstance.OrderOwner = guest;
-
-    /// <summary>
-    /// Stampa nella console le informazioni dell'ordine appena generato
-    /// </summary>
-    public static void StampOrderInfos()
-    {
-        Debug.Log($"Type: {GetIstance.ActiveOrder.orderType}, " +
-            $"Red Souls: {GetIstance.ActiveOrder.redSouls}, " +
-            $"Green Souls: {GetIstance.ActiveOrder.greenSouls}, " +
-            $"Orange Souls: {GetIstance.ActiveOrder.orangeSouls}");
+        self.m_activeOrders.Remove(_order);
+        self.OnOrderFailed?.Invoke(self, _order);
     }
 }
