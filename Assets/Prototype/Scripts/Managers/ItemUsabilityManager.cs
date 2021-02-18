@@ -8,9 +8,7 @@ public class ItemUsabilityManager : MonoBehaviour
 
     [Header("Settings")]
     [Tooltip("Definisce quale tasto utilizzare per abilitare la modalita di lancio")]
-    [SerializeField] KeyCode ThrowModeBinding = KeyCode.E;
-    [Tooltip("Definisce qualte tasto utilizzare per abilitare la modalita di rilascio")]
-    [SerializeField] KeyCode DropModeBinding = KeyCode.Q;
+    [SerializeField] KeyCode ModeSwitchInput = KeyCode.LeftShift;
     [Space(20)]
     [Tooltip("La modalita di utilizzo degli oggetti che si sta utilizzando")]
     [SerializeField] UsabilityModes activeMode = UsabilityModes.Drop;
@@ -33,13 +31,18 @@ public class ItemUsabilityManager : MonoBehaviour
     }
     private void Update()
     {
-        if(Input.GetKeyDown(ThrowModeBinding))
+        if (Input.GetKeyDown(ModeSwitchInput))
         {
-            ActiveMode = UsabilityModes.Throw;
-        }
-        if(Input.GetKeyDown(DropModeBinding))
-        {
-            ActiveMode = UsabilityModes.Drop;
+            switch (ActiveMode)
+            {
+                case UsabilityModes.Drop:
+                    ActiveMode = UsabilityModes.Throw;
+                    break;
+
+                case UsabilityModes.Throw:
+                    ActiveMode = UsabilityModes.Drop;
+                    break;
+            }
         }
     }
     #endregion
