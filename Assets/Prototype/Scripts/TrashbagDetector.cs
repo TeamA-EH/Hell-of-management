@@ -12,7 +12,7 @@ public class TrashbagDetector : MonoBehaviour
     #region UnityCallbacks
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<TrashbagController>() && other.gameObject.GetComponent<ThrowableItemStates>().state == ThrowableItemStates.States.Floating)
+        if(other.gameObject.GetComponent<TrashbagController>() || other.gameObject.GetComponent<ThrowableItemStates>().state == ThrowableItemStates.States.Floating)
         {
             OnTrashbagDetected?.Invoke(other.gameObject);
         }

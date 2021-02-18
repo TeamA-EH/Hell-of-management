@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6906962933731432740}
   - component: {fileID: 6906962933731432739}
   - component: {fileID: 8984326885478222485}
-  - component: {fileID: 724210474843160396}
   - component: {fileID: 5078981856189292336}
   - component: {fileID: 734132981095344404}
+  - component: {fileID: 280492270008128456}
   m_Layer: 0
   m_Name: Slippery Terrain
   m_TagString: Untagged
@@ -62,19 +62,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 2, z: 5}
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &724210474843160396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6906962933731432738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c556399eb3181a4498813c7b9e6967e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  surfaceMass: -10
 --- !u!114 &5078981856189292336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +86,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dca40318024bd24f8862b982e17cc02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &280492270008128456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6906962933731432738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60a86729ecb3f654bac0fba2376fbb75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _surfaceType: 1
 --- !u!1 &6906962934304862264
 GameObject:
   m_ObjectHideFlags: 0

@@ -92,6 +92,12 @@ MonoBehaviour:
   maxDashSpeed: 5
   dashDuration: 0.2
   dashCooldown: 3
+  slideSpeed: 1
+  acelleration: 0
+  m_IcyTerrainMaxSpeed: 5
+  m_GlueTerrainMaxSpeed: 1
+  _surfaceType: 0
+  decellaration: 0
 --- !u!114 &1241909953797729631
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
             case ESurfaceType.Icy:
 
                 inputDirection = lastMoveDirection * slideSpeed;
-                cc.Move((new Vector3(inputDirection.x, 0, inputDirection.z) * acelleration * m_IcyTerrainMaxSpeed) * Time.deltaTime);
+                cc.Move((inputDirection * playerSpeed * Time.deltaTime) + (inputDirection * (acelleration - decellaration)) * (Time.deltaTime * Time.deltaTime));
 
                 break;
 
