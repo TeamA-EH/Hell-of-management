@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(PlayerDetector))]
-[RequireComponent(typeof(IModifier))]
+[RequireComponent(typeof(Terrains))]
 public class SurfaceController : MonoBehaviour
 {
     PlayerDetector detector;
-    IModifier modifier;
+    Terrains terrains;
 
     private void Awake()
     {
         detector = gameObject.GetComponent<PlayerDetector>();
-        modifier = gameObject.GetComponent<IModifier>();
+        terrains = gameObject.GetComponent<Terrains>();
     }
 
     private void OnEnable()
@@ -27,15 +27,22 @@ public class SurfaceController : MonoBehaviour
 
     void OnPlayerDetected(GameObject player)
     {
-        //modifier.Modify(player, modifier.value);
-        //player.GetComponent<PlayerMovement>().SetTerrainSurface(PlayerMovement.TerrainSurface.Ice);
-        Debug.Log("enter");
+        if (terrains._surfaceType == Terrains.ESurfaceType.Icy)
+        {
+            player.GetComponent<PlayerMovement>().SetTerrainSurface(PlayerMovement.ESurfaceType.Icy);
+            Debug.Log("ice");
+        }
+
+        if (terrains._surfaceType == Terrains.ESurfaceType.Sticky)
+        {
+            player.GetComponent<PlayerMovement>().SetTerrainSurface(PlayerMovement.ESurfaceType.Sticky);
+            Debug.Log("glue");
+        }
     }
 
     void OnPlayerExit(GameObject player)
     {
-        //player.GetComponent<PlayerMovement>().SetTerrainSurface(PlayerMovement.TerrainSurface.Ground);
-        //modifier.Modify(player, 0);
-        Debug.Log("exit");
+        player.GetComponent<PlayerMovement>().SetTerrainSurface(PlayerMovement.ESurfaceType.Defaulty);
+        Debug.Log("default");
     }
 }

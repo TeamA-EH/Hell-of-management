@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public enum MovementState { Idle, Movement, Dash}
     CharacterController cc;
+    Terrains terrains;
 
     [Header("Movement Settings"), Space(20)]
     [Tooltip("La massima velocita durante il movimento base")]
@@ -19,6 +20,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float maxDashSpeed;
     [SerializeField] float dashDuration = 0.2f;
     [SerializeField] float dashCooldown = 3f;
+
+    Vector3 inputDirection = Vector3.zero;
+    Vector3 lastMoveDirection = Vector3.zero;
+    Vector3 m_IcyTerrainForce = Vector3.one;
+    [SerializeField] float slideSpeed;
+    [SerializeField] float acelleration;
+    [SerializeField] float m_IcyTerrainMaxSpeed;
+    [SerializeField] float m_GlueTerrainMaxSpeed;
+
+    public enum ESurfaceType { Defaulty, Icy, Sticky };
+    public ESurfaceType _surfaceType = ESurfaceType.Defaulty;
+    public void SetTerrainSurface(ESurfaceType _surface) => _surfaceType = _surface;
+
+
     public bool dashEnabled { private set; get; } = true;
 
     float maxSpeed;
@@ -49,7 +64,6 @@ public class PlayerMovement : MonoBehaviour
     public float decellaration;
 
     Vector3 direction;
-    Vector3 inputDirection = Vector3.zero;
     public MovementState movementState { private set; get; }
     public Vector3 playerVelocity => new Vector3(Input.GetAxis("Horizontal") * inputDirection.x, 0, Input.GetAxis("Vertical") * inputDirection.z);
     public float playerSpeed
@@ -99,14 +113,41 @@ public class PlayerMovement : MonoBehaviour
         inputDirection = vertical + horizontal;
 
         Debug.Log(inputDirection.normalized);
+
+        if (inputDirection.sqrMagnitude > 0.225f)
+        {
+            lastMoveDirection = new Vector3(inputDirection.x, 0, inputDirection.z);
+        }
     }
     #endregion
 
     public void UpdateMovement()
     {
-        cc.Move((new Vector3(inputDirection.x, 0, inputDirection.z) - new Vector3(0,9.81f,0)) * (playerSpeed - decellaration) * Time.deltaTime);
+        switch (_surfaceType)
+        {
+            case ESurfaceType.Defaulty:
 
-        OnMovement?.Invoke();
+                if (new Vector3(inputDirection.x, 0, inputDirection.z) != Vector3.zero)
+                {
+                cc.Move((new Vector3(inputDirection.x, 0, inputDirection.z) - new Vector3(0, 9.81f, 0)) * (playerSpeed - decellaration) * Time.deltaTime);
+                OnMovement?.Invoke();
+                }
+
+                break;
+
+            case ESurfaceType.Icy:
+
+                inputDirection = lastMoveDirection * slideSpeed;
+                cc.Move((new Vector3(inputDirection.x, 0, inputDirection.z) * acelleration * m_IcyTerrainMaxSpeed) * Time.deltaTime);
+
+                break;
+
+            case ESurfaceType.Sticky:
+
+                cc.Move((new Vector3(inputDirection.x, 0, inputDirection.z) - new Vector3(0, 9.81f, 0)) * (m_GlueTerrainMaxSpeed - decellaration) * Time.deltaTime);
+
+                break;
+            }
     }
     void ChangeMovementState(MovementState _state)
     {
