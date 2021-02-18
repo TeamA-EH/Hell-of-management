@@ -74,6 +74,9 @@ public sealed class OrderManager : MonoBehaviour
 
     public static void CompeteOrder(OrderRequest _order)
     {
+        /* DEACTIVATES ORDERS & GUEST GFX */
+        _order.owner.GetComponentInChildren<OrderVignette>().ResetUI();
+        _order.owner.GetComponentInChildren<OrderUIController>().DeactivateVignette();
         _order.owner.SetActive(false);
 
         /* GENERATE WASTE */
