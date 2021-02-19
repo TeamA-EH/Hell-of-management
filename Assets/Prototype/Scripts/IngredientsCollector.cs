@@ -50,7 +50,7 @@ public class IngredientsCollector : MonoBehaviour
                 OnMaxCapacityAchieved?.Invoke();
             }
         }
-        else if (ingredientDescription.Type == IngredientDescription.IngredientType.orange_soul)
+        else if (ingredientDescription.Type == IngredientDescription.IngredientType.blue_soul)
         {
             orangeSouls++;
 

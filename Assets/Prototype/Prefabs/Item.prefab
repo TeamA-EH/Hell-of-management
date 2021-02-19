@@ -122,8 +122,10 @@ GameObject:
   - component: {fileID: 4019372820848674300}
   - component: {fileID: 4208658199298625904}
   - component: {fileID: 4019372820848674302}
-  - component: {fileID: 4019372820848674301}
   - component: {fileID: 2364581681591912118}
+  - component: {fileID: 6593571071808584723}
+  - component: {fileID: 8279443628144010365}
+  - component: {fileID: 5469425996965502592}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -175,21 +177,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4019372820848674301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4019372820848674275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50dcc6af1b71a184e9c8cbc654074150, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 0.5
-  dragTime: 0.2
-  maxDistanceFromPlayer: 0
 --- !u!114 &2364581681591912118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +191,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultColor: {r: 1, g: 1, b: 1, a: 0.5019608}
   highlightColor: {r: 0.28120947, g: 0.8396226, b: 0.19010323, a: 0.5019608}
+--- !u!114 &6593571071808584723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4019372820848674275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2810a6ef00e50194aad785a64b040471, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8279443628144010365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4019372820848674275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2a1e37522987c4dbca638b588ff81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDistanceFromGround: 0.5
+--- !u!114 &5469425996965502592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4019372820848674275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a4a095989392e488050b574005301a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragTime: 0.2
+  maxDistanceFromPlayer: 3
 --- !u!1 &5967151573104851233
 GameObject:
   m_ObjectHideFlags: 0

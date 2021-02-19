@@ -278,7 +278,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Milk Machine
+  m_Text: Cocktail Machine
 --- !u!1 &1965526154207908202
 GameObject:
   m_ObjectHideFlags: 0

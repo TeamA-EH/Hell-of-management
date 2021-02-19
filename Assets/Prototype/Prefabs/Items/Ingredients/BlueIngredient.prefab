@@ -90,7 +90,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 532c3fc77cf991c48a85a02ba90a8114, type: 2}
+  - {fileID: 2100000, guid: 4406007ad004d1c408d5aff990712efb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 2364581681591912118}
   - component: {fileID: 2110610390603737923}
   m_Layer: 0
-  m_Name: OrangeIngredient
+  m_Name: BlueIngredient
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76bb13593a2d22340bb180aae3017097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultColor: {r: 0.8509804, g: 0.3520919, b: 0.13725488, a: 0.5019608}
+  defaultColor: {r: 0, g: 0, b: 1, a: 0.5019608}
   highlightColor: {r: 0.76513314, g: 0.8867924, b: 0.744571, a: 0.5019608}
 --- !u!114 &2110610390603737923
 MonoBehaviour:
