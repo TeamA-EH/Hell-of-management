@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 227653814221621926}
   m_Layer: 0
   m_Name: MainCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,9 +50,9 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 0
-  m_StepOffset: 0
+  m_Radius: 0.32
+  m_SlopeLimit: 20
+  m_StepOffset: 0.08
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -87,10 +87,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080e39dfb810f8c49aed8c74725c06d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMovementSpeed: 1.5
+  maxMovementSpeed: 5
   dashKey: 32
-  maxDashSpeed: 5
-  dashDuration: 0.2
+  maxDashSpeed: 12
+  dashDuration: 1
   dashCooldown: 3
   slideSpeed: 1
   acelleration: 0
@@ -198,7 +198,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 3032f75ef203fbb4aa0337512f37232a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -402,7 +402,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 801971ea235ca9144a63b12f5fb40fb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -490,7 +490,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 20518580125d527429749f5a10f8a582,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.001
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20518580125d527429749f5a10f8a582,
         type: 3}
@@ -500,7 +500,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 20518580125d527429749f5a10f8a582,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20518580125d527429749f5a10f8a582,
         type: 3}
@@ -510,7 +510,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 20518580125d527429749f5a10f8a582,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20518580125d527429749f5a10f8a582,
         type: 3}
@@ -525,7 +525,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 20518580125d527429749f5a10f8a582,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 20518580125d527429749f5a10f8a582,
         type: 3}
@@ -535,7 +535,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 20518580125d527429749f5a10f8a582,
         type: 3}
       propertyPath: m_Name
-      value: MainCharacter
+      value: mesh
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 20518580125d527429749f5a10f8a582,
         type: 3}
