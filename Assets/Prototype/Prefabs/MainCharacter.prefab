@@ -87,11 +87,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 080e39dfb810f8c49aed8c74725c06d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMovementSpeed: 5
+  maxMovementSpeed: 12.25
   dashKey: 32
-  maxDashSpeed: 12
-  dashDuration: 1
-  dashCooldown: 3
+  maxDashSpeed: 32
+  dashDuration: 0.36
+  dashCooldown: 0.75
   slideSpeed: 1
   acelleration: 0
   m_IcyTerrainMaxSpeed: 5
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9935890a20df1d47a217983177c5aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationTime: 0.5
+  rotationTime: 0.25
 --- !u!114 &1800276610573450145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropDuration: 0.5
-  dropDistance: 3
+  dropDistance: 1
 --- !u!114 &227653814221621926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f53539f8e10f14fa9f1bc85c08e33c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwDuration: 0.25
-  throwDistance: 5
+  throwDuration: 0.45
+  throwDistance: 8
 --- !u!1 &1592351461707099462
 GameObject:
   m_ObjectHideFlags: 0
