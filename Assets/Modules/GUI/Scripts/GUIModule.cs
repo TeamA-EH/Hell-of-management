@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,20 +24,22 @@ namespace HOM.Modules
             DontDestroyOnLoad(this);
 
             Initialize();
+
         }
         #endregion
 
+        /// <summary> Initializes the menu resources for static draw </summary>
         void Initialize()
         {
             /* Adds menues to the collection */
-            m_menuesMap.Add("Main Menu", Instantiate(MainMenuAsset, gameObject.transform));
-            m_menuesMap.Add("Settings Menu", Instantiate(SettingsMenuAsset, gameObject.transform));
-            m_menuesMap.Add("Commands Menu", Instantiate(ControlsMenuAsset, gameObject.transform));
-            m_menuesMap.Add("Credits Menu", Instantiate(CreditsMenuAsset, gameObject.transform));
-            m_menuesMap.Add("Pause Menu", Instantiate(PauseMenuAsset, gameObject.transform));
-            m_menuesMap.Add("Game Quit Popup", Instantiate(QuitMenuAsset, gameObject.transform));
-            m_menuesMap.Add("Review Menu", Instantiate(ReviewMenuAsset, gameObject.transform));
-            m_menuesMap.Add("Day Replay Popup", Instantiate(DayReplayMenuAsset, gameObject.transform));
+            SetMenuResource("Main Menu", ref MainMenuAsset);
+            SetMenuResource("Settings Menu", ref SettingsMenuAsset);
+            SetMenuResource("Controls Menu", ref ControlsMenuAsset);
+            SetMenuResource("Credits Menu", ref CreditsMenuAsset);
+            SetMenuResource("Quit Menu", ref PauseMenuAsset);
+            SetMenuResource("Review Menu", ref ReviewMenuAsset);
+            SetMenuResource("Upgrade Menu", ref PauseMenuAsset);
+            SetMenuResource("Day Replay Menu", ref DayReplayMenuAsset);
             
             self = this;
         }
@@ -47,6 +48,27 @@ namespace HOM.Modules
         /// Returns all GUI Module interfaces
         /// </summary>
         internal static Dictionary<string, GameObject> GetMenues() => self.m_menuesMap;
+        
+        /// <summary> 
+        /// Sets a link to the menues collection
+        /// </summary>
+        bool SetMenuResource(string menuName, ref GameObject asset)
+        {
+            if(asset)
+            {
+                var menu = Instantiate(asset, gameObject.transform);
+                menu.SetActive(false);
+                m_menuesMap.Add(menuName, menu);
+
+            }
+            else        // Error Handling
+            {
+                Debug.LogWarning($"{menuName} resource initialization failed!");
+                return false;
+            }
+
+            return true;
+        }
 
     }
 }
