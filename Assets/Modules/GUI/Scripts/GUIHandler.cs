@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using HOM.Modules;
 
 namespace HOM
@@ -13,9 +13,9 @@ namespace HOM
        #endregion
 
         ///<summary> Activates one interface calling GUI module </summary>
-        public static bool ActivatesMenu(string _menuCode)
+        public static bool ActivatesMenu(string _menuName)
         {
-            var menu = GUIModule.GetMenues()[_menuCode];
+            var menu = GUIModule.GetMenues()[_menuName];
             if(menu)
             {
                 menu.GetComponent<Animator>().SetTrigger("Pop-In");
@@ -25,9 +25,9 @@ namespace HOM
             return false;
         }
         ///<summary> Deactivates one interface calling GUI module </summary>
-        public static bool DeactivatesMenu(string _menuCode)
+        public static bool DeactivatesMenu(string _menuName)
         {
-            var menu = GUIModule.GetMenues()[_menuCode];
+            var menu = GUIModule.GetMenues()[_menuName];
             if(menu)
             {
                 menu.GetComponent<Animator>().SetTrigger("Pop-Out");
