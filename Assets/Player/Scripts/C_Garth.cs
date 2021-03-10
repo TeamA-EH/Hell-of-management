@@ -46,8 +46,16 @@ namespace HOM
             var dir = MovementHandler.DeheightVector(MovementHandler.GetInputDirectionByCameraPosition());
 
             cc.Move(
-                ((dir * (maxSpeed - itemWeight) * maxSpeed) + 
+                ((dir * (maxSpeed - itemWeight)) + 
                 gravityForce + environmentForce) * Time.deltaTime
+            );
+        }
+        public void Move(float speed)
+        {
+            var dir  = MovementHandler.DeheightVector(MovementHandler.GetInputDirectionByCameraPosition());
+
+            cc.Move(
+                ((MovementHandler.GetLastInput() * (speed - itemWeight)) + (gravityForce + environmentForce)) * Time.deltaTime
             );
         }
 
