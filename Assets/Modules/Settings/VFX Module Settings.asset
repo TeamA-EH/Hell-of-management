@@ -9,27 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3fbd60cd37e3044c9f0de797fb82055, type: 3}
+  m_Script: {fileID: 0}
   m_Name: VFX Module Settings
   m_EditorClassIdentifier: 
-  smokeCloudAsset: {fileID: 3229918546357489454, guid: 8f5596da932862c4f828b78e3770a645,
-    type: 3}
-  smokeCloudStack: 1
-  dropletsAsset: {fileID: 3229918546357489454, guid: 8f5596da932862c4f828b78e3770a645,
-    type: 3}
-  dropletsStack: 1
-  soulLightAsset: {fileID: 3229918546357489454, guid: 8f5596da932862c4f828b78e3770a645,
-    type: 3}
-  soulLightStack: 1
-  fireAsset: {fileID: 3229918546357489454, guid: 8f5596da932862c4f828b78e3770a645,
-    type: 3}
-  fireStack: 5
-  glowAsset: {fileID: 3229918546357489454, guid: 8f5596da932862c4f828b78e3770a645,
-    type: 3}
-  glowStack: 1
-  wetAreaAsset: {fileID: 3229918546357489454, guid: 8f5596da932862c4f828b78e3770a645,
-    type: 3}
-  wetAreaStack: 1
-  floatingBubblesAsset: {fileID: 3229918546357489454, guid: 8f5596da932862c4f828b78e3770a645,
-    type: 3}
-  floatingBubblesStack: 1
