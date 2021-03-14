@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using DG.Tweening;
 
 namespace HOM
 {
@@ -96,6 +97,52 @@ namespace HOM
             {
                 OnCompleted?.Invoke();
             }
+        }
+
+        ///<summary> Rotates character toward the mouse position </summary>
+        ///<param name="duration"> amount on time in seconds to complete rotation </param>
+        ///<param name="clockwise"> If TRUE calculate the angle using a frequency of 360 degrees otherwise calculate a signe angle (between -180, 180 degrees) </param>
+        ///<param name="OnRotationCompleted"> Callback called when rotation has been completed </param>
+        public void RotateCharacter(float duration, bool clockwise = true, Action OnRotationCompleted = null)
+        {
+            Vector3 mouseDirection = Vector3.zero;
+
+            Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if(Physics.Raycast(r, out hit, 500F))
+            {
+                mouseDirection = (hit.point - gameObject.transform.position).normalized;
+            }
+
+            float angle = 0.0F;
+
+            /* CALCULATES ANGLE */
+            if(clockwise) //360 degs frequency
+            {
+                float dot = Vector3.Dot(Vector3.forward, mouseDirection);
+                float length = Vector3.forward.magnitude * mouseDirection.magnitude;
+
+                if(hit.point.x > gameObject.transform.position.x)
+                {
+                    angle = Mathf.Acos(dot/length)*Mathf.Rad2Deg;
+                }
+                else
+                {
+                    angle = 360 - Mathf.Acos(dot/length) * Mathf.Rad2Deg;
+                }
+            }
+            else // signed angle
+            {
+                angle = Vector3.SignedAngle(Vector3.forward, mouseDirection.normalized, Vector3.up);
+            }
+
+            /* Rotate Character */
+            gameObject.transform.DORotate(new Vector3(0, angle, 0), duration)
+            .OnComplete(() => {
+                OnRotationCompleted?.Invoke();
+            });
+            
         }
 
     }

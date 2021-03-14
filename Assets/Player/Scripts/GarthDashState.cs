@@ -11,6 +11,8 @@ namespace HOM
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            MovementHandler.DisableCharacterRotation(animator.gameObject);
+
             if(!character) character = animator.gameObject.GetComponent<C_Garth>();
             if(skill == null) skill = SkillManager.GetSKill(SkillManager.SK_DASH) as DashSkill;
 
@@ -40,7 +42,7 @@ namespace HOM
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            
+            MovementHandler.EnableCharacterRotation(animator.gameObject);
         }
 
  

@@ -185,6 +185,21 @@ namespace HOM
 
             return new Vector3(x, y, z);
         }
+
+        ///<summary> Activates rotation layer for the given GameObject </summary>
+        ///<param name="character"> GameObject containing the animator with animation layer </param>
+        public static void EnableCharacterRotation(GameObject character)
+        {
+            character.GetComponent<Animator>().SetBool("Can Rotate", true);
+        }
+        
+        ///<summary> Deactivates rotation layer for the given GameObject </summary>
+        ///<param name="character"> GameObject containing the animator with animation layer </param>
+        public static void DisableCharacterRotation(GameObject character)
+        {
+            character.GetComponent<Animator>().SetBool("Can Rotate", false);
+        }
+
         #endregion
 
         ///<summary> Returns TRUE if the user press any movement key otherwise FALSE </summary>
