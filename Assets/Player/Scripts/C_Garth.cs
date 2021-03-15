@@ -51,12 +51,11 @@ namespace HOM
                 gravityForce + environmentForce) * Time.deltaTime
             );
         }
-        public void Move(float speed)
+        public void Move(Vector3 direction, float speed)
         {
-            var dir  = MovementHandler.DeheightVector(MovementHandler.GetInputDirectionByCameraPosition());
 
             cc.Move(
-                ((MovementHandler.GetLastInput() * (speed - itemWeight)) + (gravityForce + environmentForce)) * Time.deltaTime
+                ((direction * (speed - itemWeight)) + (gravityForce + environmentForce)) * Time.deltaTime
             );
         }
 

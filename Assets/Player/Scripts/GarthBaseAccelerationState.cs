@@ -24,8 +24,7 @@ namespace HOM
 
                 controller.AccelerateCharacter(accellerationTime, () =>
                  {
-                     Debug.Log("Acceleration Completed");
-                     animator.SetTrigger("Move");
+                    animator.SetTrigger("Move");
                  });
 
                 if(Input.GetKeyDown(KeyCode.Space) && dash.CanActivate)

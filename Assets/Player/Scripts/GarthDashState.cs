@@ -6,6 +6,7 @@ namespace HOM
    {
        C_Garth character;
        DashSkill skill;
+       Vector3 direction;   // dash direction
 
        float dashTime = 0.0f; // dash interpolation current time;
 
@@ -17,6 +18,7 @@ namespace HOM
             if(skill == null) skill = SkillManager.GetSKill(SkillManager.SK_DASH) as DashSkill;
 
             dashTime = .0f;
+            direction = animator.gameObject.transform.forward;
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -24,7 +26,7 @@ namespace HOM
             if(dashTime < skill.executionTime)
             {
                 dashTime+= Time.deltaTime;
-                character.Move(skill.characterSpeed.Evaluate(dashTime));
+                character.Move(direction, skill.characterSpeed.Evaluate(dashTime));
             }
             else
             {
