@@ -25,6 +25,22 @@ namespace HOM
         float maxAccelerationTime => movementSettings.m_accelerationTime;
         float maxDecelerationTime => movementSettings.m_decelerationTime; 
 
+        [Header("Meshes"), Space(10)]
+        [SerializeField] GameObject redSoulAsset;
+        [SerializeField] GameObject greenSoulAsset;
+        [SerializeField] GameObject blueSoulAsset;
+        [Space(10)]
+        [SerializeField] GameObject wasteAsset;
+        [SerializeField] GameObject trashbagAsset;
+        [Space(10)]
+        [SerializeField] GameObject maleDrunkenDemon;
+        [SerializeField] GameObject femaleDrunkenDemon;
+
+
+        /* PLAYER HANDS DATA */
+        [Tooltip("Represent hands of this character")]
+        [SerializeField] CharacterHand[] hands;  // Represents the player hands anchors
+
         #region Unity Callbacks
         void Start()
         {
@@ -37,6 +53,33 @@ namespace HOM
             if(!self) self = this;
             if(!cc) cc = gameObject.GetComponent<CharacterController>();
             MovementHandler.SwapMovementSettings(this, MovementHandler.MS_BASE, () =>  MovementHandler.SetMovementSurface(self.gameObject, MovementHandler.S_Normal));
+
+            /* GENERATES TEMP BUFFERS DATA */
+            GameObject[] souls = new GameObject[3];
+            GameObject[] drunkenDemons = new GameObject[2];
+
+            souls[0] = greenSoulAsset;
+            souls[1] = blueSoulAsset;
+            souls[2] = redSoulAsset;
+
+            drunkenDemons[0] = maleDrunkenDemon;
+            drunkenDemons[1] = femaleDrunkenDemon;
+
+            /* INTIALIZES HANDS DATA */
+            hands[0].Initialize(souls, wasteAsset, trashbagAsset, drunkenDemons);
+            hands[1].Initialize(souls, wasteAsset, trashbagAsset, drunkenDemons);
+
+            /* RELEASE TEMP DATA */
+            redSoulAsset = null;
+            greenSoulAsset = null;
+            blueSoulAsset = null;
+
+            wasteAsset = null;
+            trashbagAsset = null;
+
+            maleDrunkenDemon = null;
+            femaleDrunkenDemon = null;
+
         }
 
         /* MOVEMENTS METHODS */

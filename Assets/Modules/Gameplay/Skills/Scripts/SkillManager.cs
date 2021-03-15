@@ -50,7 +50,7 @@ namespace HOM
             /* SETUP SKILL TREE */
             skills  = new ISKill[4];
             skills[0] = new DashSkill(dashData);
-            Debug.LogWarning("Add Pickup Skill");
+            skills[1] = new PickupSkill();
             Debug.LogWarning("Add Drop Skill");
             Debug.LogWarning("Add Throw Skill");
         }
