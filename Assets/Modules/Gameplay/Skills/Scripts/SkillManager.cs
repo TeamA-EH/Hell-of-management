@@ -81,5 +81,32 @@ namespace HOM
 
         public static ISKill GetSKill(uint skill) => self.skills[skill-1];
 
+        ///<summary> Requests a pickup skill activation for a game object </summary>
+        ///<param name="obj"> The game object to pickup </param>
+        ///<param name="type"> The obj unique identfier: 0 = Red Soul, 1 = Green Soul, 2 = Blue Soul, 3 = Waste, 4 = Trashbag, 5 = Female Demon, 6 = Male Demon </param>
+        ///<param name="character"> The character who have to hold this item </param>
+        ///<param name="hand"> The hand unique index </param>
+        ///<param name="OnSuccess"> Callback called when the request has been processed with success </param>
+        ///<param name="OnFailure"> Callback called when the request hasn't been processed with success </param>
+        public static void SendPickupSkillRequest(GameObject obj, uint type, GameObject character, uint hand, Action OnSuccess = null, Action OnFailure = null)
+        {
+            var hands = character.GetComponent<C_Garth>().PlayerHands;
+
+            if(hands[hand].m_canBind)
+            {
+                var skill = GetSKill(SK_PICKUP) as PickupSkill;
+                skill.OverridePickupInfos(obj, type, hand);
+
+                character.GetComponent<Animator>().SetTrigger("Pickup");
+                OnSuccess?.Invoke();
+            }
+            else
+            {
+                Debug.LogAssertion("Attention! Pickup request failed!");
+                OnFailure?.Invoke();
+            }
+            
+        }
+
     }
 }

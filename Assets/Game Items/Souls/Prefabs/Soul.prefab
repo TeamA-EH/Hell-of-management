@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 5462101146207723034}
   - component: {fileID: 5462101146207723037}
   - component: {fileID: 5462101146207723036}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 5462101147596294556}
   - component: {fileID: 5462101147596294559}
   - component: {fileID: 5462101147596294558}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 5462101147931592900}
   - component: {fileID: 5462101147931592903}
   - component: {fileID: 5462101147931592902}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,8 +384,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5462101147931993142}
+  - component: {fileID: 7897962617951520793}
   - component: {fileID: 5462101147931993129}
   - component: {fileID: 5462101147931993128}
+  - component: {fileID: 1428113872712672480}
   m_Layer: 0
   m_Name: Soul
   m_TagString: Untagged
@@ -408,6 +410,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &7897962617951520793
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462101147931993131}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &5462101147931993129
 Animator:
   serializedVersion: 3
@@ -439,9 +457,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26acc5b0cb9db7b4485f6e7cb4e33d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iteractionData: {fileID: 11400000, guid: f57bde9bee9bbec4188a925138e19eff, type: 2}
   green_soul_mesh: {fileID: 5462101146035493152}
   blue_soul_mesh: {fileID: 5462101146790390568}
   red_soul_mesh: {fileID: 5462101148031533477}
+--- !u!65 &1428113872712672480
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462101147931993131}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5462101148031533477
 GameObject:
   m_ObjectHideFlags: 0

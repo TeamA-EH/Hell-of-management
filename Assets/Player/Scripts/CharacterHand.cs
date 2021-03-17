@@ -54,8 +54,9 @@ namespace HOM
         ///<param name="soulTag"> The unique tag for the soul to visalize (red, green, blue, etc.) </param>
         public void BindSoul(uint soulTag)
         {
-            soulAssets[soulTag].SetActive(true);
-            holdedItem = soulAssets[soulTag];
+            UnbindBindedItem();
+            soulAssets[soulTag - 1].SetActive(true);
+            holdedItem = soulAssets[soulTag - 1];
         }
 
         ///<summary> Shows a waste on this hand </summary>
