@@ -47,6 +47,18 @@ namespace HOM
         {
             Initialize();
         }
+        void Update()
+        {
+            if(Input.GetMouseButtonDown(0))
+            {
+                SkillManager.SendObjectReleaseRequest(gameObject, 0);
+            }
+
+            if(Input.GetMouseButton(1))
+            {
+
+            }
+        }
         #endregion
 
         void Initialize()
@@ -80,7 +92,6 @@ namespace HOM
 
             maleDrunkenDemon = null;
             femaleDrunkenDemon = null;
-
         }
 
         /* MOVEMENTS METHODS */
@@ -187,6 +198,5 @@ namespace HOM
             });
             
         }
-
     }
 }

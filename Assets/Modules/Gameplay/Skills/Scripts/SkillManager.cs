@@ -9,6 +9,8 @@ namespace HOM
 
         [Header("Settings"), Space(10)]
         [SerializeField] DashData dashData;
+        [SerializeField] SkillData throwData;
+        [SerializeField] SkillData dropData;
 
         /* SKILLS UNIQUES IDENTIFIERS 
         *  These identifiers allows SKILL-CALL from user functions.
@@ -52,7 +54,7 @@ namespace HOM
             skills[0] = new DashSkill(dashData);
             skills[1] = new PickupSkill();
             Debug.LogWarning("Add Drop Skill");
-            Debug.LogWarning("Add Throw Skill");
+            skills[3] = new ThrowSkill(throwData);
         }
 
         ///<summary> Activates one skill from the character skills </summary>
@@ -102,10 +104,49 @@ namespace HOM
             }
             else
             {
-                Debug.LogAssertion("Attention! Pickup request failed!");
+                //Debug.LogAssertion("Attention! Pickup request failed!");
                 OnFailure?.Invoke();
             }
             
+        }
+
+        ///<summary> Request a drop or throw skill activation based on the item usability mod </summary>
+        ///<param name="character"> The player character referece </param>
+        ///<param name="hand"> The hand unique index </param>
+        ///<param name="OnSuccess"> Callback called when the request has been processed with success </param>
+        ///<param name="OnFailure">  Callback called when the request hasn't been proecess with failure </param>
+        public static void SendObjectReleaseRequest(GameObject character, uint hand, Action OnSuccess = null, Action OnFailure = null)
+        {
+            var hands = character.GetComponent<C_Garth>().PlayerHands;
+
+            if(!hands[hand].m_canBind)
+            {
+
+                switch(SkillUsageManager.self.ItemMod)
+                {
+                    case SkillUsageManager.SelectedType.THROW:
+
+                        var skill = GetSKill(SK_THROW) as ThrowSkill;
+                        skill.OverrideSkillInfo(hands[hand].holdedItemIndex, 0, hands[hand].gameObject.transform.position, Quaternion.identity);
+                        character.gameObject.GetComponent<Animator>().SetTrigger("Throw");
+                        OnSuccess?.Invoke();
+
+                    break;
+                    case SkillUsageManager.SelectedType.DROP:
+
+                        //get skill
+                        //override skill info
+                        character.gameObject.GetComponent<Animator>().SetTrigger("Drop");
+                        OnSuccess?.Invoke();
+
+                    break;
+                }
+            }
+            else
+            {
+                Debug.Log("Attention! The character hand is empty!");
+                OnFailure?.Invoke();
+            }
         }
 
     }

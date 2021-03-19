@@ -15,6 +15,9 @@ namespace HOM
         GameObject trashbagAsset;
 
         GameObject  holdedItem = null;  // the item who this character is holding
+        public GameObject HoldedItem => holdedItem;
+
+        public uint holdedItemIndex {private set; get;} = 0;
 
         ///<summary> Base hand constructor </summary>
         ///<param name="soulAssets"> A array of soul prefab (one for each type) to show when this hand binds a soul of that type </param>
@@ -56,6 +59,20 @@ namespace HOM
         {
             UnbindBindedItem();
             soulAssets[soulTag - 1].SetActive(true);
+
+            switch(soulTag)
+            {
+                case SoulsManager.SOUL_TAG_RED: 
+                    holdedItemIndex = 0;
+                break;
+                case SoulsManager.SOUL_TAG_GREEN:
+                    holdedItemIndex = 1;
+                break;
+                case SoulsManager.SOUL_TAG_BLUE:
+                    holdedItemIndex = 2;
+                break;
+            }
+
             holdedItem = soulAssets[soulTag - 1];
         }
 

@@ -17,6 +17,7 @@ namespace HOM
         Animator controller = null;
         bool canIteract => (gameObject.transform.position - C_Garth.self.gameObject.transform.position).magnitude <= iteractionData.DistanceFromPlayer;
         Material originalMaterial = null;
+        Rigidbody rb;
 
         uint m_tag = 0;
         public uint Tag 
@@ -76,6 +77,7 @@ namespace HOM
 
         void Init()
         {
+            rb = gameObject.GetComponent<Rigidbody>();
             originalMaterial = gameObject.GetComponentInChildren<MeshRenderer>().material;
         }
 
@@ -137,6 +139,30 @@ namespace HOM
 
                 break;
             }
+        }
+
+        public void EnablePhysics()
+        {
+            rb.isKinematic = false;
+            rb.useGravity = true;
+        }
+
+        public void DisablePhysic()
+        {
+            rb.isKinematic = false;
+            rb.useGravity = false;
+        }
+
+        ///<summary> Set the rigidbody velocity attached to this object </summary>
+        ///<param name="velocity"> Value to set </param>
+        public void SetVelocity(Vector3 velocity)
+        {
+            rb.velocity = velocity;
+        }
+
+        public void SetForce(Vector3 force)
+        {
+            rb.AddForce(force, ForceMode.Impulse);
         }
 
     }

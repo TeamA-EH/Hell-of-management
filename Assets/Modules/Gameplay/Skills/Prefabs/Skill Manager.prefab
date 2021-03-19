@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashData: {fileID: 11400000, guid: 5f74e537f82bcbe4c9b663dba1dbfcfa, type: 2}
+  throwData: {fileID: 11400000, guid: 41cdb653a2265c64c80ef99044357185, type: 2}
+  dropData: {fileID: 0}
