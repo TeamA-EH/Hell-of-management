@@ -9,7 +9,7 @@ namespace HOM
 
         internal GameObject ObjToDrag;
         uint objType;
-        uint handID;
+        public uint handID {private set; get;}
 
         public void Execute(Action OnSkillCompleted = null)
         {
@@ -18,12 +18,15 @@ namespace HOM
             {
                 case 0: 
                     hand.BindSoul(SoulsManager.SOUL_TAG_RED);
+                    MovementHandler.IncreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(1));
                 break;
                 case 1: 
                     hand.BindSoul(SoulsManager.SOUL_TAG_GREEN);
+                    MovementHandler.IncreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(2));
                 break;
                 case 2: 
                     hand.BindSoul(SoulsManager.SOUL_TAG_BLUE);
+                    MovementHandler.IncreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(3));
                 break;
             }
 

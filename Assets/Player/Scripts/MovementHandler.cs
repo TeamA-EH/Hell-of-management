@@ -6,6 +6,8 @@ namespace HOM
     public sealed class MovementHandler : MonoBehaviour
     {
         static MovementHandler self;
+        [SerializeField] ItemWeightTable weightTable;
+        public ItemWeightTable WeightTable => weightTable;
 
         Vector3 lastInput = Vector3.zero;
 
@@ -66,32 +68,60 @@ namespace HOM
             
         }
 
-        ///<summary> TODO: Overrides the current weight of a character by a new value</summary>
+        ///<summary> Overrides the current weight of a character by a new value</summary>
         ///<param name="character"> The character to change current weight </param>
         ///<param name="newWeight"> New value to set </param>
         ///<param name="OnCharacterWeightOverrided"> Callback called when the new character weight is setted </param>
         public static void OverrideCharacterWeight(GameObject character, float newWeight, Action<float> OnCharacterWeightOverrided = null)
         {
-
+            character.GetComponent<C_Garth>().itemWeight = Mathf.Clamp(newWeight, 0, 10000);
+            OnCharacterWeightOverrided?.Invoke(newWeight);
         }
 
-        ///<summary> TODO: Increases the amount of current weight for Garth_Character </summary>
+        ///<summary> Increases the amount of current weight for Garth_Character </summary>
         ///<param name="player"> Garth reference </param>
         ///<param name="amount"> Value to add</param>
         ///<param name="OnCompleted">Callback called when the value has beenn added </param>
         public static void IncreaseItemWeight(C_Garth player, float amount, Action OnCompleted = null)
         {   
-            
+            player.itemWeight += amount;
+            OnCompleted?.Invoke();
         }
 
-        ///<summary> TODO: Decreases the amount of current weight for Garth_Character </summary>
+        ///<summary> Decreases the amount of current weight for Garth_Character </summary>
         ///<param name="player"> Garth reference </param>
         ///<param name="amount"> Value to add</param>
         ///<param name="OnCompleted">Callback called when the value has been decreased </param>
 
         public static void DecreaseItemWeight(C_Garth player, float amount, Action OnCompleted = null)
         {
+            player.itemWeight = Mathf.Clamp(player.itemWeight - amount, 0, 10000);
+        }
 
+        ///<summary> Returns the item weight </summary>
+        ///<param name="type"> The item type:
+        /// 0=INVALID ITEM 
+        /// 1=RED SOUL 
+        /// 2=GREEN SOUL 
+        /// 3=BLUE SOUL 
+        /// 4=TRASH 
+        /// 5=TRASH BAG 
+        /// 6=FEMALE DEMON 
+        /// 7=MALE DEMON 
+        ///</param>
+        public static float GetWeight(uint type)
+        {
+            switch(type)
+            {
+                case 1: return self.weightTable.RedSoulWeight;
+                case 2: return self.weightTable.GreenSoulWeight;
+                case 3: return self.weightTable.BlueSoulWeight;
+                case 4: return self.weightTable.TrashWeight;
+                case 5: return self.weightTable.TrashbagWeight;
+                case 6: return self.weightTable.FemaleDemonWeight;
+                case 7: return self.weightTable.MaleDemonWeight;
+                default: return 0;
+            }
         }
         #endregion
 

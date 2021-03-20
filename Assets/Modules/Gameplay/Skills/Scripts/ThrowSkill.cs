@@ -28,18 +28,28 @@ namespace HOM
 
                     projectile = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_RED, position);
                     projectile.GetComponent<Soul>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
+
+
+                    MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(1));
+
                     OnSkillCompleted?.Invoke();
                     return;
                 case 1://Green soul
 
                     projectile = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_GREEN, position);
                     projectile.GetComponent<Soul>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
+
+                    MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(2));
+
                     OnSkillCompleted?.Invoke();
                     return;
                 case 2://Blue soul
 
                     projectile = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_BLUE, position);
                     projectile.GetComponent<Soul>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
+
+                    MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(3));
+
                     OnSkillCompleted?.Invoke();
                     return;
             }

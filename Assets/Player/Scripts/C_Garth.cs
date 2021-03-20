@@ -102,7 +102,7 @@ namespace HOM
             var dir = MovementHandler.DeheightVector(MovementHandler.GetInputDirectionByCameraPosition());
 
             cc.Move(
-                ((dir * (maxSpeed - itemWeight)) + 
+                ((dir * Mathf.Clamp(maxSpeed - itemWeight, 0, 1000)) + 
                 gravityForce + environmentForce) * Time.deltaTime
             );
         }
@@ -124,8 +124,8 @@ namespace HOM
             if(elapsedTime < maxAccelerationTime)
             {
                 cc.Move(
-                    ((dir * accelerationCurve.Evaluate(elapsedTime) * maxAcceleration) + 
-                    (gravityForce + environmentForce)) * Time.deltaTime);
+                    ((dir * accelerationCurve.Evaluate(elapsedTime) * (Mathf.Clamp(maxAcceleration - itemWeight, 0, 1000)) + 
+                    (gravityForce + environmentForce)) * Time.deltaTime));
             }
             else
             {
@@ -144,7 +144,7 @@ namespace HOM
             if(elapsedTime < maxDecelerationTime)
             {
                 cc.Move(
-                    ((MovementHandler.GetLastInput() * decelerationCurve.Evaluate(elapsedTime) * maxDeceleration) + 
+                    ((MovementHandler.GetLastInput() * decelerationCurve.Evaluate(elapsedTime) * Mathf.Clamp(maxDeceleration - itemWeight, 0, 1000)) + 
                         gravityForce + environmentForce) * Time.deltaTime);
             }
             else
