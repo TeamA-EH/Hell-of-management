@@ -13,7 +13,7 @@ namespace HOM
         bool canDash = true;
         
         ///<summary> Return TRUE if is not disabled </summary>
-        public bool CanActivate => canDash;
+        public bool CanActivate => canDash && C_Garth.self.itemWeight == .0f;
 
         public DashSkill(DashData settings)
         {
