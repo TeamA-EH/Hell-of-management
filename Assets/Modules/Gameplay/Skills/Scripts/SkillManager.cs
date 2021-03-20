@@ -53,7 +53,7 @@ namespace HOM
             skills  = new ISKill[4];
             skills[0] = new DashSkill(dashData);
             skills[1] = new PickupSkill();
-            Debug.LogWarning("Add Drop Skill");
+            skills[2] = new DropSkill(dropData);
             skills[3] = new ThrowSkill(throwData);
         }
 
@@ -120,21 +120,21 @@ namespace HOM
 
             if(!hands[hand].m_canBind)
             {
-
+                
                 switch(SkillUsageManager.self.ItemMod)
                 {
                     case SkillUsageManager.SelectedType.THROW:
 
-                        var skill = GetSKill(SK_THROW) as ThrowSkill;
-                        skill.OverrideSkillInfo(hands[hand].holdedItemIndex, hand, hands[hand].gameObject.transform.position, Quaternion.identity);
+                        var throwSkill = GetSKill(SK_THROW) as ThrowSkill;
+                        throwSkill.OverrideSkillInfo(hands[hand].holdedItemIndex, hand, hands[hand].gameObject.transform.position, Quaternion.identity);
                         character.gameObject.GetComponent<Animator>().SetTrigger("Throw");
                         OnSuccess?.Invoke();
 
                     break;
                     case SkillUsageManager.SelectedType.DROP:
 
-                        //get skill
-                        //override skill info
+                        var dropSkill = GetSKill(SK_DROP) as DropSkill;
+                        dropSkill.OverrideSkillInfo(hands[hand].holdedItemIndex, hand, hands[hand].gameObject.transform.position, Quaternion.identity);
                         character.gameObject.GetComponent<Animator>().SetTrigger("Drop");
                         OnSuccess?.Invoke();
 
