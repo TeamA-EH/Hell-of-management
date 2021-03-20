@@ -37,7 +37,7 @@ namespace HOM
             gameSouls = new List<GameObject>();     // init the souls list
             IncreasesSoulsStack(20);                // Reallocates the list size with a new stack of 20 souls
 
-            /* ONLY FOR MECHANIC TESTING */
+            /* ONLY FOR TESTING */
             for(int i = 1; i <= 12; i++)
             {
                 if(i <= 4)                  CreatesSoul(1, Vector3.one * (i + 1));

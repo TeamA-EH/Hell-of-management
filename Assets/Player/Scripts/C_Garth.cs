@@ -49,14 +49,14 @@ namespace HOM
         }
         void Update()
         {
-            if(Input.GetMouseButtonDown(0))
+            if(Input.GetMouseButtonDown(0) && !PlayerHands[0].m_canBind)
             {
                 SkillManager.SendObjectReleaseRequest(gameObject, 0);
             }
 
-            if(Input.GetMouseButton(1))
+            if(Input.GetMouseButton(1) &&  !PlayerHands[1].m_canBind)
             {
-
+                SkillManager.SendObjectReleaseRequest(gameObject, 1);
             }
         }
         #endregion

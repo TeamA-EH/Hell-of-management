@@ -14,7 +14,6 @@ namespace HOM
         [SerializeField] GameObject blue_soul_mesh;
         [SerializeField] GameObject red_soul_mesh;
 
-        Animator controller = null;
         bool canIteract => (gameObject.transform.position - C_Garth.self.gameObject.transform.position).magnitude <= iteractionData.DistanceFromPlayer;
         Material originalMaterial = null;
         Rigidbody rb;
@@ -24,8 +23,8 @@ namespace HOM
         {
             set
             {
-                OnTagChanged(value);
                 m_tag = value;
+                OnTagChanged(value);
             }
             get
             {
@@ -49,11 +48,11 @@ namespace HOM
                 else if(Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
                 else if(Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
 
-                if(Input.GetMouseButtonDown(0))
+                if(Input.GetMouseButtonDown(0) && GetSelectedSoul() != null)
                 {
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 0, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
                 }
-                else if(Input.GetMouseButtonDown(1))
+                else if(Input.GetMouseButtonDown(1) && GetSelectedSoul() != null)
                 {
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 1, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
                 }
@@ -99,6 +98,10 @@ namespace HOM
                 {
                     return hit.collider.gameObject;       
                 }
+                else
+                {
+                    return null;
+                }
             }
 
             return null;
@@ -137,6 +140,9 @@ namespace HOM
                 blue_soul_mesh.SetActive(false);
                 red_soul_mesh.SetActive(true);
 
+                break;
+                default:
+                Debug.LogError("Soul Tag Error!");
                 break;
             }
         }

@@ -11,7 +11,7 @@ namespace HOM
 
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if(!skill) skill = SkillManager.GetSKill(SkillManager.SK_PICKUP) as PickupSkill;
+            if(skill == null) skill = SkillManager.GetSKill(SkillManager.SK_PICKUP) as PickupSkill;
             target = skill.ObjToDrag;
 
             /* Calculate Angle*/

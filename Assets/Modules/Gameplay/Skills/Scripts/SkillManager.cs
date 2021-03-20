@@ -93,7 +93,6 @@ namespace HOM
         public static void SendPickupSkillRequest(GameObject obj, uint type, GameObject character, uint hand, Action OnSuccess = null, Action OnFailure = null)
         {
             var hands = character.GetComponent<C_Garth>().PlayerHands;
-
             if(hands[hand].m_canBind)
             {
                 var skill = GetSKill(SK_PICKUP) as PickupSkill;
@@ -104,7 +103,7 @@ namespace HOM
             }
             else
             {
-                //Debug.LogAssertion("Attention! Pickup request failed!");
+                Debug.LogAssertion("Attention! Pickup request failed!");
                 OnFailure?.Invoke();
             }
             
@@ -127,7 +126,7 @@ namespace HOM
                     case SkillUsageManager.SelectedType.THROW:
 
                         var skill = GetSKill(SK_THROW) as ThrowSkill;
-                        skill.OverrideSkillInfo(hands[hand].holdedItemIndex, 0, hands[hand].gameObject.transform.position, Quaternion.identity);
+                        skill.OverrideSkillInfo(hands[hand].holdedItemIndex, hand, hands[hand].gameObject.transform.position, Quaternion.identity);
                         character.gameObject.GetComponent<Animator>().SetTrigger("Throw");
                         OnSuccess?.Invoke();
 

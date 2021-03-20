@@ -8,7 +8,7 @@ namespace HOM
     {
         public bool m_canBind => !holdedItem;
         
-        /* ASSETS VARIABLE FOR DISPLAYING WHEN ACTIVES */
+        /* ASSETS VARIABLE FOR DISPLAYING WHEN ACTIVE */
         GameObject[] soulAssets = null;
         GameObject[] drunkenDemonAssets = null;
         GameObject wasteAsset;
@@ -117,6 +117,7 @@ namespace HOM
             trashbagAsset.SetActive(false);
 
             holdedItem = null;
+            holdedItemIndex = 0;
         }
     }
 }

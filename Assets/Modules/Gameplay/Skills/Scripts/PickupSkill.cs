@@ -4,7 +4,7 @@ using DG.Tweening;
 
 namespace HOM
 {
-    public class PickupSkill : MonoBehaviour, ISKill
+    public class PickupSkill : ISKill
     {
 
         internal GameObject ObjToDrag;
