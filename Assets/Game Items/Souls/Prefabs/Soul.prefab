@@ -393,7 +393,7 @@ Animator:
   m_GameObject: {fileID: 5462101147931993131}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 086a72f39b00b04448090dd547f11a36, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1555cbebb7182a84e8d7960e09fb1565, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -411,10 +411,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5462101147931993131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f801b89754a1ab943ba9a8da2ef136e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 26acc5b0cb9db7b4485f6e7cb4e33d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iteractionData: {fileID: 11400000, guid: 96344a0da6006364fa58c0600e27e2b5, type: 2}
+  iteractionData: {fileID: 11400000, guid: f57bde9bee9bbec4188a925138e19eff, type: 2}
   green_soul_mesh: {fileID: 5462101146035493152}
   blue_soul_mesh: {fileID: 5462101146790390568}
   red_soul_mesh: {fileID: 5462101148031533477}

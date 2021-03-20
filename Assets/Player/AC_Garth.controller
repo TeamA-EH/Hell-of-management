@@ -37,6 +37,18 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-7999735674729522054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2925665b5f672b84e8937db5d9cfbeb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1102 &-7599842143476220185
 AnimatorState:
   serializedVersion: 5
@@ -50,7 +62,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: -3823208747894805707}
   m_StateMachineBehaviours:
-  - {fileID: -9031467535990532550}
+  - {fileID: 7985392965263429254}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -769,6 +781,18 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-178134123259982632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07604b8e0377a5143b36b60a21208800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0
@@ -1173,7 +1197,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 6526551703140994803}
   m_StateMachineBehaviours:
-  - {fileID: 5743998797430715664}
+  - {fileID: -178134123259982632}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -1405,6 +1429,18 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!114 &7985392965263429254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb00bccf0199b249993543095a1e4a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1102 &8575761428141910402
 AnimatorState:
   serializedVersion: 5
@@ -1418,7 +1454,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: -2183389468124971264}
   m_StateMachineBehaviours:
-  - {fileID: -3425459484111552004}
+  - {fileID: -7999735674729522054}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

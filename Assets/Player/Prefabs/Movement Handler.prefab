@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8208d8aff00e30946a377e96a2657f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weightTable: {fileID: 11400000, guid: c7148c5177daa8547a8eb8974bc0b4e2, type: 2}
   baseMovementData: {fileID: 11400000, guid: 38182fd5b36718c4aab6be87630c7f47, type: 2}
   iceMovementData: {fileID: 0}
   mudMovementData: {fileID: 0}
