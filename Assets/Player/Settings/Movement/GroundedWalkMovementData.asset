@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78b10fe6db797c44ab89700bec6df80f, type: 3}
   m_Name: GroundedWalkMovementData
   m_EditorClassIdentifier: 
-  maxMovementSpeed: 2
+  maxMovementSpeed: 5
   gravityForce: {x: 0, y: -2, z: 0}
   environmentForce: {x: 0, y: 0, z: 0}
   accellerationTime: 1.5
@@ -40,7 +40,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxAcceleration: 2
+  maxAcceleration: 5
   decelerationTime: 1
   decelerationCurve:
     serializedVersion: 2

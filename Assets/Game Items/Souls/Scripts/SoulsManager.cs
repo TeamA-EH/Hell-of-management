@@ -36,7 +36,6 @@ namespace HOM
 
             gameSouls = new List<GameObject>();     // init the souls list
             IncreasesSoulsStack(20);                // Reallocates the list size with a new stack of 20 souls
-            
         }
 
         public static void SetSoulState(ref GameObject soul, uint state)

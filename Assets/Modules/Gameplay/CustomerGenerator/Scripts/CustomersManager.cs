@@ -132,8 +132,14 @@ namespace HOM
                 {
                     character.SetActive(true);
                     character.transform.position = pubDoor.transform.position - pubDoor.transform.forward;
-                    character.GetComponent<Customer>().SetChair(GetFirstAvailableChair());
+
+                    var chair = GetFirstAvailableChair();
+                    chair.SetCustomerType(Chair.CustomerType.MALE);
+                    chair.Lock();
+                    character.GetComponent<Customer>().SetChair(chair);
+
                     character.GetComponent<Customer>().SetDoor(pubDoor);
+                    character.GetComponent<Animator>().SetTrigger("Go To Chair");
                     return character;
                 }
             }
@@ -150,8 +156,14 @@ namespace HOM
                 {
                     character.SetActive(true);
                     character.transform.position = self.pubDoor.transform.position - self.pubDoor.transform.forward;
-                    character.GetComponent<Customer>().SetChair(GetFirstAvailableChair());
+
+                    var chair = GetFirstAvailableChair();
+                    chair.SetCustomerType(Chair.CustomerType.FEMALE);
+                    chair.Lock();     
+                    character.GetComponent<Customer>().SetChair(chair);
+
                     character.GetComponent<Customer>().SetDoor(pubDoor);
+                    character.GetComponent<Animator>().SetTrigger("Go To Chair");
                     return character;
                 }
             }

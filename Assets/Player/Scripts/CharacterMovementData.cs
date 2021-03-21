@@ -18,6 +18,7 @@ namespace HOM
         [SerializeField] float accellerationTime = 0;
         [Tooltip("indica l'andamento dell'accellerazione; modificare il valore del tempo con la stesso valore di [accellerationTime]")]
         [SerializeField] AnimationCurve accellerationCurve;
+        [Tooltip("La massima accellerazione deve corrispondere ad un valore massimo che sia uguale a [MaxMovementSpeed]")]
         [SerializeField] float maxAcceleration = 1;
 
         [Header("Decelleration"), Space(10)]

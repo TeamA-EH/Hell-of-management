@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace HOM
@@ -13,7 +11,7 @@ namespace HOM
         public NavMeshAgent Agent => agent;
 
         GameObject pubDoor = null; 
-        Chair chair = null;
+        public Chair chair {private set; get;} = null;
 
         #region Unity Callbacks
         void Start()
