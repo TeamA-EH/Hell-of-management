@@ -12,7 +12,7 @@ namespace HOM
         [SerializeField] GameObject maleDemonAsset;
         [SerializeField] GameObject femaleDemonAsset;
         [Space(10)]
-        [SerializeField] Transform pubDoor;
+        [SerializeField] GameObject pubDoor;
 
         [Space(10)]
         [Tooltip("Definisce ogni quanti secondi bisogna controllare se ci sono sedie libere per spawnare un personaggio")]
@@ -65,11 +65,11 @@ namespace HOM
             return false;   
         }
 
-        Transform GetFirstAvailableChair()
+        Chair GetFirstAvailableChair()
         {
              foreach(Chair item in levelChairs)
             {
-                if(!item.IsLocked) return item.transform;
+                if(!item.IsLocked) return item;
             }
 
             return null;   
@@ -131,7 +131,7 @@ namespace HOM
                 if(!character.activeSelf)
                 {
                     character.SetActive(true);
-                    character.transform.position = self.pubDoor.transform.position - self.pubDoor.transform.forward;
+                    character.transform.position = pubDoor.transform.position - pubDoor.transform.forward;
                     character.GetComponent<Customer>().SetChair(GetFirstAvailableChair());
                     character.GetComponent<Customer>().SetDoor(pubDoor);
                     return character;
@@ -149,7 +149,7 @@ namespace HOM
                 if(!character.activeSelf)
                 {
                     character.SetActive(true);
-                    character.transform.position = self.pubDoor.transform.position + self.pubDoor.transform.forward;
+                    character.transform.position = self.pubDoor.transform.position - self.pubDoor.transform.forward;
                     character.GetComponent<Customer>().SetChair(GetFirstAvailableChair());
                     character.GetComponent<Customer>().SetDoor(pubDoor);
                     return character;

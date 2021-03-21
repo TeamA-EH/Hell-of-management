@@ -12,7 +12,8 @@ namespace HOM
         NavMeshAgent agent = null;
         public NavMeshAgent Agent => agent;
 
-        Transform pubDoor = null, Chair = null;
+        GameObject pubDoor = null; 
+        Chair chair = null;
 
         #region Unity Callbacks
         void Start()
@@ -31,8 +32,8 @@ namespace HOM
 
         }
 
-        public void SetChair(Transform chair) => this.Chair = chair;
-        public void SetDoor(Transform door) => this.pubDoor = door;
+        public void SetChair(Chair chair) => this.chair = chair;
+        public void SetDoor(GameObject door) => this.pubDoor = door;
 
         
     }
