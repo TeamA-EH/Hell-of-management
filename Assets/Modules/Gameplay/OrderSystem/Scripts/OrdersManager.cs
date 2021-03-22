@@ -5,11 +5,11 @@ namespace HOM
 {
     public sealed class OrdersManager : MonoBehaviour
     {
-        static OrdersManager self = null;
+        public static OrdersManager self {private set; get;} = null;
         [SerializeField] GameObject orderAsset;
         GameObject[] orders;
-        const uint maxRecipesCount = 2;
-
+        public const uint maxRecipesCount = 2;
+        public uint activeOrders => GetActiveOrders();
         #region Events
         ///<summary> Handlers for orders creation events </summary>
         ///<param name="sender"> The manger who sended the event </param>
@@ -21,12 +21,12 @@ namespace HOM
         ///<summary> Handlers for success order delivery events </summary>
         ///<param name="sender"> The system who sended this event </param>
         ///<param name="score"> The score gained by the player</param>
-        public delegate void OrderCompeltedEventHandler(OrdersManager sender, uint score);
+        public delegate void OrderCompletedEventHandler(OrdersManager sender, uint score);
 
         ///<summary> Event called when an customer order is created </summary>
         public static event OrderCreatedEventHander OnOrderCreated;
         ///<summary> Event called when a customer order si completed successfully </summary>
-        public static event OrderCompeltedEventHandler OnOrderCompleted;
+        public static event OrderCompletedEventHandler OnOrderCompleted;
         #endregion
 
         #region Unity Callbacks
@@ -75,6 +75,17 @@ namespace HOM
             }
 
             return null;
+        }
+
+        uint GetActiveOrders()
+        {
+            uint result = 0;
+            foreach(var item in orders)
+            {
+                if(item.activeSelf) result++;
+            }
+
+            return result;
         }
        
     }
