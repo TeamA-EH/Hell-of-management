@@ -23,15 +23,17 @@ namespace HOM
                 accellerationTime += Time.deltaTime;
 
                 controller.AccelerateCharacter(accellerationTime, () =>
-                 {
+                {
                     animator.SetTrigger("Move");
-                 });
+                });
 
                 if(Input.GetKeyDown(KeyCode.Space) && dash.CanActivate)
                 {
                     dash.Execute();
                     return;
                 }
+
+                
             }
             else
             {
