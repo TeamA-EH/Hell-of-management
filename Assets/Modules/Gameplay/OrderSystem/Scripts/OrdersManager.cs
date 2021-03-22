@@ -7,9 +7,9 @@ namespace HOM
     {
         public static OrdersManager self {private set; get;} = null;
         [SerializeField] GameObject orderAsset;
-        GameObject[] orders;
+        public GameObject[] orders {private set; get;}
         public const uint maxRecipesCount = 2;
-        public uint activeOrders => GetActiveOrders();
+        public uint activeOrders => GetActiveOrdersCount();
         #region Events
         ///<summary> Handlers for orders creation events </summary>
         ///<param name="sender"> The manger who sended the event </param>
@@ -77,7 +77,7 @@ namespace HOM
             return null;
         }
 
-        uint GetActiveOrders()
+        uint GetActiveOrdersCount()
         {
             uint result = 0;
             foreach(var item in orders)
