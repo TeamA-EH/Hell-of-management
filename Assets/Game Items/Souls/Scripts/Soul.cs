@@ -74,7 +74,7 @@ namespace HOM
         }
         #endregion
 
-        void Init()
+        public void Init()
         {
             rb = gameObject.GetComponent<Rigidbody>();
             originalMaterial = gameObject.GetComponentInChildren<MeshRenderer>().material;
@@ -155,7 +155,7 @@ namespace HOM
 
         public void DisablePhysic()
         {
-            rb.isKinematic = false;
+            rb.isKinematic = true;
             rb.useGravity = false;
         }
 
@@ -168,6 +168,7 @@ namespace HOM
 
         public void SetForce(Vector3 force)
         {
+            Debug.Log($"rigidbody: {rb}");
             rb.AddForce(force, ForceMode.Impulse);
         }
 
