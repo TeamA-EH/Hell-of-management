@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace HOM
@@ -86,6 +87,21 @@ namespace HOM
             }
 
             return result;
+        }
+
+        public static GameObject[] GetActiveOrders()
+        {
+            List<GameObject> result = new List<GameObject>();
+
+            foreach(var item in self.orders)
+            {
+                if(item.activeSelf)
+                {
+                    result.Add(item);
+                }
+            }
+
+            return result.ToArray();
         }
        
     }
