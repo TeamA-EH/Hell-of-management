@@ -61,7 +61,7 @@ AnimatorStateMachine:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Move
+  m_Name: Patrol
   m_ChildStates: []
   m_ChildStateMachines: []
   m_AnyStateTransitions: []

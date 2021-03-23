@@ -50,10 +50,14 @@ namespace HOM
 
                 if(Input.GetMouseButtonDown(0) && GetSelectedSoul() != null)
                 {
+                    var selection = GetSelectedSoul();
+                    SoulsStorage.self.storedSouls.Remove(selection);
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 0, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
                 }
                 else if(Input.GetMouseButtonDown(1) && GetSelectedSoul() != null)
                 {
+                     var selection = GetSelectedSoul();
+                    SoulsStorage.self.storedSouls.Remove(selection);
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 1, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
                 }
             }

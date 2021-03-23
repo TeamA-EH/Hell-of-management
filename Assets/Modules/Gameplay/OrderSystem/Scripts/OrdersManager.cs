@@ -78,7 +78,7 @@ namespace HOM
             return null;
         }
 
-        uint GetActiveOrdersCount()
+        public uint GetActiveOrdersCount()
         {
             uint result = 0;
             foreach(var item in orders)

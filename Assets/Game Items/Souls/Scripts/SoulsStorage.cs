@@ -6,8 +6,8 @@ namespace HOM
 {
     public class SoulsStorage : MonoBehaviour
     {
-        static SoulsStorage self = null;
-        List<GameObject> storedSouls = new List<GameObject>();
+        public static SoulsStorage self = null;
+        public List<GameObject> storedSouls {private set; get;} = new List<GameObject>();
 
         #region Unity Callbacks
         void Start()
@@ -48,40 +48,49 @@ namespace HOM
                 self.storedSouls.Clear();
             }
 
-            var orders = OrdersManager.GetActiveOrders();
             uint count = 10;
-
-            foreach(var soul in orders)
+            var orders = OrdersManager.GetActiveOrders();
+            if(OrdersManager.self.GetActiveOrdersCount() > 0)
             {
-                var item = soul.GetComponent<Order>();
 
-                for(int i = 0; i < item.RedSouls; i++)
+                foreach(var soul in orders)
                 {
-                    var obj = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_RED, self.GetRandomVectorInRange(_min, _max));
-                    self.storedSouls.Add(obj);
-                    count--;
-                }
+                    var item = soul.GetComponent<Order>();
 
-                for(int i = 0; i < item.GreenSouls; i++)
-                {
-                    var obj = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_GREEN, self.GetRandomVectorInRange(_min, _max));
-                    self.storedSouls.Add(obj);
-                    count--;
-                }
+                    for(int i = 0; i < item.RedSouls; i++)
+                    {
+                        var obj = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_RED, self.GetRandomVectorInRange(_min, _max));
+                        self.storedSouls.Add(obj);
+                        count--;
+                    }
 
-                for(int i = 0; i < item.BlueSouls; i++)
-                {
-                    var obj = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_BLUE, self.GetRandomVectorInRange(_min, _max));
-                    self.storedSouls.Add(obj);
-                    count--;
-                }
+                    for(int i = 0; i < item.GreenSouls; i++)
+                    {
+                        var obj = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_GREEN, self.GetRandomVectorInRange(_min, _max));
+                        self.storedSouls.Add(obj);
+                        count--;
+                    }
 
-                /* CREATES LAST SOULS */
-                for(int i = 0; i < count; i++)
-                {
-                    var obj = SoulsManager.CreatesSoul((uint)UnityEngine.Random.Range(1,4), self.GetRandomVectorInRange(_min, _max));
-                    self.storedSouls.Add(obj);
+                    for(int i = 0; i < item.BlueSouls; i++)
+                    {
+                        var obj = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_BLUE, self.GetRandomVectorInRange(_min, _max));
+                        self.storedSouls.Add(obj);
+                        count--;
+                    }
+
+                    /* CREATES LAST SOULS */
+                    for(int i = 0; i < count; i++)
+                    {
+                        var obj = SoulsManager.CreatesSoul((uint)UnityEngine.Random.Range(1,4), self.GetRandomVectorInRange(_min, _max));
+                        self.storedSouls.Add(obj);
+                    }
                 }
+            }
+
+            for(int i = 0; i < count; i++)
+            {
+                var obj = SoulsManager.CreatesSoul((uint)UnityEngine.Random.Range(1,4), self.GetRandomVectorInRange(_min, _max));
+                self.storedSouls.Add(obj);
             }
         }
 
