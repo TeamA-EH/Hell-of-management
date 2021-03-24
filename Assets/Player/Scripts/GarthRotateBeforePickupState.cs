@@ -20,7 +20,7 @@ namespace HOM
             float length = animator.gameObject.transform.forward.magnitude * direction.magnitude;
             float angle = Mathf.Acos(dot * length) * Mathf.Rad2Deg;
 
-            animator.gameObject.transform.DORotate(new Vector3(0, angle, 0), .5f);
+            animator.gameObject.transform.DORotate(new Vector3(0, angle, 0), .2f);
         }
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {

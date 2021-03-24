@@ -146,7 +146,7 @@ PrefabInstance:
     - target: {fileID: 373091915020635450, guid: a3aad52338afc2643b6c05a0665251d0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -29.82
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 373091915020635450, guid: a3aad52338afc2643b6c05a0665251d0,
         type: 3}
@@ -613,6 +613,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684799108480050267, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
+        type: 3}
+      propertyPath: roomSize.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684799108480050267, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
+        type: 3}
+      propertyPath: roomSize.y
+      value: 9.25
       objectReference: {fileID: 0}
     - target: {fileID: 6137794612600370758, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
         type: 3}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1789537788353405591}
   - component: {fileID: 22216548893858876}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66f7ce1487926e47a713693b14edf16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomSize: {x: 0, y: 0}
 --- !u!65 &7017937782485331040
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -164,7 +165,7 @@ GameObject:
   - component: {fileID: 6933457040699817169}
   - component: {fileID: 8865778622257857681}
   m_Layer: 0
-  m_Name: Cube (4)
+  m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,7 +258,7 @@ GameObject:
   - component: {fileID: 6201767293349278425}
   - component: {fileID: 7918243535399139854}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,7 +386,7 @@ GameObject:
   - component: {fileID: 334218859478714932}
   - component: {fileID: 7467172801506026400}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -478,7 +479,7 @@ GameObject:
   - component: {fileID: 658428398917248581}
   - component: {fileID: 6061088686119214100}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

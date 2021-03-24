@@ -17,10 +17,17 @@ namespace HOM
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            distance = (C_Garth.self.gameObject.transform.position - animator.gameObject.transform.position).magnitude;
-            if(distance < target.MaxDistanceFromPlayer)
+            if(target.BehaviourTreeActivated)
             {
-                animator.SetTrigger("Escape From Player");
+                distance = (C_Garth.self.gameObject.transform.position - animator.gameObject.transform.position).magnitude;
+                if(distance < target.MaxDistanceFromPlayer && target.InsideRoom)
+                {
+                    animator.SetTrigger("Escape From Player");
+                }
+                else if(!target.InsideRoom)
+                {
+                    animator.SetTrigger("Escape From Hell");
+                }
             }
         }
 

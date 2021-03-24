@@ -60,12 +60,20 @@ namespace HOM
                 {
                     var selection = GetSelectedSoul();
                     SoulsStorage.self.storedSouls.Remove(selection);
+                    
+                    StopBehaviourTree();
+                    SetEnvironment(false);
+
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 0, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
                 }
                 else if(Input.GetMouseButtonDown(1) && GetSelectedSoul() != null)
                 {
                      var selection = GetSelectedSoul();
                     SoulsStorage.self.storedSouls.Remove(selection);
+
+                    StopBehaviourTree();
+                    SetEnvironment(false);
+
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 1, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
                 }
             }
@@ -185,6 +193,8 @@ namespace HOM
         NavMeshAgent agent = null;
         public Vector3 NavigationDirection {private set; get;} = Vector3.zero;
         public Vector3 Goal => agent.destination;
+        public bool InsideRoom {private set; get;} = true;
+        public bool BehaviourTreeActivated {private set; get;} = false;
 
         ///<summary> Enables this artificial intelligence for navigating on the navmesh  </summary>
         public void ActivatesArtificialIntelligence() => agent.isStopped = false;
@@ -219,6 +229,10 @@ namespace HOM
         public float GetAIAccelleration() => agent.acceleration;
         ///<summary> Returns TRUE if the AI reached the designed destination, otherwise returns FALSE </summary>
         public bool AIReachedGoal() => agent.remainingDistance <= .1f;
+        ///<summary> Define if the soul is inside the storage room or outside </summary>
+        public bool SetEnvironment(bool insideRoom) => InsideRoom = insideRoom;
+        public void ExecuteBehaviourTree() => BehaviourTreeActivated = true;
+        public void StopBehaviourTree() => BehaviourTreeActivated = false;
         #endregion
 
     }

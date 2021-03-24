@@ -26,6 +26,8 @@ namespace HOM
                     projectile = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_RED, position);
                     projectile.GetComponent<Soul>().Init();
                     projectile.GetComponent<Soul>().EnablePhysics();
+                    projectile.GetComponent<Soul>().SetEnvironment(false);
+                    projectile.GetComponent<Soul>().ExecuteBehaviourTree();
                     projectile.GetComponent<Soul>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
                     
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(1));
@@ -36,6 +38,8 @@ namespace HOM
                     projectile = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_GREEN, position);
                     projectile.GetComponent<Soul>().Init();
                     projectile.GetComponent<Soul>().EnablePhysics();
+                    projectile.GetComponent<Soul>().SetEnvironment(false);
+                    projectile.GetComponent<Soul>().ExecuteBehaviourTree();
                     projectile.GetComponent<Soul>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
 
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(2));
@@ -46,6 +50,8 @@ namespace HOM
                     projectile = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_BLUE, position);
                     projectile.GetComponent<Soul>().Init();
                     projectile.GetComponent<Soul>().EnablePhysics();
+                    projectile.GetComponent<Soul>().SetEnvironment(false);
+                    projectile.GetComponent<Soul>().ExecuteBehaviourTree();
                     projectile.GetComponent<Soul>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
 
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(3));
