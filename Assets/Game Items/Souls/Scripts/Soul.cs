@@ -1,6 +1,8 @@
 ﻿
 using System;
 using UnityEngine;
+using UnityEngine.AI;
+using DG.Tweening;
 
 namespace HOM
 {
@@ -14,9 +16,16 @@ namespace HOM
         [SerializeField] GameObject blue_soul_mesh;
         [SerializeField] GameObject red_soul_mesh;
 
+        [Header("Movement"), Space(10)]
+        [Tooltip("Determinates the minimum distance from the player before this soul starts to escape")]
+        [SerializeField] float maxDistanceFromPlayer = 3;
+        ///<summary> Determinates the minimum distance from the player before this soul starts to escape </summary>
+        public float MaxDistanceFromPlayer => maxDistanceFromPlayer;
+        [SerializeField] CharacterMovementData movementData;
+        public CharacterMovementData MovementData => movementData;
         bool canIteract => (gameObject.transform.position - C_Garth.self.gameObject.transform.position).magnitude <= iteractionData.DistanceFromPlayer;
         Material originalMaterial = null;
-        Rigidbody rb;
+        public Rigidbody rb {private set; get;}
 
         uint m_tag = 0;
         public uint Tag 
@@ -31,7 +40,6 @@ namespace HOM
                 return m_tag;
             }
         }
-
 
         #region  Unity Callbacks
         void Start()
@@ -80,6 +88,9 @@ namespace HOM
 
         public void Init()
         {
+            agent = gameObject.GetComponent<NavMeshAgent>();
+            agent.enabled = true;
+            agent.isStopped = true;
             rb = gameObject.GetComponent<Rigidbody>();
             originalMaterial = gameObject.GetComponentInChildren<MeshRenderer>().material;
         }
@@ -110,14 +121,12 @@ namespace HOM
 
             return null;
         }
-
         ///<summary> Bind methods for being called when the soul tag changes </summary>
         ///<param name="tag"> The new tag </param>
         void OnTagChanged(uint tag)
         {
             SwapMeshLayer(tag);
         }
-
         ///<summary> Swaps displayed mesh using unique tags  </summary>
         ///<param name="tag"> The unique tag for the soul object </param>
         void SwapMeshLayer(uint tag)
@@ -150,31 +159,67 @@ namespace HOM
                 break;
             }
         }
-
         public void EnablePhysics()
         {
             rb.isKinematic = false;
             rb.useGravity = true;
         }
-
         public void DisablePhysic()
         {
             rb.isKinematic = true;
             rb.useGravity = false;
         }
-
         ///<summary> Set the rigidbody velocity attached to this object </summary>
         ///<param name="velocity"> Value to set </param>
         public void SetVelocity(Vector3 velocity)
         {
             rb.velocity = velocity;
         }
-
         public void SetForce(Vector3 force)
         {
             Debug.Log($"rigidbody: {rb}");
             rb.AddForce(force, ForceMode.Impulse);
         }
+
+        #region Artificial Intelligence
+        NavMeshAgent agent = null;
+        public Vector3 NavigationDirection {private set; get;} = Vector3.zero;
+        public Vector3 Goal => agent.destination;
+
+        ///<summary> Enables this artificial intelligence for navigating on the navmesh  </summary>
+        public void ActivatesArtificialIntelligence() => agent.isStopped = false;
+        ///<summary> Disables this artificial intelligence for navigating on the navmesh </summary>
+        public void DeactivatesArtificialIntelligence() => agent.isStopped = true;
+        ///<summary> Sets the goal position on the navmesh </summary>
+        ///<param name="goal"> The final destination where to move </param>
+        public void SetAIGoal(Vector3 goal)
+        {
+            agent.destination = goal;
+        }
+        ///<summary> Sets the direction for this artificial intelligence </summary>
+        ///<param name="direction"> The direction for this artificial intelligence </param>
+        public void SetAIDirection(Vector3 direction)
+        {
+            NavigationDirection = direction;
+        }
+        ///<summary> Rotates this AI towards the given direction </summary>
+        ///<param name="time"> The time in seconds to perform the rotation </param>
+        ///<param name="OnComplete"> Callback called when the rotation has been completed</param>
+        public void AIRotate(float time, Action OnComplete = null)
+        {
+            float dot = Vector3.Dot(gameObject.transform.forward, NavigationDirection);
+            float length = gameObject.transform.forward.magnitude * NavigationDirection.magnitude;
+            float angle = Mathf.Acos(dot/length) * Mathf.Rad2Deg;
+            gameObject.transform.DORotate(new Vector3(0,angle, 0), time)
+            .OnComplete(() => OnComplete?.Invoke());
+        }
+        ///<summary> Returns the current speed for this artificial ingelligence </summary>
+        public float GetAISpeed() => agent.speed;
+        ///<summary> Returns the current accelleration for this artificial ingelligence </summary>
+        public float GetAIAccelleration() => agent.acceleration;
+        ///<summary> Returns TRUE if the AI reached the designed destination, otherwise returns FALSE </summary>
+        public bool AIReachedGoal() => agent.remainingDistance <= .1f;
+        #endregion
 
     }
 }
