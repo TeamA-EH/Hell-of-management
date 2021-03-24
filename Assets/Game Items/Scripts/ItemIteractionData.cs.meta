@@ -3,7 +3,10 @@ guid: c808a63b568ed464a9a36803d84de4b9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - farDistanceShader: {instanceID: 0}
+  - highlightShader: {fileID: 2100000, guid: 981f5114a35adc84bb49c3bc77c7a14e, type: 2}
+  - iteractableShader: {fileID: 2100000, guid: 0fbb3f320a5bb3e45a3a55d36fc1c26a, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
