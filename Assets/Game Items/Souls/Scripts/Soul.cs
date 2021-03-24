@@ -227,6 +227,8 @@ namespace HOM
         public float GetAISpeed() => agent.speed;
         ///<summary> Returns the current accelleration for this artificial ingelligence </summary>
         public float GetAIAccelleration() => agent.acceleration;
+        ///<summary> Returns the remaining distance between the AI and GOAL </summary>
+        public float GetAIRemainingDistance()=> agent.remainingDistance;
         ///<summary> Returns TRUE if the AI reached the designed destination, otherwise returns FALSE </summary>
         public bool AIReachedGoal() => agent.remainingDistance <= .1f;
         ///<summary> Define if the soul is inside the storage room or outside </summary>

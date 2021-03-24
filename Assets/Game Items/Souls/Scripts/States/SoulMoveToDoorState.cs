@@ -16,9 +16,9 @@ namespace HOM
             target.ActivatesArtificialIntelligence();
         }
 
-        public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if(target.AIReachedGoal())
+            if(target.GetAIRemainingDistance() <= .5f)
             {
                 animator.SetTrigger("Destroy Soul");
             }
