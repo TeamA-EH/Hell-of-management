@@ -111,7 +111,9 @@ namespace HOM
 
             for(int i = 0; i < count; i++)
             {
-                var obj = SoulsManager.CreatesSoul((uint)UnityEngine.Random.Range(1,4), self.GetPointInsideRoom());
+                uint tag = (uint)UnityEngine.Random.Range(1,4);
+                var obj = SoulsManager.CreatesSoul(tag, self.GetPointInsideRoom());
+                SoulsManager.SetSoulTag(obj.GetComponent<Soul>(), tag);
                 obj.GetComponent<Soul>().Init();
                 obj.GetComponent<Soul>().SetEnvironment(true);
                 obj.GetComponent<Soul>().ExecuteBehaviourTree();

@@ -27,7 +27,7 @@ namespace HOM
         Material originalMaterial = null;
         public Rigidbody rb {private set; get;}
 
-        uint m_tag = 0;
+        [SerializeField] uint m_tag = 0;     //Rimuovere serializzazione
         public uint Tag 
         {
             set
@@ -185,7 +185,7 @@ namespace HOM
         }
         public void SetForce(Vector3 force)
         {
-            Debug.Log($"rigidbody: {rb}");
+            //Debug.Log($"rigidbody: {rb}");
             rb.AddForce(force, ForceMode.Impulse);
         }
 
