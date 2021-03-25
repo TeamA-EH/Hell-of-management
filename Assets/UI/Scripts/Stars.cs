@@ -17,12 +17,12 @@ public class Stars : MonoBehaviour
         sliderAmount = slider.value;
 
         if (sliderAmount >= 0.5f)
-            star1.SetActive(true);
+            star1.GetComponent<Image>().color = new Color(1, 1, 1);
 
         if (sliderAmount >= 0.75f)
-            star2.SetActive(true);
+            star2.GetComponent<Image>().color = new Color(1, 1, 1);
 
         if (sliderAmount >= 1)
-            star3.SetActive(true);
+            star3.GetComponent<Image>().color = new Color(1, 1, 1);
     }
 }
