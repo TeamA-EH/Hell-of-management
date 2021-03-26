@@ -167,6 +167,10 @@ MonoBehaviour:
     type: 3}
   trashbagAsset: {fileID: 1502113005321602505, guid: 059fbc5ab2bdbab47bdcf696c4767647,
     type: 3}
+  dishAsset: {fileID: 2299190879846279600, guid: f305f745121da394e98bb85e7f11d3ce,
+    type: 3}
+  drinkAsset: {fileID: 1178504807726002812, guid: b914e1933097d074a91b5653e32434d9,
+    type: 3}
   maleDrunkenDemon: {fileID: 1502113005321602505, guid: 059fbc5ab2bdbab47bdcf696c4767647,
     type: 3}
   femaleDrunkenDemon: {fileID: 1502113005321602505, guid: 059fbc5ab2bdbab47bdcf696c4767647,

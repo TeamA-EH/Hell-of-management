@@ -12,6 +12,10 @@ namespace HOM
         [SerializeField] float greenSoulWeight = 0;
         [SerializeField] float blueSoulWeight = 0;
 
+        [Header("Plates"), Space(10)]
+        [SerializeField] float dishPlateWeight = 0;
+        [SerializeField] float drinkPlateWeight = 0;
+
         [Header("Garbage"), Space(10)]
         [SerializeField] float trashWeight = 0;
         [SerializeField] float trashbagWeight = 0;
@@ -24,6 +28,8 @@ namespace HOM
         public float RedSoulWeight => redSoulWeight;
         public float GreenSoulWeight => greenSoulWeight;
         public float BlueSoulWeight => blueSoulWeight;
+        public float DishPlateWeight => dishPlateWeight;
+        public float DrinkPlateWeight => drinkPlateWeight;
         public float TrashWeight => trashWeight;
         public float TrashbagWeight => trashbagWeight;
         public float FemaleDemonWeight => femaleDemonWeight;

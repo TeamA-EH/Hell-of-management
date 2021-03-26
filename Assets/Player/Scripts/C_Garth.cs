@@ -33,6 +33,9 @@ namespace HOM
         [SerializeField] GameObject wasteAsset;
         [SerializeField] GameObject trashbagAsset;
         [Space(10)]
+        [SerializeField] GameObject dishAsset;
+        [SerializeField] GameObject drinkAsset;
+        [Space(10)]
         [SerializeField] GameObject maleDrunkenDemon;
         [SerializeField] GameObject femaleDrunkenDemon;
 
@@ -79,8 +82,8 @@ namespace HOM
             drunkenDemons[1] = femaleDrunkenDemon;
 
             /* INTIALIZES HANDS DATA */
-            hands[0].Initialize(souls, wasteAsset, trashbagAsset, drunkenDemons);
-            hands[1].Initialize(souls, wasteAsset, trashbagAsset, drunkenDemons);
+            hands[0].Initialize(souls, wasteAsset, trashbagAsset, drunkenDemons, dishAsset, drinkAsset);
+            hands[1].Initialize(souls, wasteAsset, trashbagAsset, drunkenDemons, dishAsset, drinkAsset);
 
             /* RELEASE TEMP DATA */
             redSoulAsset = null;

@@ -152,6 +152,7 @@ namespace HOM
             crafted.SetActive(true);
             TransferCraftingInfos(ref crafted);
             crafted.GetComponent<Plate>().UpdateGFX();
+            crafted.GetComponent<Plate>().Init();
             collecteditems = 0;
         }
 

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8536715088635287316}
   - component: {fileID: 3749997671737601408}
   - component: {fileID: 3365858579420542526}
-  - component: {fileID: 2250700713066445845}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -80,20 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &2250700713066445845
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2601627046353499334}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &3696150625587061560
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,6 +152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5872724098327897991}
   - component: {fileID: 4374313369687293937}
+  - component: {fileID: 6484582858689185401}
   m_Layer: 0
   m_Name: Plate
   m_TagString: Untagged
@@ -201,8 +187,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dba096506399304bb453645baff04b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iteractionData: {fileID: 11400000, guid: b7d3827891d7ae144a3a6b8931e7d69a, type: 2}
   drinkGFX: {fileID: 6374327741417774467}
   dishGFX: {fileID: 3696150625587061560}
+  type: 0
+--- !u!65 &6484582858689185401
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4583097593365036407}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5709627905965849384
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +215,6 @@ GameObject:
   - component: {fileID: 4038998836043667520}
   - component: {fileID: 2084353863995436357}
   - component: {fileID: 1312588470460367132}
-  - component: {fileID: 1940773611160000076}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -283,19 +283,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1940773611160000076
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5709627905965849384}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6374327741417774467
 GameObject:
   m_ObjectHideFlags: 0
