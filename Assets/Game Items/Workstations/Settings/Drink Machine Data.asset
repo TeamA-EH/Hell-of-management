@@ -16,7 +16,8 @@ MonoBehaviour:
   processingTime: 2
   input: 1
   output: 1
-  outputAsset: {fileID: 0}
+  outputAsset: {fileID: 4583097593365036407, guid: 3a8efcc100349a54ab4aba2699c29379,
+    type: 3}
   defaultLightMaterial: {fileID: 2100000, guid: 40a14b6b427c5cc4c913eead395e9876,
     type: 2}
   redSoulLightMaterial: {fileID: 2100000, guid: dd7859d614ebc2a419d803ef43a710ed,

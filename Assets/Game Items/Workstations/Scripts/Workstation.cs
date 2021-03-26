@@ -15,6 +15,8 @@ namespace HOM
         [SerializeField] uint collecteditems = 0;
         uint[] items = new uint[3];
         bool canCollect => collecteditems < m_data.ContainerSize;
+        ///<summray> The list of plates containetd by this workstation </summary>
+        List<GameObject> Plates;
 
         #region Unity Callbacks
         protected void Start()
@@ -47,6 +49,16 @@ namespace HOM
             foreach(var rend in machineLights)
             {
                 rend.GetComponent<MeshRenderer>().material = m_data.DefaultLightMaterial;
+            }
+
+            /* INITIALIZE PLATE ASSETS */
+            Plates = new List<GameObject>();
+            for(int i = 0; i < 5; i++)
+            {
+                var obj = Instantiate(m_data.OutputAsset, gameObject.transform);
+                obj.transform.position = gameObject.transform.position + outputOffset;
+                obj.SetActive(false);
+                Plates.Add(obj);
             }
         }
 
@@ -90,13 +102,97 @@ namespace HOM
             }
         }
 
+        ///<summary> Transfers the recipe infos registred by this workstation to the plate <summary>
+        void TransferCraftingInfos(ref GameObject plate)
+        {
+            Plate target = plate.gameObject.GetComponent<Plate>();
+            
+            uint type = 0;
+            uint redSouls = 0;
+            uint greenSouls = 0;
+            uint blueSouls = 0;
+
+            /* DEFINES OUTPUT TYPE */
+            switch(m_data.Output)
+            {
+                case WorkstationData.OutputType.DISH:
+                    type = 1;
+                break;
+                case WorkstationData.OutputType.DRINK:
+                    type = 2;
+                break;
+            }
+
+            /* CONSTRUCT INSERTED SOULS */
+            foreach(var t in items)
+            {
+                if(t == SoulsManager.SOUL_TAG_RED)
+                {
+                    redSouls++;
+                }
+                else if(t == SoulsManager.SOUL_TAG_GREEN)
+                {
+                    greenSouls++;
+                }
+                else if(t == SoulsManager.SOUL_TAG_BLUE)
+                {
+                    blueSouls++;
+                }
+            }
+
+            target.OverrideRecipeInfos(type, null, redSouls, greenSouls, blueSouls);
+        }
+
         IEnumerator CraftPlate()
         {
             yield return new WaitForSeconds(m_data.ProcessingTime);
             ResetLights();
-            //Create Plate
+
+            var crafted = GetPlateFromList();
+            crafted.SetActive(true);
+            TransferCraftingInfos(ref crafted);
+            crafted.GetComponent<Plate>().UpdateGFX();
             collecteditems = 0;
         }
+
+        #region Plate Pull-Chain
+        ///<summary> Increase the number of plates </summary>
+        ///<param name="amount"> The new stack to instantiate </param>
+        void IncreasePlateStack(uint amount)
+        {
+            for(int i = 0; i < amount; i++)
+            {
+                var obj = Instantiate(m_data.OutputAsset, gameObject.transform);
+                obj.transform.position = gameObject.transform.position + outputOffset;
+                obj.SetActive(false);
+                Plates.Add(obj);
+            }
+        }
+        ///<summary> If availbale returns the first available plate from the plate pool otherwise returns NULL </summmary>
+        GameObject GetFirstAvailablePlate()
+        {
+            foreach(var item in Plates)
+            {
+                if(!item.activeSelf)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+        ///<summary> Return a plate from if available otherwise instantiate other plates and returns the first available </summary>
+        GameObject GetPlateFromList()
+        {
+            var plate = GetFirstAvailablePlate();
+            if(!plate)
+            {
+                IncreasePlateStack(5);
+                plate = GetFirstAvailablePlate();
+            }
+
+            return plate;
+        }
+        #endregion
         
     }
 }
