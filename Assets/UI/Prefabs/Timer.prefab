@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4471694385545795415}
   - component: {fileID: 4471694385545795413}
   - component: {fileID: 4471694385545795412}
+  - component: {fileID: 3278954548844551819}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -74,6 +75,18 @@ MonoBehaviour:
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3278954548844551819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471694385545795414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b316125643e0c1343937e696c44f5c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4471694386336424425
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +172,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4471694387565943494}
   - component: {fileID: 4471694387565943492}
-  - component: {fileID: 4471694387565943495}
   m_Layer: 0
   m_Name: Timer
   m_TagString: Untagged
@@ -195,17 +207,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4471694387565943513}
   m_CullTransparentMesh: 0
---- !u!114 &4471694387565943495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4471694387565943513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9518ca519ac611e41876c3d626d8a926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  circle: {fileID: 4471694385545795412}
-  totaltime: 60
