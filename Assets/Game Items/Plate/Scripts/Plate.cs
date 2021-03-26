@@ -8,13 +8,24 @@ namespace HOM
     {
         [Header("Settings"), Space(10)]
         [SerializeField] ItemIteractionData iteractionData;
+        Rigidbody rb = null;
         Material OriginalMaterial;
         [Space(10)]
         [SerializeField] GameObject drinkGFX;
         [SerializeField] GameObject dishGFX;
 
        [SerializeField] uint type;
-        public uint Type => type;
+        public uint Type 
+        {
+            set
+            {
+                type = value;
+            }
+            get
+            {
+                return type;
+            }
+        }
 
         GameObject customer = null;
         public GameObject Customer => customer;
@@ -66,6 +77,7 @@ namespace HOM
 
         public void Init()
         {
+            rb = gameObject.GetComponent<Rigidbody>();
             OriginalMaterial = gameObject.GetComponentInChildren<MeshRenderer>().material;
         }
 
@@ -95,6 +107,25 @@ namespace HOM
             dishGFX.SetActive(false);
             drinkGFX.SetActive(false);
         }
+
+        #region Physic Simulation
+        public void EnablePhysics()
+        {
+            rb.useGravity = true;
+            rb.isKinematic = false;
+        }
+
+        public void DisablePhysics()
+        {
+            rb.useGravity = false;
+            rb.isKinematic = true;
+        }
+
+        public void SetForce(Vector3 force)
+        {
+            rb.AddForce(force, ForceMode.Impulse);
+        }
+        #endregion
 
     }
 }

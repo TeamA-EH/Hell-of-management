@@ -119,11 +119,13 @@ namespace HOM
             if(type == 1)           //VISUALIZE DISH
             {
                 dishAsset.SetActive(true);
+                holdedItemIndex = 3;
                 holdedItem = dishAsset;
             }
             else if(type == 2)      //VISUALIZE DRINK
             {
                 drinkAsset.SetActive(true);
+                holdedItemIndex = 4;
                 holdedItem = drinkAsset;
             }
         }

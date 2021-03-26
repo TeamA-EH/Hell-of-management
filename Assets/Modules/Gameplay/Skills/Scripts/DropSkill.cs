@@ -61,6 +61,22 @@ namespace HOM
 
                     OnSkillCompleted?.Invoke();
                 return;
+                case 3: //Dish Plate
+                    projectile = PlatesManager.CreatePlate(PlatesManager.DISH_PLATE, position, orientation);
+                    projectile.GetComponent<Plate>().Init();
+                    projectile.GetComponent<Plate>().EnablePhysics();
+                    projectile.GetComponent<Plate>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
+
+                    OnSkillCompleted?.Invoke();
+                break;
+                case 4: //Drink Plate
+                    projectile = PlatesManager.CreatePlate(PlatesManager.DRINK_PLATE, position, orientation);
+                    projectile.GetComponent<Plate>().Init();
+                    projectile.GetComponent<Plate>().EnablePhysics();
+                    projectile.GetComponent<Plate>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
+
+                    OnSkillCompleted?.Invoke();
+                break;
             }
         }
 
@@ -70,7 +86,7 @@ namespace HOM
         }
 
         //<summary> Overrides drop general infos before activates skill </summary>
-        ///<param name="type"> The holded item uinque id: 0=red soul, 1=green soul, 2=blue soul </param>
+        ///<param name="type"> The holded item uinque id: 0=red soul, 1=green soul, 2=blue soul 3=dish plate, 4=drink plate </param>
         ///<param name="hand"> The hand holding the item unique index </param>
         ///<param name="position"> The hand position </param>
         ///<param name="orientation"> The hand orientation </param>

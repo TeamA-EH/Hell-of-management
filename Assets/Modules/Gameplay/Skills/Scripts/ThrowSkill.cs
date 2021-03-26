@@ -58,6 +58,22 @@ namespace HOM
 
                     OnSkillCompleted?.Invoke();
                     return;
+                    case 3:
+                    projectile = PlatesManager.CreatePlate(PlatesManager.DISH_PLATE, position, orientation);
+                    projectile.GetComponent<Plate>().Init();
+                    projectile.GetComponent<Plate>().EnablePhysics();
+                    projectile.GetComponent<Plate>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
+
+                    OnSkillCompleted?.Invoke();
+                    return;
+                    case 4:
+                    projectile = PlatesManager.CreatePlate(PlatesManager.DRINK_PLATE, position, orientation);
+                    projectile.GetComponent<Plate>().Init();
+                    projectile.GetComponent<Plate>().EnablePhysics();
+                    projectile.GetComponent<Plate>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
+
+                    OnSkillCompleted?.Invoke();
+                    return;
             }
         }
 

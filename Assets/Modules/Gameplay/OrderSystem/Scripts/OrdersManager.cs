@@ -23,11 +23,16 @@ namespace HOM
         ///<param name="sender"> The system who sended this event </param>
         ///<param name="score"> The score gained by the player</param>
         public delegate void OrderCompletedEventHandler(OrdersManager sender, uint score);
+        ///<summary> Handler for failed order delivery events </summary>
+        ///<param name="sender"> The systme who sended this event </param>
+        public delegate void OrderFailedEventHandler(OrdersManager sender);
 
         ///<summary> Event called when an customer order is created </summary>
         public static event OrderCreatedEventHander OnOrderCreated;
-        ///<summary> Event called when a customer order si completed successfully </summary>
+        ///<summary> Event called when a customer order is completed successfully </summary>
         public static event OrderCompletedEventHandler OnOrderCompleted;
+        ///<summary> Event called when the wrong order is given to a customer </summary>
+        public static event OrderFailedEventHandler OnOrderFailed;
         #endregion
 
         #region Unity Callbacks
@@ -71,11 +76,26 @@ namespace HOM
                     item.GetComponent<IRecipe>().OverrideRecipeInfos(type, customer, r, g, b);
                     OnOrderCreated?.Invoke(self, customer, type, r, g, b);
                     return item;
-                    
                 }
             }
 
             return null;
+        }
+
+        ///<summary> Evalutes if the order is correct and runs all events </summary>
+        ///<param name="order"> The customer order </param>
+        ///<param name="plate"> The plate to evaluate </param>
+        public static void EvaluatePlate(Order order, Plate plate)
+        {
+            if(order.Type == plate.Type && order.RedSouls == plate.RedSouls && order.GreenSouls == plate.GreenSouls && order.BlueSouls == plate.BlueSouls)
+            {
+                Debug.LogWarning("Add Score Here");
+                OnOrderCompleted?.Invoke(self, 0);
+            }
+            else 
+            {
+                OnOrderFailed?.Invoke(self);
+            }
         }
 
         public uint GetActiveOrdersCount()
