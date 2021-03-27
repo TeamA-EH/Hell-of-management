@@ -19,6 +19,8 @@ namespace HOM
         GameObject  holdedItem = null;  // the item who this character is holding
         public GameObject HoldedItem => holdedItem;
 
+        public OrdersManager.OrderInfo plateInfos;
+
         public uint holdedItemIndex {private set; get;} = 0;
 
         ///<summary> Base hand constructor </summary>

@@ -6,7 +6,7 @@ namespace HOM
 {
     public class CustomersManager : MonoBehaviour
     {
-        static CustomersManager self = null;
+       public static CustomersManager self {private set; get;} = null;
 
         [Header("Settings"), Space(10)]
         [SerializeField] GameObject maleDemonAsset;
@@ -79,8 +79,8 @@ namespace HOM
         void SpawnCustomer()
         {
             uint dna = (uint)Random.Range(0, 2);
-            if(dna == 0) SpawnMaleCustomer();
-            else SpawnFemaleCustomer();
+            if(dna == 0) SpawnMaleCustomer("Go To Chair");
+            else SpawnFemaleCustomer("Go To Chair");
         }
 
         ///<summary> Increases the customers stack </summary>
@@ -98,29 +98,39 @@ namespace HOM
         }
 
         ///<summary> Spawn a male customer from the male customer list </summary>
-        GameObject SpawnMaleCustomer()
+        public GameObject SpawnMaleCustomer(string trigger)
         {
-           GameObject customer = GetFirstMaleCustomerAvailable();
-           if(!customer) 
-           {
+            GameObject customer = GetFirstMaleCustomerAvailable();
+            if(!customer) 
+            {
                IncreaseCustomerStack(self.maleDemonAsset, ref maleCustomers, 10);
                customer = GetFirstMaleCustomerAvailable();
+               customer.GetComponent<Animator>().SetTrigger(trigger);
                return customer;
-           }
-           else return customer;
+            }
+            else
+            {
+                customer.GetComponent<Animator>().SetTrigger(trigger);
+                return customer;
+            }
         }
 
         ///<summary> Spawn a female customer from the female customer list </summary>
-        GameObject SpawnFemaleCustomer()
+        public GameObject SpawnFemaleCustomer(string trigger)
         {
             GameObject customer = GetFirstFemaleCustomerAvailable();
             if(!customer)
             {
                 IncreaseCustomerStack(femaleDemonAsset, ref self.femaleCustomers, 10);
                 customer = self.GetFirstFemaleCustomerAvailable();
+                customer.GetComponent<Animator>().SetTrigger(trigger);
                 return customer;
             }
-            else return customer;
+            else 
+            {
+                customer.GetComponent<Animator>().SetTrigger(trigger);
+                return customer;
+            }
         }
 
         ///<summary> Get the first available male character from the male customers list </summary>
@@ -139,7 +149,7 @@ namespace HOM
                     character.GetComponent<Customer>().SetChair(chair);
 
                     character.GetComponent<Customer>().SetDoor(pubDoor);
-                    character.GetComponent<Animator>().SetTrigger("Go To Chair");
+                    //character.GetComponent<Animator>().SetTrigger("Go To Chair");
                     return character;
                 }
             }
@@ -163,7 +173,7 @@ namespace HOM
                     character.GetComponent<Customer>().SetChair(chair);
 
                     character.GetComponent<Customer>().SetDoor(pubDoor);
-                    character.GetComponent<Animator>().SetTrigger("Go To Chair");
+                    //character.GetComponent<Animator>().SetTrigger("Go To Chair");
                     return character;
                 }
             }

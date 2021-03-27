@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace HOM
 {
@@ -53,8 +51,16 @@ namespace HOM
                 float distance = (C_Garth.self.gameObject.transform.position - gameObject.transform.position).magnitude;
                 if(distance <= iteractionData.DistanceFromPlayer)
                 {
+                    /*SAVES INFOS FOR THIS HAND*/
+                    C_Garth.self.PlayerHands[0].plateInfos.Type = Type;
+                    C_Garth.self.PlayerHands[0].plateInfos.RedSouls = redsouls;
+                    C_Garth.self.PlayerHands[0].plateInfos.GreenSouls = GreenSouls;
+                    C_Garth.self.PlayerHands[0].plateInfos.BlueSouls = BlueSouls;
+
                     //Send pickup request
                     SkillManager.SendPickupSkillRequest(gameObject, type + 6, C_Garth.self.gameObject, 0, null, null);
+
+                    Debug.Log(C_Garth.self.PlayerHands[0].plateInfos.Type);
                 }
             }
 
@@ -63,8 +69,16 @@ namespace HOM
                 float distance = (C_Garth.self.gameObject.transform.position - gameObject.transform.position).magnitude;
                 if(distance <= iteractionData.DistanceFromPlayer)
                 {
+                    /*SAVES INFOS FOR THIS HAND*/
+                    C_Garth.self.PlayerHands[1].plateInfos.Type = Type;
+                    C_Garth.self.PlayerHands[1].plateInfos.RedSouls = redsouls;
+                    C_Garth.self.PlayerHands[1].plateInfos.GreenSouls = GreenSouls;
+                    C_Garth.self.PlayerHands[1].plateInfos.BlueSouls = BlueSouls;
+
                     //Send pickup request
                     SkillManager.SendPickupSkillRequest(gameObject, type + 6, C_Garth.self.gameObject, 1, null, null);
+
+                    Debug.Log(C_Garth.self.PlayerHands[1].plateInfos.Type);
                 }
             }
             

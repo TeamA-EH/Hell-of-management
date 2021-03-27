@@ -11,6 +11,15 @@ namespace HOM
         public GameObject[] orders {private set; get;}
         public const uint maxRecipesCount = 2;
         public uint activeOrders => GetActiveOrdersCount();
+
+        public struct OrderInfo
+        {
+            public uint Type;
+            public uint RedSouls;
+            public uint GreenSouls;
+            public uint BlueSouls;
+        }
+
         #region Events
         ///<summary> Handlers for orders creation events </summary>
         ///<param name="sender"> The manger who sended the event </param>
@@ -85,7 +94,7 @@ namespace HOM
         ///<summary> Evalutes if the order is correct and runs all events </summary>
         ///<param name="order"> The customer order </param>
         ///<param name="plate"> The plate to evaluate </param>
-        public static void EvaluatePlate(Order order, Plate plate)
+        public static void EvaluatePlate(Order order, OrderInfo plate)
         {
             if(order.Type == plate.Type && order.RedSouls == plate.RedSouls && order.GreenSouls == plate.GreenSouls && order.BlueSouls == plate.BlueSouls)
             {
@@ -94,6 +103,7 @@ namespace HOM
             }
             else 
             {
+                Debug.LogWarning("Wrong Plate!!");
                 OnOrderFailed?.Invoke(self);
             }
         }
