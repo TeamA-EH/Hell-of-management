@@ -74,18 +74,22 @@ namespace HOM
 
             switch(soulTag)
             {
-                case SoulsManager.SOUL_TAG_RED: 
+                case SoulsManager.SOUL_TAG_RED:
+                    soulAssets[2].SetActive(true); 
                     holdedItemIndex = 0;
+                    holdedItem = soulAssets[2];
                 break;
                 case SoulsManager.SOUL_TAG_GREEN:
+                    soulAssets[0].SetActive(true);
+                    holdedItem = soulAssets[0];
                     holdedItemIndex = 1;
                 break;
                 case SoulsManager.SOUL_TAG_BLUE:
+                    soulAssets[1].SetActive(true);
+                    holdedItem = soulAssets[1];
                     holdedItemIndex = 2;
                 break;
             }
-
-            holdedItem = soulAssets[soulTag - 1];
         }
 
         ///<summary> Shows a waste on this hand </summary>

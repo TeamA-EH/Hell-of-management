@@ -14,7 +14,7 @@ namespace HOM
             RaycastHit hit;
             if(Physics.Raycast(animator.gameObject.transform.position, direction, out hit, 1))  //Se colpisco qualcosa
             {
-                Debug.Log($"wall: {hit.collider.gameObject.name}");
+                //Debug.Log($"wall: {hit.collider.gameObject.name}");
                 direction = GetFreeDirection(animator.gameObject);
                 target.SetAIDirection(direction);
                 target.SetAIGoal(animator.gameObject.transform.position + direction);

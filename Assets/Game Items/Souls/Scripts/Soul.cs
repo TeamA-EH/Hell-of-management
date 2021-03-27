@@ -51,10 +51,16 @@ namespace HOM
             if(canIteract)
             {
                
-                uint type = 0;
-                if(Tag == SoulsManager.SOUL_TAG_RED) type = 0;
-                else if(Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
-                else if(Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
+                /* UPDATE COLOR */
+                if(gameObject.GetComponentInChildren<MeshRenderer>().material != iteractionData.IteractableShader)
+                {
+                    gameObject.GetComponentInChildren<MeshRenderer>().material.color += new Color(0,0,0, -.8f);
+                }
+
+                //uint type = 0;
+                //if(Tag == SoulsManager.SOUL_TAG_RED) type = 0;
+                //else if(Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
+                //else if(Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
 
                 if(Input.GetMouseButtonDown(0) && GetSelectedSoul() != null)
                 {
@@ -63,6 +69,11 @@ namespace HOM
                     
                     StopBehaviourTree();
                     SetEnvironment(false);
+
+                    uint type = 0;
+                    if(Tag == SoulsManager.SOUL_TAG_RED) type = 0;
+                    else if(Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
+                    else if(Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
 
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 0, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
                 }
@@ -74,7 +85,19 @@ namespace HOM
                     StopBehaviourTree();
                     SetEnvironment(false);
 
+                    uint type = 0;
+                    if(Tag == SoulsManager.SOUL_TAG_RED) type = 0;
+                    else if(Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
+                    else if(Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
+
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 1, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
+                }
+            }
+            else
+            {
+                if(gameObject.GetComponentInChildren<MeshRenderer>().material != originalMaterial)
+                {
+                    gameObject.GetComponentInChildren<MeshRenderer>().material = originalMaterial;
                 }
             }
         }
@@ -115,6 +138,7 @@ namespace HOM
         {
             Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
+            Debug.DrawLine(Camera.main.transform.position, Input.mousePosition, Color.red, 10f);
             if(Physics.Raycast(r, out hit))
             {
                 if(hit.collider.gameObject.GetComponent<Soul>())

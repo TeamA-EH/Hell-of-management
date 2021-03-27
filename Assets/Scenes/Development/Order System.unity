@@ -907,13 +907,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1468583297}
-  m_LocalRotation: {x: 0.25867733, y: -0.031975444, z: 0.008567774, w: 0.9653964}
-  m_LocalPosition: {x: 5.85, y: 6.65, z: -8.47}
+  m_LocalRotation: {x: 0.3828288, y: -0.03282188, z: 0.004308235, w: 0.92322606}
+  m_LocalPosition: {x: 6.27, y: 10.06, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 30.000002, y: -3.7940001, z: 0}
+  m_LocalEulerAnglesHint: {x: 45.004, y: -4.649, z: -1.3920001}
 --- !u!114 &1468583301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1494,6 +1494,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Customers Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 642887502363096286, guid: 57012360408a2e04589a1c599aa6097f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1742400275544457415, guid: 57012360408a2e04589a1c599aa6097f,
         type: 3}

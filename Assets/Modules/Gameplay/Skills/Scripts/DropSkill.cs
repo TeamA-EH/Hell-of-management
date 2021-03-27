@@ -65,6 +65,12 @@ namespace HOM
                     projectile = PlatesManager.CreatePlate(PlatesManager.DISH_PLATE, position, orientation);
                     projectile.GetComponent<Plate>().Init();
                     projectile.GetComponent<Plate>().EnablePhysics();
+                    projectile.GetComponent<Plate>().OverrideRecipeInfos(
+                        C_Garth.self.PlayerHands[hand].plateInfos.Type,
+                        null,
+                        C_Garth.self.PlayerHands[hand].plateInfos.RedSouls,
+                        C_Garth.self.PlayerHands[hand].plateInfos.GreenSouls,
+                        C_Garth.self.PlayerHands[hand].plateInfos.BlueSouls);
                     projectile.GetComponent<Plate>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
 
                     OnSkillCompleted?.Invoke();
@@ -73,6 +79,12 @@ namespace HOM
                     projectile = PlatesManager.CreatePlate(PlatesManager.DRINK_PLATE, position, orientation);
                     projectile.GetComponent<Plate>().Init();
                     projectile.GetComponent<Plate>().EnablePhysics();
+                    projectile.GetComponent<Plate>().OverrideRecipeInfos(
+                        C_Garth.self.PlayerHands[hand].plateInfos.Type,
+                        null,
+                        C_Garth.self.PlayerHands[hand].plateInfos.RedSouls,
+                        C_Garth.self.PlayerHands[hand].plateInfos.GreenSouls,
+                        C_Garth.self.PlayerHands[hand].plateInfos.BlueSouls);
                     projectile.GetComponent<Plate>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
 
                     OnSkillCompleted?.Invoke();

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace HOM
 {
@@ -14,31 +15,47 @@ namespace HOM
         }
         void OnTriggerEnter(Collider collider)
         {
-            if(collider.gameObject.GetComponent<Plate>())
+            var plate = collider.gameObject.GetComponent<Plate>();
+            if(plate)
             {
-                var customers = gameObject.GetComponentsInChildren<SittedCustomer>();
-
-                /* Check for customer order */
-                foreach(GameObject order in OrdersManager.GetActiveOrders())
-                {
-                    foreach(var customer in customers)
-                    {
-                        if(order.GetComponent<Order>().Customer == customer.gameObject)
-                        {
-                            collider.gameObject.SetActive(false);
-                            order.SetActive(false);
-                            customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
-                            customer.gameObject.GetComponent<Animator>().SetTrigger("Take Order");
-                            return;
-                        }
-                    }
-                }
-
                 if(OrdersManager.GetActiveOrders().Length > 0)
                 {
-                    OrdersManager.GetActiveOrders()[0].GetComponent<Order>().Customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
-                    OrdersManager.GetActiveOrders()[0].GetComponent<Order>().Customer.GetComponent<Animator>().SetTrigger("Leave Table");
-                    OrdersManager.GetActiveOrders()[0].SetActive(false);
+
+                    if(AnyCustomerOrder(plate))
+                    {
+                        var order = GetOrder(plate);
+                        if(!order)
+                        {
+                            Debug.LogWarning("Attention! Error evaluating this order");
+                            return;
+                        }
+
+                        if(IsRightOrder(order, plate))
+                        {
+                            Debug.Log("Correct Order");
+                            order.Customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
+                            order.Customer.GetComponent<Animator>().SetTrigger("Take Order");
+                            order.gameObject.SetActive(false);
+                            plate.gameObject.SetActive(false);
+                            return;
+                        }
+                        else    //Wrong Plate
+                        {
+                            Debug.Log("Wrong Order");
+                            order.Customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
+                            order.Customer.GetComponent<Animator>().SetTrigger("Leave Table");
+                            order.gameObject.SetActive(false);
+                            plate.gameObject.SetActive(false);
+                            return;
+                        }
+
+
+                    }
+                    else    //The wrong table
+                    {
+                        plate.gameObject.SetActive(false);
+                        Debug.LogWarning("Wrong Table");
+                    }
                 }
             }
         }
@@ -47,6 +64,56 @@ namespace HOM
         void Init()
         {
             chairs = GetComponentsInChildren<Chair>();
+        }
+
+        bool AnyCustomerOrder(Plate plate)
+        {
+            foreach(var order in OrdersManager.GetActiveOrders())
+            {
+                if(order.GetComponent<Order>().Type == plate.Type)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        Order GetOrder(Plate plate)
+        {
+            foreach(var order in OrdersManager.GetActiveOrders())
+            {
+                if(order.GetComponent<Order>().Type == plate.Type)
+                {
+                    return order.GetComponent<Order>();
+                }
+            }
+
+            return null;
+        }
+
+        bool IsRightOrder(Order order, Plate plate)
+        {
+            if  (order.Type == plate.Type && 
+                order.RedSouls == plate.RedSouls &&
+                order.GreenSouls == plate.GreenSouls && 
+                order.BlueSouls == plate.BlueSouls) return true;
+                else return false;
+        }
+
+        Order[] GetAllOrdersOfType(uint type)
+        {
+            List<Order> result = new List<Order>();
+
+            foreach(var order in OrdersManager.GetActiveOrders())
+            {
+                if(order.GetComponent<Order>().Type == type)
+                {
+                    result.Add(order.GetComponent<Order>());
+                }
+            }
+
+            return result.ToArray();
         }
     }
 }

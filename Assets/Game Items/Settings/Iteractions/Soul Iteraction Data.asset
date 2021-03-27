@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceFromPlayer: 3
   farDistanceShader: {fileID: 0}
-  highlightShader: {fileID: 2100000, guid: 0fbb3f320a5bb3e45a3a55d36fc1c26a, type: 2}
-  iteractableShader: {fileID: 0}
+  highlightShader: {fileID: 2100000, guid: 981f5114a35adc84bb49c3bc77c7a14e, type: 2}
+  iteractableShader: {fileID: 2100000, guid: 0fbb3f320a5bb3e45a3a55d36fc1c26a, type: 2}
