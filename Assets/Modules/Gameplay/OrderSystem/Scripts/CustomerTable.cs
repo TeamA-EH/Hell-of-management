@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace HOM
 {
@@ -36,10 +34,12 @@ namespace HOM
                     }
                 }
 
-                //collider.gameObject.SetActive(false);
-                OrdersManager.GetActiveOrders()[0].GetComponent<Order>().Customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
-                OrdersManager.GetActiveOrders()[0].GetComponent<Order>().Customer.GetComponent<Animator>().SetTrigger("Leave Table");
-                OrdersManager.GetActiveOrders()[0].SetActive(false);
+                if(OrdersManager.GetActiveOrders().Length > 0)
+                {
+                    OrdersManager.GetActiveOrders()[0].GetComponent<Order>().Customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
+                    OrdersManager.GetActiveOrders()[0].GetComponent<Order>().Customer.GetComponent<Animator>().SetTrigger("Leave Table");
+                    OrdersManager.GetActiveOrders()[0].SetActive(false);
+                }
             }
         }
         #endregion

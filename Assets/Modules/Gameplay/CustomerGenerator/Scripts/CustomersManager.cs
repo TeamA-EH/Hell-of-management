@@ -13,6 +13,7 @@ namespace HOM
         [SerializeField] GameObject femaleDemonAsset;
         [Space(10)]
         [SerializeField] GameObject pubDoor;
+        public GameObject PubDoor => pubDoor;
 
         [Space(10)]
         [Tooltip("Definisce ogni quanti secondi bisogna controllare se ci sono sedie libere per spawnare un personaggio")]
@@ -79,8 +80,8 @@ namespace HOM
         void SpawnCustomer()
         {
             uint dna = (uint)Random.Range(0, 2);
-            if(dna == 0) SpawnMaleCustomer("Go To Chair");
-            else SpawnFemaleCustomer("Go To Chair");
+            if(dna == 0) SpawnMaleCustomer("Go To Chair", true);
+            else SpawnFemaleCustomer("Go To Chair", true);
         }
 
         ///<summary> Increases the customers stack </summary>
@@ -98,13 +99,13 @@ namespace HOM
         }
 
         ///<summary> Spawn a male customer from the male customer list </summary>
-        public GameObject SpawnMaleCustomer(string trigger)
+        public GameObject SpawnMaleCustomer(string trigger, bool assingChair)
         {
-            GameObject customer = GetFirstMaleCustomerAvailable();
+            GameObject customer = GetFirstMaleCustomerAvailable(assingChair);
             if(!customer) 
             {
                IncreaseCustomerStack(self.maleDemonAsset, ref maleCustomers, 10);
-               customer = GetFirstMaleCustomerAvailable();
+               customer = GetFirstMaleCustomerAvailable(assingChair);
                customer.GetComponent<Animator>().SetTrigger(trigger);
                return customer;
             }
@@ -116,13 +117,13 @@ namespace HOM
         }
 
         ///<summary> Spawn a female customer from the female customer list </summary>
-        public GameObject SpawnFemaleCustomer(string trigger)
+        public GameObject SpawnFemaleCustomer(string trigger, bool assignChair)
         {
-            GameObject customer = GetFirstFemaleCustomerAvailable();
+            GameObject customer = GetFirstFemaleCustomerAvailable(assignChair);
             if(!customer)
             {
                 IncreaseCustomerStack(femaleDemonAsset, ref self.femaleCustomers, 10);
-                customer = self.GetFirstFemaleCustomerAvailable();
+                customer = self.GetFirstFemaleCustomerAvailable(assignChair);
                 customer.GetComponent<Animator>().SetTrigger(trigger);
                 return customer;
             }
@@ -134,7 +135,7 @@ namespace HOM
         }
 
         ///<summary> Get the first available male character from the male customers list </summary>
-        GameObject GetFirstMaleCustomerAvailable()
+        GameObject GetFirstMaleCustomerAvailable(bool assingChair)
         {
             foreach(GameObject character in self.maleCustomers)
             {
@@ -143,10 +144,13 @@ namespace HOM
                     character.SetActive(true);
                     character.transform.position = pubDoor.transform.position - pubDoor.transform.forward;
 
-                    var chair = GetFirstAvailableChair();
-                    chair.SetCustomerType(Chair.CustomerType.MALE);
-                    chair.Lock();
-                    character.GetComponent<Customer>().SetChair(chair);
+                    if(assingChair)
+                    {
+                        var chair = GetFirstAvailableChair();
+                        chair.SetCustomerType(Chair.CustomerType.MALE);
+                        chair.Lock();
+                        character.GetComponent<Customer>().SetChair(chair);
+                    }
 
                     character.GetComponent<Customer>().SetDoor(pubDoor);
                     //character.GetComponent<Animator>().SetTrigger("Go To Chair");
@@ -158,7 +162,7 @@ namespace HOM
         }
 
         ///<summary> Get the first available female character from the female customers list </summary>
-        GameObject GetFirstFemaleCustomerAvailable()
+        GameObject GetFirstFemaleCustomerAvailable(bool assingChair)
         {
             foreach(GameObject character in self.femaleCustomers)
             {
@@ -167,10 +171,13 @@ namespace HOM
                     character.SetActive(true);
                     character.transform.position = self.pubDoor.transform.position - self.pubDoor.transform.forward;
 
-                    var chair = GetFirstAvailableChair();
-                    chair.SetCustomerType(Chair.CustomerType.FEMALE);
-                    chair.Lock();     
-                    character.GetComponent<Customer>().SetChair(chair);
+                    if(assingChair)
+                    {
+                        var chair = GetFirstAvailableChair();
+                        chair.SetCustomerType(Chair.CustomerType.FEMALE);
+                        chair.Lock();     
+                        character.GetComponent<Customer>().SetChair(chair);
+                    }
 
                     character.GetComponent<Customer>().SetDoor(pubDoor);
                     //character.GetComponent<Animator>().SetTrigger("Go To Chair");
