@@ -801,12 +801,12 @@ PrefabInstance:
     - target: {fileID: 5684799108480050267, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
         type: 3}
       propertyPath: roomSize.x
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5684799108480050267, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
         type: 3}
       propertyPath: roomSize.y
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6137794612600370758, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
         type: 3}
