@@ -52,19 +52,16 @@ namespace HOM
             {
                
                 /* UPDATE COLOR */
-                if(gameObject.GetComponentInChildren<MeshRenderer>().material != iteractionData.IteractableShader)
-                {
-                    gameObject.GetComponentInChildren<MeshRenderer>().material.color += new Color(0,0,0, -.8f);
-                }
-
-                //uint type = 0;
-                //if(Tag == SoulsManager.SOUL_TAG_RED) type = 0;
-                //else if(Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
-                //else if(Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
+                //if(gameObject.GetComponentInChildren<MeshRenderer>().material != iteractionData.IteractableShader)
+                //{
+                //    gameObject.GetComponentInChildren<MeshRenderer>().material.color += new Color(0,0,0, -.8f);
+                //}
 
                 if(Input.GetMouseButtonDown(0) && GetSelectedSoul() != null)
                 {
                     var selection = GetSelectedSoul();
+                    if(!selection) return;
+                    
                     SoulsStorage.self.storedSouls.Remove(selection);
                     
                     StopBehaviourTree();
@@ -79,7 +76,9 @@ namespace HOM
                 }
                 else if(Input.GetMouseButtonDown(1) && GetSelectedSoul() != null)
                 {
-                     var selection = GetSelectedSoul();
+                    var selection = GetSelectedSoul();
+                    if(!selection) return;
+
                     SoulsStorage.self.storedSouls.Remove(selection);
 
                     StopBehaviourTree();
@@ -105,14 +104,14 @@ namespace HOM
         {
             if(canIteract)
             {
-                ChangeMaterial(iteractionData.HighlightShader);
+                //ChangeMaterial(iteractionData.HighlightShader);
             }
         }
         void OnMouseExit()
         {
             if(gameObject.GetComponentInChildren<MeshRenderer>().material != originalMaterial)
             {
-                ChangeMaterial(originalMaterial);
+                //ChangeMaterial(originalMaterial);
             }
         }
         #endregion
