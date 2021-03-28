@@ -9,6 +9,7 @@ namespace HOM
             var order = OrdersManager.CreateOrder(animator.gameObject).GetComponent<Order>();
             var vignette = animator.gameObject.GetComponentInChildren<OrderVignetteUI>();
             vignette.Activate();
+            vignette.ResetIcons();
             vignette.UpdateInterface(order.Type, order.RedSouls, order.GreenSouls, order.BlueSouls);
 
         }
