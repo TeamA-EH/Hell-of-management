@@ -18,7 +18,7 @@ namespace HOM
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if(target.GetAIRemainingDistance() <= .5f)
+            if(target.GetAIRemainingDistance() <= 2f)
             {
                 animator.SetTrigger("Destroy Soul");
             }
