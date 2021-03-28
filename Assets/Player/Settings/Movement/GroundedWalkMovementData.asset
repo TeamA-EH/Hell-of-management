@@ -15,33 +15,33 @@ MonoBehaviour:
   maxMovementSpeed: 5
   gravityForce: {x: 0, y: -2, z: 0}
   environmentForce: {x: 0, y: 0, z: 0}
-  accellerationTime: 0.5
+  accellerationTime: 0.3
   accellerationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0.05341264
-      outSlope: 0.05341264
+      inSlope: 6.4593906
+      outSlope: 6.4593906
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.08336893
+      outWeight: 0.07383376
     - serializedVersion: 3
-      time: 0.1
+      time: 0.3
       value: 1
-      inSlope: 20.378214
-      outSlope: 20.378214
-      tangentMode: 0
+      inSlope: 1.075031
+      outSlope: -0.057657
+      tangentMode: 1
       weightedMode: 0
-      inWeight: 0.03195867
+      inWeight: 0.0715211
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxAcceleration: 5
-  decelerationTime: 0.2
+  maxAcceleration: 15
+  decelerationTime: 0.5
   decelerationCurve:
     serializedVersion: 2
     m_Curve:
@@ -55,15 +55,15 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.05567011
     - serializedVersion: 3
-      time: 0.2
+      time: 0.5
       value: 0
-      inSlope: -9.742776
-      outSlope: -9.742776
+      inSlope: -6.9627724
+      outSlope: -6.9627724
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.038144216
+      inWeight: 0.029895782
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxDeceleration: 3
+  maxDeceleration: 0.15
