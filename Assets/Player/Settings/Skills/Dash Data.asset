@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8027bbbcaccf1b24f8c876d5a5644d41, type: 3}
   m_Name: Dash Data
   m_EditorClassIdentifier: 
-  executionTime: 0.25
+  executionTime: 0.2
   cooldownTime: 0.5
   speedTweenin:
     serializedVersion: 2
@@ -27,22 +27,22 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.053258907
     - serializedVersion: 3
-      time: 0.1
+      time: 0.05
       value: 50
-      inSlope: 140.24736
-      outSlope: 140.24736
-      tangentMode: 0
+      inSlope: 1592.8434
+      outSlope: 67.904236
+      tangentMode: 1
       weightedMode: 0
-      inWeight: 0.12780659
-      outWeight: 0.09185502
+      inWeight: 0.07614784
+      outWeight: 0.08454645
     - serializedVersion: 3
       time: 0.25
       value: 50
-      inSlope: -63.708363
-      outSlope: -63.708363
+      inSlope: 1.0276557
+      outSlope: 1.0276557
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.2907312
+      inWeight: 0.07698767
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
