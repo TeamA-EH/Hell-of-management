@@ -14,6 +14,7 @@ namespace HOM
         public string currentTrigger {private set; get;} = "";
 
         public bool CanIteract => OrdersManager.self.activeOrders < OrdersManager.maxRecipesCount;
+        bool CanCall = false;
 
         #region Events
         ///<summary> Event called when the customer is clicked by the player </summary>
@@ -25,9 +26,21 @@ namespace HOM
         {
             Initialize();
         }
-        void OnMouseDown()
+        void Update()
         {
-            OnCustomerClicked?.Invoke();
+            if(Input.GetKeyDown(KeyCode.E) && CanCall)
+            {
+                OnCustomerClicked?.Invoke();
+            }
+        }
+        void OnMouseEnter()
+        {
+            CanCall = true;
+        }
+
+        void OnMouseExit()
+        {
+            CanCall = false;
         }
         #endregion
 
