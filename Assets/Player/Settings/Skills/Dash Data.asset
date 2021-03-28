@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dash Data
   m_EditorClassIdentifier: 
   executionTime: 0.2
-  cooldownTime: 0.5
+  cooldownTime: 0.4
   speedTweenin:
     serializedVersion: 2
     m_Curve:
