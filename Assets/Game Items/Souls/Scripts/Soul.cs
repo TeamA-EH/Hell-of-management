@@ -60,7 +60,11 @@ namespace HOM
                 if(Input.GetMouseButtonDown(0) && GetSelectedSoul() != null)
                 {
                     var selection = GetSelectedSoul();
-                    if(!selection) return;
+                    if(!selection) 
+                    {
+                        Debug.Log("Invalid Soul selection!");
+                        return;
+                    }
                     
                     SoulsStorage.self.storedSouls.Remove(selection);
                     
@@ -77,7 +81,11 @@ namespace HOM
                 else if(Input.GetMouseButtonDown(1) && GetSelectedSoul() != null)
                 {
                     var selection = GetSelectedSoul();
-                    if(!selection) return;
+                    if(!selection) 
+                    {
+                        Debug.Log("Invalid soul selection!");
+                        return;
+                    }
 
                     SoulsStorage.self.storedSouls.Remove(selection);
 
@@ -137,11 +145,11 @@ namespace HOM
         {
             Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            Debug.DrawLine(Camera.main.transform.position, Input.mousePosition, Color.red, 10f);
             if(Physics.Raycast(r, out hit))
             {
                 if(hit.collider.gameObject.GetComponent<Soul>())
                 {
+                    Debug.Log($"Tag: {hit.collider.gameObject.GetComponent<Soul>().Tag}");
                     return hit.collider.gameObject;       
                 }
                 else

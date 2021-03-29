@@ -70,7 +70,7 @@ namespace HOM
         public void BindSoul(uint soulTag)
         {
             UnbindBindedItem();
-            soulAssets[soulTag - 1].SetActive(true);
+            //soulAssets[soulTag - 1].SetActive(true);
 
             switch(soulTag)
             {
