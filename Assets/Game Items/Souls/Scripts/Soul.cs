@@ -62,8 +62,12 @@ namespace HOM
                     var selection = GetSelectedSoul();
                     if(!selection) 
                     {
-                        Debug.Log("Invalid Soul selection!");
+                        Debug.LogError("Invalid Soul selection!");
                         return;
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"soul tag: {selection.GetComponent<Soul>().Tag}");
                     }
                     
                     SoulsStorage.self.storedSouls.Remove(selection);
@@ -71,10 +75,12 @@ namespace HOM
                     StopBehaviourTree();
                     SetEnvironment(false);
 
+                    Soul soul = selection.GetComponent<Soul>();
+
                     uint type = 0;
-                    if(Tag == SoulsManager.SOUL_TAG_RED) type = 0;
-                    else if(Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
-                    else if(Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
+                    if(soul.Tag == SoulsManager.SOUL_TAG_RED) type = 0;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
 
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 0, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
                 }
@@ -83,8 +89,12 @@ namespace HOM
                     var selection = GetSelectedSoul();
                     if(!selection) 
                     {
-                        Debug.Log("Invalid soul selection!");
+                        Debug.LogError("Invalid soul selection!");
                         return;
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"soul tag: {selection.GetComponent<Soul>().Tag}");
                     }
 
                     SoulsStorage.self.storedSouls.Remove(selection);
@@ -92,10 +102,12 @@ namespace HOM
                     StopBehaviourTree();
                     SetEnvironment(false);
 
+                    Soul soul = selection.GetComponent<Soul>();
+
                     uint type = 0;
-                    if(Tag == SoulsManager.SOUL_TAG_RED) type = 0;
-                    else if(Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
-                    else if(Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
+                    if      (soul.Tag == SoulsManager.SOUL_TAG_RED) type = 0;
+                    else if (soul.Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
+                    else if (soul.Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
 
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 1, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
                 }
