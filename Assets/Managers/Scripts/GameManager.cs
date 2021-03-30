@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HOM;
 
 [RequireComponent(typeof (Animator))]
 public class GameManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     Animator animator;
     static GameManager self;
 
+    [SerializeField] LevelData levelsData;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     void OnEndTimer(Timer sender, float currentTime)
     {
-        if (Score.self.targetProgress >= Score.self.enoughToWin)
+        if (Score.self.targetProgress >= levelsData.GetLevel(0).firstStarScore)
             WinLevel();
         else
             LoseLevel();
