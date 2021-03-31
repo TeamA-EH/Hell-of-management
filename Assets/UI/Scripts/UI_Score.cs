@@ -11,61 +11,66 @@ public class UI_Score : MonoBehaviour
     [SerializeField] Image star3;
     [SerializeField] Image fillImg;
 
+    #region Unity Callbacks
     public void Awake()
     {
+        Init();
+    }
+    void OnDisable()
+    {
+        Score.OnProgressChanged -= UpdateGraphics;
+    }
+    #endregion
+
+    void Init()
+    {
+        /* RESETS GFX */
         fillImg.fillAmount = 0;
         scoreText.text = $"Score: {0}";
+
+        Score.OnProgressChanged+=UpdateGraphics;
     }
 
-    private void Update()
+    public void UpdateGraphics(Score sender, float score)
     {
-        LightStar();
-        if (Input.GetKeyDown("space"))
+        if(score <= levelData.GetLevel(0).firstStarScore)
         {
-            IncreaseBarAmout();
-        }
-    }
+            scoreText.text = "Score: " + score;
+            fillImg.fillAmount = score / (float)levelData.GetLevel(0).thirdStarScore;
+            
+            if(score == (float)levelData.GetLevel(0).firstStarScore)
+            {
+                Debug.Log("Light star 1");
+                LightStar(ref star1, Color.white);
+            }
 
-    public void IncreaseBarAmout()
-    {
-        float progress = Score.self.targetProgress;
-        float amount2Increase = 0.0f;
-
-        if(progress < levelData.GetLevel(0).firstStarScore)
-        {
-            amount2Increase = 20 / (float)levelData.GetLevel(0).thirdStarScore;
-            Score.self.targetProgress += 20;
-            scoreText.text = "Score: " + Score.self.targetProgress;
-            fillImg.fillAmount = Score.self.targetProgress / (float)levelData.GetLevel(0).thirdStarScore;
             return;
         }
-        else if(progress >= levelData.GetLevel(0).firstStarScore && progress < levelData.GetLevel(0).secondStarScore)
+        else if(score > levelData.GetLevel(0).firstStarScore && score <= levelData.GetLevel(0).secondStarScore)
         {
-            amount2Increase = 5 / (float)levelData.GetLevel(0).thirdStarScore;
-            Score.self.targetProgress += 5;
-            scoreText.text = "Score: " + Score.self.targetProgress;
-            fillImg.fillAmount = Score.self.targetProgress / (float)levelData.GetLevel(0).thirdStarScore;
+            scoreText.text = "Score: " + score;
+            fillImg.fillAmount = score / (float)levelData.GetLevel(0).thirdStarScore;
+
+            if(score == (float)levelData.GetLevel(0).secondStarScore)
+            {
+                LightStar(ref star2, Color.white);
+            }
+
             return;
         }
-        else if (progress >= levelData.GetLevel(0).secondStarScore && progress < levelData.GetLevel(0).thirdStarScore)
+        else if (score > levelData.GetLevel(0).secondStarScore && score <= levelData.GetLevel(0).thirdStarScore)
         {
-            amount2Increase = 2.5f / (float)levelData.GetLevel(0).thirdStarScore;
-            Score.self.targetProgress += 2.5f;
-            scoreText.text = "Score: " + Score.self.targetProgress;
-            fillImg.fillAmount = Score.self.targetProgress / (float)levelData.GetLevel(0).thirdStarScore;
+            scoreText.text = "Score: " + score;
+            fillImg.fillAmount = score / (float)levelData.GetLevel(0).thirdStarScore;
+
+            if(score == (float)levelData.GetLevel(0).thirdStarScore)
+            {
+                LightStar(ref star3, Color.white);
+            }
+
             return;
         }
     }
 
-    public void LightStar()
-    {
-        if (Score.self.targetProgress >= (float)levelData.GetLevel(0).firstStarScore)
-            star1.color = new Color(255, 255, 255);
-        
-        if (Score.self.targetProgress >= (float)levelData.GetLevel(0).secondStarScore)
-            star2.color = new Color(255, 255, 255);
-
-        if (Score.self.targetProgress >= (float)levelData.GetLevel(0).thirdStarScore)
-            star3.color = new Color(255, 255, 255);
-    }
+    public void LightStar(ref Image star, Color color) => star.color = color;
 }

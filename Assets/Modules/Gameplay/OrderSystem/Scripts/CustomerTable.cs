@@ -37,6 +37,9 @@ namespace HOM
                             order.Customer.GetComponent<Animator>().SetTrigger("Take Order");
                             order.gameObject.SetActive(false);
                             plate.gameObject.SetActive(false);
+
+                            Score.self.AddScore(100);
+
                             return;
                         }
                         else    //Wrong Plate
