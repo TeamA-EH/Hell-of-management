@@ -27,6 +27,7 @@ namespace HOM
                 case 0: //Red soul
 
                     projectile = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_RED, position);
+                     projectile.GetComponent<Soul>().Init();
                     projectile.GetComponent<Soul>().SetEnvironment(false);
                     projectile.GetComponent<Soul>().ExecuteBehaviourTree();
                     projectile.GetComponent<Soul>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
@@ -39,6 +40,7 @@ namespace HOM
                 case 1://Green soul
 
                     projectile = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_GREEN, position);
+                     projectile.GetComponent<Soul>().Init();
                     projectile.GetComponent<Soul>().SetEnvironment(false);
                     projectile.GetComponent<Soul>().ExecuteBehaviourTree();
                     projectile.GetComponent<Soul>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
@@ -50,6 +52,7 @@ namespace HOM
                 case 2://Blue soul
 
                     projectile = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_BLUE, position);
+                     projectile.GetComponent<Soul>().Init();
                     projectile.GetComponent<Soul>().SetEnvironment(false);
                     projectile.GetComponent<Soul>().ExecuteBehaviourTree();
                     projectile.GetComponent<Soul>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
