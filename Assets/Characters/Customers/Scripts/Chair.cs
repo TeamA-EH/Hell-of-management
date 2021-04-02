@@ -6,6 +6,9 @@ namespace HOM
     {
         [Tooltip(" Activatable GFX for male and female customers ")]
         [SerializeField] GameObject maleCustomerGFX, femaleCustomerGFX;
+        [SerializeField] Transform plateOffset;
+        public Transform PlateOffset => plateOffset;
+        public GameObject RegistredPlate {private set; get;} = null;
         public bool IsLocked {private set; get;} = false;
 
         public void Lock() => IsLocked = true;
@@ -36,20 +39,12 @@ namespace HOM
             }
         }
 
-        ///<summary> TODO: Deactivates sitted customer graphics </summary>
-        public void DisableCustomerGFX()
+        public void RegisterPlate(GameObject plate)
         {
-
+            RegistredPlate = plate;
         }
 
-        void OnGraphicsEnabled()
-        {
+        public void UnregisterPlate() => RegistredPlate = null;
 
-        }
-
-        void OnGraphicsDisabled()
-        {
-
-        }
     }
 }

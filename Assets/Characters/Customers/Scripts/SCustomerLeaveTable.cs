@@ -11,6 +11,9 @@ namespace HOM
 
             GameObject customer = null;
 
+            animator.gameObject.GetComponentInParent<Chair>().RegistredPlate.SetActive(false);
+            animator.gameObject.GetComponentInParent<Chair>().UnregisterPlate();
+
             /* SPAWN MOVABLE CUSTOMER */
             if(target.gameObject.name == "Female_Customer_Sitted")
             {

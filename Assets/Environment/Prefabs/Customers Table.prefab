@@ -72,6 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maleCustomerGFX: {fileID: 1071672742582724012}
   femaleCustomerGFX: {fileID: 642887502363096286}
+  plateOffset: {fileID: 220867692499492267}
 --- !u!114 &2022117896146914773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86,6 +87,97 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maleCustomerGFX: {fileID: 1423170066409889542}
   femaleCustomerGFX: {fileID: 7922095013637912628}
+  plateOffset: {fileID: 7240546371568745608}
+--- !u!1 &2427050543517480604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 220867692499492267}
+  m_Layer: 0
+  m_Name: plate handle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &220867692499492267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2427050543517480604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1397786580372855421}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4274154916031877243
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7240546371568745608}
+  m_Layer: 0
+  m_Name: plate handle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7240546371568745608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274154916031877243}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.8, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1375476313207544493}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4617438022583502662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6472339941865804383}
+  m_Layer: 0
+  m_Name: plate handle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6472339941865804383
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4617438022583502662}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6356769306181807181}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5703717273748275558
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,6 +227,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maleCustomerGFX: {fileID: 7471087295677435054}
   femaleCustomerGFX: {fileID: 755440453809606545}
+  plateOffset: {fileID: 6472339941865804383}
+--- !u!1 &7967386742154389726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5639447859671933471}
+  m_Layer: 0
+  m_Name: plate handle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5639447859671933471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7967386742154389726}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9213215350135468621}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &997084562561682693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maleCustomerGFX: {fileID: 5553024380357462252}
   femaleCustomerGFX: {fileID: 2213575157256748091}
+  plateOffset: {fileID: 5639447859671933471}
 --- !u!1001 &844915599835518675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1095,15 +1219,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ad0ddf629fa0b14b98b06d4683ad855, type: 3}
---- !u!1 &6015710335793821431 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ad0ddf629fa0b14b98b06d4683ad855,
-    type: 3}
-  m_PrefabInstance: {fileID: 6898794983213484966}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6356769306181807181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6ad0ddf629fa0b14b98b06d4683ad855,
+    type: 3}
+  m_PrefabInstance: {fileID: 6898794983213484966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6015710335793821431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6ad0ddf629fa0b14b98b06d4683ad855,
     type: 3}
   m_PrefabInstance: {fileID: 6898794983213484966}
   m_PrefabAsset: {fileID: 0}

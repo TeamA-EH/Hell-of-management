@@ -11,7 +11,7 @@ namespace HOM
         #region Unity Callbacks
         void Start()
         {
-
+            Init();
         }
         void OnTriggerEnter(Collider collider)
         {
@@ -33,10 +33,12 @@ namespace HOM
                         if(IsRightOrder(order, plate))
                         {
                             Debug.Log("Correct Order");
+                            plate.gameObject.transform.position = order.Customer.GetComponentInParent<Chair>().PlateOffset.position;
+                            order.Customer.GetComponentInParent<Chair>().RegisterPlate(plate.gameObject);
+                            plate.gameObject.GetComponent<Plate>().DisablePhysics();
                             order.Customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
                             order.Customer.GetComponent<Animator>().SetTrigger("Take Order");
                             order.gameObject.SetActive(false);
-                            plate.gameObject.SetActive(false);
 
                             Score.self.AddScore(100);
 
@@ -45,10 +47,11 @@ namespace HOM
                         else    //Wrong Plate
                         {
                             Debug.Log("Wrong Order");
-                            order.Customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
-                            order.Customer.GetComponent<Animator>().SetTrigger("Leave Table");
-                            order.gameObject.SetActive(false);
-                            plate.gameObject.SetActive(false);
+                            //order.Customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
+                            //order.Customer.GetComponent<Animator>().SetTrigger("Leave Table");
+                            //order.gameObject.SetActive(false);
+                            plate.gameObject.transform.position = order.Customer.GetComponentInParent<Chair>().PlateOffset.position;
+                            plate.gameObject.GetComponent<Plate>().DisablePhysics();
                             return;
                         }
 
