@@ -46,7 +46,8 @@ namespace HOM
                         }
                         else    //Wrong Plate
                         {
-                            Debug.Log("Wrong Order");
+                            Debug.Log($"Wrong Order: \n\n Order Type: {order.Type}\n Order red Souls: {order.RedSouls} \n Order Green Souls: {order.GreenSouls} \n Order Blue Souls: {order.BlueSouls}\n\n "
+                            +$"Plate Type: {plate.Type} \n Plate Red Souls: {plate.RedSouls} \n Plate Green Souls: {plate.GreenSouls} \n Plate Blue Souls: {plate.BlueSouls} \n\n");
                             //order.Customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
                             //order.Customer.GetComponent<Animator>().SetTrigger("Leave Table");
                             //order.gameObject.SetActive(false);
