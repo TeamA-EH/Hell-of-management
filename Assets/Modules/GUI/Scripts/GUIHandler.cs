@@ -9,6 +9,7 @@ namespace HOM
         void Start(){
 
             DontDestroyOnLoad(this);
+            ActivatesMenu("Main Menu");
         }
        #endregion
 
