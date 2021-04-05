@@ -120,9 +120,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1541720891235778034}
-        m_MethodName: GoBack
-        m_Mode: 1
+      - m_Target: {fileID: 8897685260653827451}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -141,7 +141,7 @@ Animator:
   m_GameObject: {fileID: 8897685259686869435}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 1043d6d59e43ab644b4b00b9222eeeca, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -426,7 +426,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1541720891235778034}
+      - m_Target: {fileID: 2202030309171714080, guid: d99695cc31496884088a1503dd1b701a,
+          type: 3}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -447,7 +448,7 @@ Animator:
   m_GameObject: {fileID: 8897685260275301759}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 1043d6d59e43ab644b4b00b9222eeeca, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -539,7 +540,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8897685260653827450}
-  - component: {fileID: 1541720891235778034}
   m_Layer: 5
   m_Name: Quit Menu (Padding)
   m_TagString: Untagged
@@ -569,18 +569,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -382}
   m_SizeDelta: {x: 726, y: 328}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &1541720891235778034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8897685260653827451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bed7e1765396f541b0b72068b403acb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8897685261649862123
 GameObject:
   m_ObjectHideFlags: 0

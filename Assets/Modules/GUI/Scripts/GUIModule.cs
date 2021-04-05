@@ -36,9 +36,9 @@ namespace HOM.Modules
             SetMenuResource("Settings Menu", ref SettingsMenuAsset);
             SetMenuResource("Controls Menu", ref ControlsMenuAsset);
             SetMenuResource("Credits Menu", ref CreditsMenuAsset);
-            SetMenuResource("Pause Menu", ref PauseMenuAsset);
-            SetMenuResource("Quit Menu", ref QuitMenuAsset);
+            SetMenuResource("Quit Menu", ref PauseMenuAsset);
             SetMenuResource("Review Menu", ref ReviewMenuAsset);
+            SetMenuResource("Upgrade Menu", ref PauseMenuAsset);
             SetMenuResource("Day Replay Menu", ref DayReplayMenuAsset);
             
             self = this;
