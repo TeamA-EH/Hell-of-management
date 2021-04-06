@@ -1123,17 +1123,17 @@ PrefabInstance:
     - target: {fileID: 9088624591785863066, guid: 34d8bb6df0c1d544bb69a34144259a07,
         type: 3}
       propertyPath: m_PreserveAspect
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9088624592142771203, guid: 34d8bb6df0c1d544bb69a34144259a07,
         type: 3}
       propertyPath: m_PreserveAspect
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9088624592358612886, guid: 34d8bb6df0c1d544bb69a34144259a07,
         type: 3}
       propertyPath: m_PreserveAspect
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9088624592649950083, guid: 34d8bb6df0c1d544bb69a34144259a07,
         type: 3}
