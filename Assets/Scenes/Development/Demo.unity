@@ -121,6 +121,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: ce6d1081868a4764cb7d764da9e23362, type: 2}
+--- !u!1001 &173413181
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 841006507496354263, guid: 5f43ab36794c044458f2badc6cebab68,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 841006507496354263, guid: 5f43ab36794c044458f2badc6cebab68,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 841006507496354263, guid: 5f43ab36794c044458f2badc6cebab68,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 841006507496354263, guid: 5f43ab36794c044458f2badc6cebab68,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 841006507496354263, guid: 5f43ab36794c044458f2badc6cebab68,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 841006507496354263, guid: 5f43ab36794c044458f2badc6cebab68,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 841006507496354263, guid: 5f43ab36794c044458f2badc6cebab68,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 841006507496354263, guid: 5f43ab36794c044458f2badc6cebab68,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 841006507496354263, guid: 5f43ab36794c044458f2badc6cebab68,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 841006507496354263, guid: 5f43ab36794c044458f2badc6cebab68,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 841006507496354263, guid: 5f43ab36794c044458f2badc6cebab68,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610555216238399550, guid: 5f43ab36794c044458f2badc6cebab68,
+        type: 3}
+      propertyPath: m_Name
+      value: QuickRestartScene
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f43ab36794c044458f2badc6cebab68, type: 3}
 --- !u!1 &405901146
 GameObject:
   m_ObjectHideFlags: 0
