@@ -119,6 +119,30 @@ namespace HOM
             return result;
         }
 
+        public static uint GetDrinkOrdersCount()
+        {
+            uint result = 0;
+
+            foreach(var item in self.orders)
+            {
+                if(item.GetComponent<Order>().Type == 2) result++;
+            }
+
+            return result;
+        }
+
+        public static uint GetDishOrderCount()
+        {
+            uint result = 0;
+
+            foreach(var item in self.orders)
+            {
+                if(item.GetComponent<Order>().Type == 1) result++;
+            }
+
+            return result;
+        }
+
         public static GameObject[] GetActiveOrders()
         {
             List<GameObject> result = new List<GameObject>();

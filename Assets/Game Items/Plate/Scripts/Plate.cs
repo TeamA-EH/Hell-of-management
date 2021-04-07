@@ -106,12 +106,16 @@ namespace HOM
 
         public void UpdateGFX()
         {
+            ResetGFX();
+
             if(type == 1)
             {
                 dishGFX.SetActive(true);
+                //drinkGFX.SetActive(false);
             }
             else if(type == 2)
             {
+                //dishGFX.SetActive(false);
                 drinkGFX.SetActive(true);
             }
         }

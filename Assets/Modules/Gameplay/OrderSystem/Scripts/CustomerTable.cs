@@ -30,32 +30,81 @@ namespace HOM
                             return;
                         }
 
-                        if(IsRightOrder(order, plate))
+                        /* CHECK ALL ORDERS */
+                        foreach(var item in OrdersManager.GetActiveOrders())
                         {
-                            Debug.Log("Correct Order");
-                            plate.gameObject.transform.position = order.Customer.GetComponentInParent<Chair>().PlateOffset.position;
-                            order.Customer.GetComponentInParent<Chair>().RegisterPlate(plate.gameObject);
-                            plate.gameObject.GetComponent<Plate>().DisablePhysics();
-                            order.Customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
-                            order.Customer.GetComponent<Animator>().SetTrigger("Take Order");
-                            order.gameObject.SetActive(false);
+                            if(IsRightOrder(item.GetComponent<Order>(), plate))
+                            {
+                                Debug.Log("Correct Order");
+                                plate.gameObject.transform.position = order.Customer.GetComponentInParent<Chair>().PlateOffset.position;
+                                order.Customer.GetComponentInParent<Chair>().RegisterPlate(plate.gameObject);
+                                plate.DisablePhysics();
+                                item.GetComponent<Order>().Customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
+                                item.GetComponent<Order>().Customer.GetComponent<Animator>().SetTrigger("Take Order");
+                                item.SetActive(false);
 
-                            Score.self.AddScore(100);
+                                Score.self.AddScore(100);
 
-                            return;
+                                return;
+                            }
                         }
-                        else    //Wrong Plate
-                        {
-                            Debug.Log($"Wrong Order: \n\n Order Type: {order.Type}\n Order red Souls: {order.RedSouls} \n Order Green Souls: {order.GreenSouls} \n Order Blue Souls: {order.BlueSouls}\n\n "
+
+                        Debug.Log($"Wrong Order: \n\n Order Type: {order.Type}\n Order red Souls: {order.RedSouls} \n Order Green Souls: {order.GreenSouls} \n Order Blue Souls: {order.BlueSouls}\n\n "
                             +$"Plate Type: {plate.Type} \n Plate Red Souls: {plate.RedSouls} \n Plate Green Souls: {plate.GreenSouls} \n Plate Blue Souls: {plate.BlueSouls} \n\n");
-                            //order.Customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
-                            //order.Customer.GetComponent<Animator>().SetTrigger("Leave Table");
-                            //order.gameObject.SetActive(false);
-                            plate.gameObject.transform.position = order.Customer.GetComponentInParent<Chair>().PlateOffset.position;
-                            plate.gameObject.GetComponent<Plate>().DisablePhysics();
-                            return;
-                        }
 
+                        if(AnyDrinkOrder() && plate.Type == 2)
+                        {
+                            if(OrdersManager.GetDrinkOrdersCount() > 1)
+                            {
+                                plate.gameObject.transform.position = OrdersManager.GetActiveOrders()[UnityEngine.Random.Range(0, OrdersManager.GetActiveOrders().Length - 1)].GetComponent<Order>().Customer.GetComponentInParent<Chair>().PlateOffset.transform.position;
+                                plate.DisablePhysics();
+                            }
+                            else
+                            {
+                                foreach(var item in OrdersManager.GetActiveOrders())
+                                {
+                                    if(item.GetComponent<Order>().Type == 2)
+                                    {
+                                        plate.gameObject.transform.position = item.GetComponent<Order>().Customer.GetComponentInParent<Chair>().PlateOffset.transform.position;
+                                        plate.DisablePhysics();
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                        else if(AnyDishOrder() && plate.Type == 1)
+                        {
+                            if(OrdersManager.GetDishOrderCount() > 1)
+                            {
+                                var radnomIndex = 0;
+                                for(int i = 0; i < OrdersManager.GetActiveOrders().Length; i++)
+                                {
+                                    if(i == radnomIndex)
+                                    {
+                                        plate.gameObject.transform.position = OrdersManager.GetActiveOrders()[i].GetComponent<Order>().Customer.GetComponentInParent<Chair>().PlateOffset.transform.position;
+                                        plate.DisablePhysics();
+                                        return;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                foreach(var item in OrdersManager.GetActiveOrders())
+                                {
+                                    if(item.GetComponent<Order>().Type == 1)
+                                    {
+                                        plate.gameObject.transform.position = item.GetComponent<Order>().Customer.GetComponentInParent<Chair>().PlateOffset.transform.position;
+                                        plate.DisablePhysics();
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Debug.LogWarning("Attention! Can't define the plate type");
+                            return;
+                        }               
 
                     }
                     else    //The wrong table
@@ -81,6 +130,26 @@ namespace HOM
                 {
                     return true;
                 }
+            }
+
+            return false;
+        }
+
+        bool AnyDishOrder()
+        {
+            foreach(var order in OrdersManager.GetActiveOrders())
+            {
+                if(order.GetComponent<Order>().Type == 1) return true;
+            }
+
+            return false;
+        }
+
+        bool AnyDrinkOrder()
+        {
+            foreach (var order in OrdersManager.GetActiveOrders())
+            {
+                if(order.GetComponent<Order>().Type == 2) return true;
             }
 
             return false;
