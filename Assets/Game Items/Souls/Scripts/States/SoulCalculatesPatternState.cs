@@ -29,16 +29,6 @@ namespace HOM
            
         }
 
-        bool isOutsideTheRange(Vector3 position)
-        {
-            Vector3 center = SoulsStorage.self.gameObject.transform.position;
-            Vector2 size = SoulsStorage.self.RoomSize;
-
-            if((position.x > center.x + size.x && position.x < center.x - size.x) &&
-                (position.z > center.z + size.y && position.z < center.z - size.y)) return false;
-                else return true;
-        }
-
         Vector3 GetFreeDirection(GameObject target)
         {
             RaycastHit hit;
