@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Drink Machine Data
   m_EditorClassIdentifier: 
   containerSize: 3
-  processingTime: 2
+  processingTime: 0.1
   input: 1
   output: 1
   outputAsset: {fileID: 4583097593365036407, guid: 3a8efcc100349a54ab4aba2699c29379,
