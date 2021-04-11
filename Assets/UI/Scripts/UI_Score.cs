@@ -51,7 +51,7 @@ public class UI_Score : MonoBehaviour
             scoreText.text = "Score: " + score;
             fillImg.fillAmount = score / (float)levelData.GetLevel(0).thirdStarScore;
 
-            if(score == (float)levelData.GetLevel(0).secondStarScore)
+            if(score >= (float)levelData.GetLevel(0).secondStarScore)
             {
                 LightStar(ref star2, Color.white);
             }
@@ -63,7 +63,7 @@ public class UI_Score : MonoBehaviour
             scoreText.text = "Score: " + score;
             fillImg.fillAmount = score / (float)levelData.GetLevel(0).thirdStarScore;
 
-            if(score == (float)levelData.GetLevel(0).thirdStarScore)
+            if(score >= (float)levelData.GetLevel(0).thirdStarScore)
             {
                 LightStar(ref star3, Color.white);
             }
