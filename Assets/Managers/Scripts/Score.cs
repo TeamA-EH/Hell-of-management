@@ -14,6 +14,14 @@ public class Score : MonoBehaviour
         Init();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            AddScore(500);
+        }
+    }
+
     void Init()
     {
         self = this;
@@ -21,7 +29,7 @@ public class Score : MonoBehaviour
 
     public void AddScore(float score)
     {
-        targetProgress = Mathf.Clamp(targetProgress + score, 0, 1000);
+        targetProgress = Mathf.Clamp(targetProgress + score, 0, 66666666);
         OnProgressChanged?.Invoke(this, targetProgress);
     }
 }
