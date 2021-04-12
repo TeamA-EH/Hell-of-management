@@ -14,14 +14,6 @@ public class Score : MonoBehaviour
         Init();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Tab))
-        {
-            AddScore(500);
-        }
-    }
-
     void Init()
     {
         self = this;

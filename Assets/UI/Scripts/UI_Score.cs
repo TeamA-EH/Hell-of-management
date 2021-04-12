@@ -46,19 +46,30 @@ public class UI_Score : MonoBehaviour
             return;
         }
 
-        else if (score <= levelData.GetLevel(0).thirdStarScore)
+        else if (score > levelData.GetLevel(0).firstStarScore && score <= levelData.GetLevel(0).secondStarScore)
+        {
+            scoreText.text = "Score: " + score;
+            fillImg.fillAmount = score / (float)levelData.GetLevel(0).thirdStarScore;
+
+            if (score >= levelData.GetLevel(0).secondStarScore)
+            {
+                LightStar(ref star1, Color.white);
+                LightStar(ref star2, Color.white);
+            }
+
+            return;
+        }
+
+        else if (score > 750 && score <= levelData.GetLevel(0).thirdStarScore)
         {
             scoreText.text = "Score: " + score;
             fillImg.fillAmount = score / (float)levelData.GetLevel(0).thirdStarScore;
 
             if(score >= (float)levelData.GetLevel(0).thirdStarScore)
             {
-                LightStar(ref star3, Color.white);
-            }
-            //This is spaghetti code.. (non prende dal level data il second star code)
-            if(score >= 750)
-            {
+                LightStar(ref star1, Color.white);
                 LightStar(ref star2, Color.white);
+                LightStar(ref star3, Color.white);
             }
 
             return;
