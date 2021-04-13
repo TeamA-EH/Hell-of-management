@@ -1,8 +1,11 @@
 fileFormatVersion: 2
-guid: 9dfcd86f9056cfc4faef64a2ee20b818
+guid: e76c5a09bec095446a17af955bcb2732
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -3177658853614425876
+    second: Drunk Idle Var
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -69,7 +72,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 0
+  importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
@@ -82,7 +85,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: Garth_Base_DO_NOT_MODIFY_CTRL_GRP
+    rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
@@ -90,7 +93,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
