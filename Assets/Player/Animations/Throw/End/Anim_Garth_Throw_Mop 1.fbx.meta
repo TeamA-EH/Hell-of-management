@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 30febac14cae3cc40a3c35767382587a
+guid: 0703233d72c07e84fb7e784310499c17
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
-      74: -1369991819209655126
-    second: Throw Left Arm Right Free End
+      74: 8905051074534178921
+    second: Throw Mop End
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Throw Left Arm Right Free End
-      takeName: Throw Left Arm Right Free
+      name: Throw Mop End
+      takeName: Throw Mop
       internalID: 0
-      firstFrame: 52
-      lastFrame: 131
+      firstFrame: 353
+      lastFrame: 431
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -62,7 +62,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 300
     isReadable: 0
   meshes:
     lODScreenPercentages: []

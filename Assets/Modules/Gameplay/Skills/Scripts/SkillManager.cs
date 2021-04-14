@@ -129,7 +129,11 @@ namespace HOM
                         var throwSkill = GetSKill(SK_THROW) as ThrowSkill;
                         throwSkill.OverrideSkillInfo(hands[hand].holdedItemIndex, hand, hands[hand].gameObject.transform.position, Quaternion.identity);
 
-                        //Inserire qui il RECORD per le animazioni
+                         if(hand == 0 && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Throw ID", 0);
+                        else if(hand == 0 && !C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Throw ID", 2);
+                        else if(hand == 1 && C_Garth.self.PlayerHands[0].m_canBind) C_Garth.self.AnimationController.SetFloat("Throw ID", 1);
+                        else if(hand == 1 && !C_Garth.self.PlayerHands[0].m_canBind) C_Garth.self.AnimationController.SetFloat("Throw ID", 3);
+                        C_Garth.self.AnimationController.SetTrigger("Start Throw");
 
                         character.gameObject.GetComponent<Animator>().SetTrigger("Throw");
                         OnSuccess?.Invoke();

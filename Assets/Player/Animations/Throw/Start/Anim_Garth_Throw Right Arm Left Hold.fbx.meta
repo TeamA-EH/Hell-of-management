@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 82923910f6e640340b756d73adf9e1c6
+guid: 4bc80ffb81fb38746895b3f4f9a6456b
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
-      74: 2937673844578888663
-    second: Throw Left Arm Right Hold
+      74: 2349350275804731342
+    second: Throw Right Arm Left Hold Start
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -33,7 +33,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Throw Right Arm Left Hold Start
+      takeName: Throw Right Arm Left Hold
+      internalID: 0
+      firstFrame: 150
+      lastFrame: 203
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 150
     isReadable: 0
   meshes:
     lODScreenPercentages: []
