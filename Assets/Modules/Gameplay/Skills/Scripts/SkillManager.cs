@@ -97,6 +97,7 @@ namespace HOM
             {
                 var skill = GetSKill(SK_PICKUP) as PickupSkill;
                 skill.OverridePickupInfos(obj, type, hand);
+                C_Garth.self.handIndexReques=(int)hand;
 
                 character.GetComponent<Animator>().SetTrigger("Pickup");
                 OnSuccess?.Invoke();
