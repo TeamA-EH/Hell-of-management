@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 5bf294a0993f94945ab1758b519a2da7
+guid: e3c8647c45136a24caad75d01ecdae6e
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
-      74: -662149418700001372
-    second: Drop Mop
+      74: -8943728362010233578
+    second: Drop Right Arm Left Free End
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -33,7 +33,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Drop Right Arm Left Free End
+      takeName: Drop Right Arm Left Free
+      internalID: 0
+      firstFrame: 60
+      lastFrame: 140
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []

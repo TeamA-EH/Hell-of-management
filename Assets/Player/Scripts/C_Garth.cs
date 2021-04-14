@@ -46,7 +46,9 @@ namespace HOM
         [Tooltip("Represent hands of this character")]
         [SerializeField] CharacterHand[] hands;  // Represents the player hands anchors
         public CharacterHand[] PlayerHands => hands;
-        public int handIndexReques = -1;
+        public int handIndexReques = -1;            // Registra la procedura di raccolta dell'oggetto
+        public int dropIndexRequest = -1;           // Registra la procedura di drop dell'oggetto
+        public int throwIndexRequest = -1;          // Registra la procedura di lancio dell'oggetto
 
         #region Unity Callbacks
         void Start()

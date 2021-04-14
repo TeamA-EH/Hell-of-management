@@ -128,6 +128,9 @@ namespace HOM
 
                         var throwSkill = GetSKill(SK_THROW) as ThrowSkill;
                         throwSkill.OverrideSkillInfo(hands[hand].holdedItemIndex, hand, hands[hand].gameObject.transform.position, Quaternion.identity);
+
+                        //Inserire qui il RECORD per le animazioni
+
                         character.gameObject.GetComponent<Animator>().SetTrigger("Throw");
                         OnSuccess?.Invoke();
 
@@ -136,6 +139,13 @@ namespace HOM
 
                         var dropSkill = GetSKill(SK_DROP) as DropSkill;
                         dropSkill.OverrideSkillInfo(hands[hand].holdedItemIndex, hand, hands[hand].gameObject.transform.position, Quaternion.identity);
+
+                        if(hand == 0 && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Drop ID", 0);
+                        else if(hand == 0 && !C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Drop ID", 2);
+                        else if(hand == 1 && C_Garth.self.PlayerHands[0].m_canBind) C_Garth.self.AnimationController.SetFloat("Drop ID", 1);
+                        else if(hand == 1 && !C_Garth.self.PlayerHands[0].m_canBind) C_Garth.self.AnimationController.SetFloat("Drop ID", 3);
+                        C_Garth.self.AnimationController.SetTrigger("Start Drop");
+
                         character.gameObject.GetComponent<Animator>().SetTrigger("Drop");
                         OnSuccess?.Invoke();
 

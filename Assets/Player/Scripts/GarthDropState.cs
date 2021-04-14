@@ -12,6 +12,8 @@ namespace HOM
             if(skill == null) skill = SkillManager.GetSKill(SkillManager.SK_DROP) as DropSkill;
             skill.Execute(() =>
             {
+                C_Garth.self.AnimationController.ResetTrigger("Start Drop");
+                C_Garth.self.AnimationController.SetTrigger("End Drop");
                 animator.ResetTrigger("Drop");
                 animator.SetTrigger("Wait");
             });
