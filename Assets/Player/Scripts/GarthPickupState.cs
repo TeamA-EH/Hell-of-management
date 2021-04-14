@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 namespace HOM
 {
     public class GarthPickupState : StateMachineBehaviour
@@ -12,6 +11,7 @@ namespace HOM
             skill.Execute(() =>
             {
                 MovementHandler.EnableCharacterRotation(animator.gameObject);
+                C_Garth.self.AnimationController.SetTrigger("End Pickup");
                 animator.SetTrigger("Wait");
             });
         }

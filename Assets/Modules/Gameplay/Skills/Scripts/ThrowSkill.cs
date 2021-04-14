@@ -32,8 +32,13 @@ namespace HOM
                     projectile.GetComponent<Soul>().ExecuteBehaviourTree();
                     projectile.GetComponent<Soul>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
 
-
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(1));
+
+                     /* Sets Movement ID */
+                    if(C_Garth.self.PlayerHands[0].m_canBind && !C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 2);
+                    else if(!C_Garth.self.PlayerHands[0].m_canBind && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 1);
+                    else if(C_Garth.self.PlayerHands[0].m_canBind && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 0);
+
 
                     OnSkillCompleted?.Invoke();
                     return;
@@ -47,6 +52,12 @@ namespace HOM
 
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(2));
 
+                     /* Sets Movement ID */
+                    if(C_Garth.self.PlayerHands[0].m_canBind && !C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 2);
+                    else if(!C_Garth.self.PlayerHands[0].m_canBind && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 1);
+                    else if(C_Garth.self.PlayerHands[0].m_canBind && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 0);
+
+
                     OnSkillCompleted?.Invoke();
                     return;
                 case 2://Blue soul
@@ -59,6 +70,12 @@ namespace HOM
 
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(3));
 
+                     /* Sets Movement ID */
+                    if(C_Garth.self.PlayerHands[0].m_canBind && !C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 2);
+                    else if(!C_Garth.self.PlayerHands[0].m_canBind && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 1);
+                    else if(C_Garth.self.PlayerHands[0].m_canBind && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 0);
+
+
                     OnSkillCompleted?.Invoke();
                     return;
                     case 3:
@@ -67,6 +84,12 @@ namespace HOM
                     projectile.GetComponent<Plate>().EnablePhysics();
                     projectile.GetComponent<Plate>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
 
+                     /* Sets Movement ID */
+                    if(C_Garth.self.PlayerHands[0].m_canBind && !C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 2);
+                    else if(!C_Garth.self.PlayerHands[0].m_canBind && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 1);
+                    else if(C_Garth.self.PlayerHands[0].m_canBind && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 0);
+
+
                     OnSkillCompleted?.Invoke();
                     return;
                     case 4:
@@ -74,6 +97,12 @@ namespace HOM
                     projectile.GetComponent<Plate>().Init();
                     projectile.GetComponent<Plate>().EnablePhysics();
                     projectile.GetComponent<Plate>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
+
+                     /* Sets Movement ID */
+                    if(C_Garth.self.PlayerHands[0].m_canBind && !C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 2);
+                    else if(!C_Garth.self.PlayerHands[0].m_canBind && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 1);
+                    else if(C_Garth.self.PlayerHands[0].m_canBind && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 0);
+
 
                     OnSkillCompleted?.Invoke();
                     return;

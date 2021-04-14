@@ -11,6 +11,7 @@ namespace HOM
         {
             if(!controller) controller = animator.gameObject.GetComponent<C_Garth>();
             if(dash == null) dash = SkillManager.GetSKill(SkillManager.SK_DASH) as DashSkill;
+            //controller.AnimationController.SetTrigger("Run");
         }
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {

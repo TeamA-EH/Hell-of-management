@@ -32,7 +32,8 @@ namespace HOM
             var menu = GUIModule.GetMenues()[_menuName];
             if(menu)
             {
-                menu.GetComponent<Animator>().SetTrigger("Pop-Out");
+                //menu.GetComponent<Animator>().SetTrigger("Pop-Out"); --> IMPLEMENTARE SUCCESSIVAMENTE (Alessio)
+                menu.SetActive(false);
 
                 return true;
             }

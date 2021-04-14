@@ -11,6 +11,8 @@ namespace HOM
     {
         public static C_Garth self {private set; get;}                // Singleton Reference
         CharacterController cc;
+        [SerializeField]Animator animation_controller;
+        public Animator AnimationController => animation_controller;
 
         /* MOVEMENT SETTIGS */
         internal CharacterMovementData movementSettings;
@@ -61,6 +63,8 @@ namespace HOM
             {
                 SkillManager.SendObjectReleaseRequest(gameObject, 1);
             }
+
+            animation_controller.SetFloat("speed", Mathf.Clamp(cc.velocity.magnitude,0,1));
         }
         #endregion
 
@@ -115,6 +119,7 @@ namespace HOM
             cc.Move(
                 ((direction * (speed - itemWeight)) + (gravityForce + environmentForce)) * Time.deltaTime
             );
+
         }
 
         ///<summary> Accellerates character movement until the max accelleration is achieved</summary>

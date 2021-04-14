@@ -24,7 +24,8 @@ namespace HOM
         }
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-        
+
+            C_Garth.self.AnimationController.SetTrigger("Start Pickup");
         }
     }
 }

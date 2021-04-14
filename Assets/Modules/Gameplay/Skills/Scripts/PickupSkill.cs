@@ -19,14 +19,56 @@ namespace HOM
                 case 0: 
                     hand.BindSoul(SoulsManager.SOUL_TAG_RED);
                     MovementHandler.IncreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(1));
+
+                    /* SETUP ANIMATION ID*/
+                    if(handID == 0 && C_Garth.self.PlayerHands[1].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 1);
+                    }
+                    else if(handID == 1 && C_Garth.self.PlayerHands[0].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 2);
+                    }
+                    else
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 3);
+                    }
                 break;
                 case 1: 
                     hand.BindSoul(SoulsManager.SOUL_TAG_GREEN);
                     MovementHandler.IncreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(2));
+                    
+                    /* SETUP ANIMATION ID*/
+                    if(handID == 0 && C_Garth.self.PlayerHands[1].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 1);
+                    }
+                    else if(handID == 1 && C_Garth.self.PlayerHands[0].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 2);
+                    }
+                    else
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 3);
+                    }
                 break;
                 case 2: 
                     hand.BindSoul(SoulsManager.SOUL_TAG_BLUE);
                     MovementHandler.IncreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(3));
+                    
+                     /* SETUP ANIMATION ID*/
+                    if(handID == 0 && C_Garth.self.PlayerHands[1].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 1);
+                    }
+                    else if(handID == 1 && C_Garth.self.PlayerHands[0].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 2);
+                    }
+                    else
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 3);
+                    }
                 break;
                 case 3:
 
@@ -43,10 +85,38 @@ namespace HOM
                 case 7: // DISH PLATE
                     hand.BindPlate(1);
                     MovementHandler.IncreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(8));
+
+                     /* SETUP ANIMATION ID*/
+                    if(handID == 0 && C_Garth.self.PlayerHands[1].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 1);
+                    }
+                    else if(handID == 1 && C_Garth.self.PlayerHands[0].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 2);
+                    }
+                    else
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 3);
+                    }
                 break;
                 case 8: // DRINK PLATE
                     hand.BindPlate(2);
                     MovementHandler.IncreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(9));
+                    
+                    /* SETUP ANIMATION ID*/
+                    if(handID == 0 && C_Garth.self.PlayerHands[1].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 1);
+                    }
+                    else if(handID == 1 && C_Garth.self.PlayerHands[0].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 2);
+                    }
+                    else
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 3);
+                    }
                 break;
             }
 

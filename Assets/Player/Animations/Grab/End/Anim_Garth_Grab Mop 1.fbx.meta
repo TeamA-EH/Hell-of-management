@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: a6710784b4a216e42abd04db5b7cf971
+guid: b5991ba0f95b9c94bb74c436903fd7e3
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
-      74: 5906202726551003714
-    second: Idle Right Arm
+      74: 6817521314098798677
+    second: Grab Mop End
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,18 +35,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle Right Arm
-      takeName: Idle Right Arm
+      name: Grab Mop End
+      takeName: Grab Mop
       internalID: 0
-      firstFrame: 330
-      lastFrame: 649
+      firstFrame: 352
+      lastFrame: 440
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -62,7 +62,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 330
+      additiveReferencePoseFrame: 300
     isReadable: 0
   meshes:
     lODScreenPercentages: []

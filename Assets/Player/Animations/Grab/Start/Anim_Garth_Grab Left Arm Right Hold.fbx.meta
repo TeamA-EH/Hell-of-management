@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: a6710784b4a216e42abd04db5b7cf971
+guid: bd20804bcc066ef4b860e37fc830f3d5
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
-      74: 5906202726551003714
-    second: Idle Right Arm
+      74: 8902800829646254526
+    second: Grab Left Arm Right Hold Start
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,18 +35,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle Right Arm
-      takeName: Idle Right Arm
+      name: Grab Left Arm Right Hold Start
+      takeName: Grab Left Arm Right Hold
       internalID: 0
-      firstFrame: 330
-      lastFrame: 649
+      firstFrame: 150
+      lastFrame: 202
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -62,7 +62,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 330
+      additiveReferencePoseFrame: 150
     isReadable: 0
   meshes:
     lODScreenPercentages: []

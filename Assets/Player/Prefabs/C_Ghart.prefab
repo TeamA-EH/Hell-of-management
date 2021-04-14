@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6976d277a0c78a14ea044d35e1eb2fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animation_controller: {fileID: 6402046372187541646}
   redSoulAsset: {fileID: 2814591758374110848, guid: 3f0c052d3a69ac641bf7f96e5231a6ea,
     type: 3}
   greenSoulAsset: {fileID: 2814591758374110848, guid: 979603500aed38f4ea7a2c56836ce648,
@@ -288,11 +289,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Garth
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 9dfcd86f9056cfc4faef64a2ee20b818,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 9dfcd86f9056cfc4faef64a2ee20b818,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 9dfcd86f9056cfc4faef64a2ee20b818,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d3119bd0d5f9a4c468c426c0ba6e16da, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 9dfcd86f9056cfc4faef64a2ee20b818,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9dfcd86f9056cfc4faef64a2ee20b818, type: 3}
 --- !u!4 &1024726785552337652 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9dfcd86f9056cfc4faef64a2ee20b818,
+    type: 3}
+  m_PrefabInstance: {fileID: 698681264169921823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6402046372187541646 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 9dfcd86f9056cfc4faef64a2ee20b818,
     type: 3}
   m_PrefabInstance: {fileID: 698681264169921823}
   m_PrefabAsset: {fileID: 0}
