@@ -278,7 +278,7 @@ MonoBehaviour:
   green_soul_mesh: {fileID: 5462101146035493152}
   blue_soul_mesh: {fileID: 5462101146790390568}
   red_soul_mesh: {fileID: 5462101148031533477}
-  maxDistanceFromPlayer: 6
+  maxDistanceFromPlayer: 8
   movementData: {fileID: 11400000, guid: bb182d046171a5e4faa976fa0ac644a8, type: 2}
   m_tag: 0
 --- !u!195 &6657840632422418734
@@ -291,8 +291,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
-  m_Acceleration: 8
+  m_Speed: 10
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
