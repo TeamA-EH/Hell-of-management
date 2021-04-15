@@ -67,7 +67,7 @@ namespace HOM
                 SkillManager.SendObjectReleaseRequest(gameObject, 1);
             }
 
-            animation_controller.SetFloat("speed", Mathf.Clamp(cc.velocity.magnitude,0,1));
+            //animation_controller.SetFloat("speed", Mathf.Clamp(cc.velocity.magnitude,0,1));
         }
         #endregion
 
@@ -122,7 +122,7 @@ namespace HOM
             cc.Move(
                 ((direction * (speed - itemWeight)) + (gravityForce + environmentForce)) * Time.deltaTime
             );
-
+            animation_controller.SetFloat("speed", Mathf.Clamp(cc.velocity.magnitude,0,1));
         }
 
         ///<summary> Accellerates character movement until the max accelleration is achieved</summary>
@@ -137,6 +137,7 @@ namespace HOM
                 cc.Move(
                     ((dir * accelerationCurve.Evaluate(elapsedTime) * (Mathf.Clamp(maxAcceleration - itemWeight, 0, 1000)) + 
                     (gravityForce + environmentForce)) * Time.deltaTime));
+                    animation_controller.SetFloat("speed", Mathf.Clamp(cc.velocity.magnitude,0,1));
             }
             else
             {
@@ -157,6 +158,7 @@ namespace HOM
                 cc.Move(
                     ((MovementHandler.GetLastInput() * decelerationCurve.Evaluate(elapsedTime) * Mathf.Clamp(maxDeceleration - itemWeight, 0, 1000)) + 
                         gravityForce + environmentForce) * Time.deltaTime);
+                        animation_controller.SetFloat("speed", Mathf.Clamp(cc.velocity.magnitude,0,1));
             }
             else
             {

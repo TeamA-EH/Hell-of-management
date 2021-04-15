@@ -30,8 +30,6 @@ namespace HOM
             else if(C_Garth.self.handIndexReques == 1 && !C_Garth.self.PlayerHands[0].m_canBind) C_Garth.self.AnimationController.SetFloat("Pickup ID", 3);
             //Aggiungere condizione per il mocho che e' diversa da tutte le precedenti
 
-            Debug.Log($"Pickup ID: {C_Garth.self.AnimationController.GetFloat("Pickup ID")}");
-
             C_Garth.self.AnimationController.SetTrigger("Start Pickup");
         }
     }
