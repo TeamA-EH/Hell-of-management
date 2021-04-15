@@ -8,6 +8,8 @@ namespace HOM
     {
         [SerializeField] ItemIteractionData customerIteractionData;
         public ItemIteractionData CustomerIteractionData => customerIteractionData;
+        [SerializeField] Animator animationController;
+        public Animator AnimationController=>animationController;
         Animator animator = null;
         Material originalMaterial;
 

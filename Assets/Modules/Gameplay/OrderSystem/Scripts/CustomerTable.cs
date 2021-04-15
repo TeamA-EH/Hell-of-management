@@ -41,6 +41,7 @@ namespace HOM
                                 plate.DisablePhysics();
                                 item.GetComponent<Order>().Customer.GetComponentInChildren<OrderVignetteUI>().Deactivate();
                                 item.GetComponent<Order>().Customer.GetComponent<Animator>().SetTrigger("Take Order");
+                                item.GetComponent<Order>().Customer.GetComponentInParent<SittedCustomer>().AnimationController.SetTrigger("Eat");
                                 item.SetActive(false);
 
                                 Score.self.AddScore(100);
