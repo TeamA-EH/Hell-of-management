@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ea4a54f213c40429faaac8d3a44e5f, type: 3}
   m_Name: Drop Data
   m_EditorClassIdentifier: 
-  maxSpeed: 10
+  maxSpeed: 2
