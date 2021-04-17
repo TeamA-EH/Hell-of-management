@@ -36,4 +36,9 @@ public static class Loader
             onLoaderCallback = null;
         }
     }
+
+    public static void LoadCurrentScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
