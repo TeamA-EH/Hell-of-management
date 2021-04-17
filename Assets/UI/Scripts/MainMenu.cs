@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void GoToSettings()
     {
-        GUIHandler.ActivatesMenu("Settings");
+        GUIHandler.ActivatesMenu("Settings Menu");
         GUIHandler.DeactivatesMenu("Main Menu");
     }
 
