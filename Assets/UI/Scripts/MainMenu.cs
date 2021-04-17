@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Loader.Load(Loader.Scene.Demo);
     }
 
     /// <summary>
@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void GoToSettings()
     {
-        GUIHandler.ActivatesMenu("Settings");
+        GUIHandler.ActivatesMenu("Settings Menu");
         GUIHandler.DeactivatesMenu("Main Menu");
     }
 

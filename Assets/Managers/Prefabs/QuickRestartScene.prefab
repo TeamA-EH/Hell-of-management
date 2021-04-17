@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 841006507496354263}
-  - component: {fileID: 3253554637211978766}
+  - component: {fileID: 5795105779150620026}
   m_Layer: 0
   m_Name: QuickRestartScene
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3253554637211978766
+--- !u!114 &5795105779150620026
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,6 +40,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1610555216238399550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce14fa0dcc8a66a448e5aa4b43872892, type: 3}
+  m_Script: {fileID: 11500000, guid: 351da7dc2cb517b428bc7e41712ff31b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
