@@ -139,7 +139,7 @@ namespace HOM
         public void Init()
         {
             agent = gameObject.GetComponent<NavMeshAgent>();
-            agent.enabled = true;
+            ActivatesAgent();
             agent.isStopped = true;
             rb = gameObject.GetComponent<Rigidbody>();
             originalMaterial = gameObject.GetComponentInChildren<MeshRenderer>().material;
@@ -234,15 +234,40 @@ namespace HOM
 
         #region Artificial Intelligence
         NavMeshAgent agent = null;
+        public enum MachineState {NONE=-1, GROUNDED, FLOATING}
+        MachineState soulState = MachineState.NONE;
+
+        public MachineState SoulState => soulState;
         public Vector3 NavigationDirection {private set; get;} = Vector3.zero;
         public Vector3 Goal => agent.destination;
         public bool InsideRoom {private set; get;} = true;
         public bool BehaviourTreeActivated {private set; get;} = false;
+        ///<summary>Activates the Navmesh-Agent for this actor</summary>
+        public void ActivatesAgent() => agent.enabled = true;
+        ///<summary>Deactivates the navmesh-agent for this actor</summary>
+        public void DeactivatesAgent() => agent.enabled = false;
+        ///<summary>Returns TRUE if the character is flying otherwise FALSE</summary>
+        public bool IsFloating()
+        {
+            RaycastHit hit;
+            if(Physics.Raycast(gameObject.transform.position, -gameObject.transform.up, out hit, 1f))
+            {
+                if(hit.collider == null)
+                {
+                    return true;
+                }
+                else return false;
+            }
 
+            return false;
+        }
         ///<summary> Enables this artificial intelligence for navigating on the navmesh  </summary>
         public void ActivatesArtificialIntelligence() => agent.isStopped = false;
-        ///<summary> Disables this artificial intelligence for navigating on the navmesh </summary>
+        ///<summary> Disables this artificial intelligence for moving on the navmesh </summary>
         public void DeactivatesArtificialIntelligence() => agent.isStopped = true;
+        ///<summary>Sets the current state for this soul</summary>
+        ///<param name="newState">The new state to set</param>
+        public void SetAIState(MachineState newState) => soulState=newState;
         ///<summary> Sets the goal position on the navmesh </summary>
         ///<param name="goal"> The final destination where to move </param>
         public void SetAIGoal(Vector3 goal)

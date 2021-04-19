@@ -19,6 +19,13 @@ namespace HOM
         {
             if(target.BehaviourTreeActivated)
             {
+                Debug.Log("RUn");
+                if(target.IsFloating())
+                {
+                    animator.SetTrigger("Floating");
+                    return;
+                }
+
                 distance = (C_Garth.self.gameObject.transform.position - animator.gameObject.transform.position).magnitude;
                 if(distance < target.MaxDistanceFromPlayer && target.InsideRoom)
                 {

@@ -30,7 +30,7 @@ namespace HOM
         protected void OnTriggerEnter(Collider collider)
         {
             var soul = collider.gameObject.GetComponent<Soul>();
-            if(soul && soul.Tag != SoulsManager.SOUL_TAG_NULL)
+            if(soul && soul.Tag != SoulsManager.SOUL_TAG_NULL && soul.SoulState == Soul.MachineState.FLOATING)
             {
                 if(canCollect)
                 {
