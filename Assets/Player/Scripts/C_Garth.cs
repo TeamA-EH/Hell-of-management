@@ -167,10 +167,9 @@ namespace HOM
         }
 
         ///<summary> Rotates character toward the mouse position </summary>
-        ///<param name="duration"> amount on time in seconds to complete rotation </param>
         ///<param name="clockwise"> If TRUE calculate the angle using a frequency of 360 degrees otherwise calculate a signe angle (between -180, 180 degrees) </param>
         ///<param name="OnRotationCompleted"> Callback called when rotation has been completed </param>
-        public void RotateCharacter(float duration, bool clockwise = true, Action OnRotationCompleted = null)
+        public void RotateCharacter(bool clockwise = true, Action OnRotationCompleted = null)
         {
             Vector3 mouseDirection = Vector3.zero;
 
@@ -205,7 +204,7 @@ namespace HOM
             }
 
             /* Rotate Character */
-            gameObject.transform.DORotate(new Vector3(0, angle, 0), duration)
+            gameObject.transform.DORotate(new Vector3(0, angle, 0), movementSettings.m_rotationInterval)
             .OnComplete(() => {
                 OnRotationCompleted?.Invoke();
             });
