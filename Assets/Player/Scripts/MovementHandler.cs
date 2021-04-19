@@ -234,6 +234,22 @@ namespace HOM
             character.GetComponent<Animator>().SetBool("Can Rotate", false);
         }
 
+        public static Vector3 ConvertMousePositionToWorldSpace()
+        {
+            Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if(Physics.Raycast(r, out hit))
+            {
+                if(hit.collider != null)
+                {
+                    return hit.point;
+                }
+            }
+
+            return Vector3.zero;
+            
+        }
+
         #endregion
 
         ///<summary> Returns TRUE if the user press any movement key otherwise FALSE </summary>

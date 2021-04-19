@@ -29,7 +29,7 @@ namespace HOM
                     projectile.GetComponent<Soul>().EnablePhysics();
                     projectile.GetComponent<Soul>().SetEnvironment(false);
                     projectile.GetComponent<Soul>().ExecuteBehaviourTree();
-                    projectile.GetComponent<Soul>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
+                    projectile.GetComponent<Soul>().SetForce((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized * maxSpeed);
                     
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(1));
                     
@@ -47,7 +47,7 @@ namespace HOM
                     projectile.GetComponent<Soul>().EnablePhysics();
                     projectile.GetComponent<Soul>().SetEnvironment(false);
                     projectile.GetComponent<Soul>().ExecuteBehaviourTree();
-                    projectile.GetComponent<Soul>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
+                    projectile.GetComponent<Soul>().SetForce((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized * maxSpeed);
 
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(2));
 
@@ -66,7 +66,7 @@ namespace HOM
                     projectile.GetComponent<Soul>().EnablePhysics();
                     projectile.GetComponent<Soul>().SetEnvironment(false);
                     projectile.GetComponent<Soul>().ExecuteBehaviourTree();
-                    projectile.GetComponent<Soul>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
+                    projectile.GetComponent<Soul>().SetForce((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized * maxSpeed);
 
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(3));
 
@@ -88,7 +88,7 @@ namespace HOM
                         C_Garth.self.PlayerHands[hand].plateInfos.BlueSouls);
                     projectile.GetComponent<Plate>().Init();
                     projectile.GetComponent<Plate>().EnablePhysics();
-                    projectile.GetComponent<Plate>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
+                    projectile.GetComponent<Plate>().SetForce((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized * maxSpeed);
 
                      /* Sets Movement ID */
                     if(C_Garth.self.PlayerHands[0].m_canBind && !C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 2);
@@ -108,7 +108,7 @@ namespace HOM
                         C_Garth.self.PlayerHands[hand].plateInfos.BlueSouls);
                     projectile.GetComponent<Plate>().Init();
                     projectile.GetComponent<Plate>().EnablePhysics();
-                    projectile.GetComponent<Plate>().SetForce(C_Garth.self.gameObject.transform.forward * maxSpeed);
+                    projectile.GetComponent<Plate>().SetForce((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized * maxSpeed);
 
                     /* Sets Movement ID */
                     if(C_Garth.self.PlayerHands[0].m_canBind && !C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 2);
