@@ -95,6 +95,8 @@ namespace HOM
                 var spawn = self.availablePoints[UnityEngine.Random.Range(0, self.availablePoints.Count)];
                 var soul = SoulsManager.CreatesSoul(soulTag, spawn.transform.position);
                 soul.GetComponent<Soul>().Init();
+                soul.GetComponent<Soul>().DeactivatesAgent();
+                soul.gameObject.transform.position = spawn.transform.position;
                 soul.GetComponent<Soul>().ActivatesAgent();
                 soul.GetComponent<Soul>().SetEnvironment(true);
                 soul.GetComponent<Soul>().ExecuteBehaviourTree();
