@@ -61,6 +61,12 @@ namespace HOM
                     return;
                     case 3:
                     projectile = PlatesManager.CreatePlate(PlatesManager.DISH_PLATE, position, orientation);
+                    projectile.GetComponent<Plate>().OverrideRecipeInfos(
+                        C_Garth.self.PlayerHands[hand].plateInfos.Type,
+                        null,
+                        C_Garth.self.PlayerHands[hand].plateInfos.RedSouls,
+                        C_Garth.self.PlayerHands[hand].plateInfos.GreenSouls,
+                        C_Garth.self.PlayerHands[hand].plateInfos.BlueSouls);
                     projectile.GetComponent<Plate>().Init();
                     projectile.GetComponent<Plate>().EnablePhysics();
                     projectile.GetComponent<Plate>().SetForce((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized * maxSpeed);
@@ -72,6 +78,12 @@ namespace HOM
                     return;
                     case 4:
                     projectile = PlatesManager.CreatePlate(PlatesManager.DRINK_PLATE, position, orientation);
+                    projectile.GetComponent<Plate>().OverrideRecipeInfos(
+                        C_Garth.self.PlayerHands[hand].plateInfos.Type,
+                        null,
+                        C_Garth.self.PlayerHands[hand].plateInfos.RedSouls,
+                        C_Garth.self.PlayerHands[hand].plateInfos.GreenSouls,
+                        C_Garth.self.PlayerHands[hand].plateInfos.BlueSouls);
                     projectile.GetComponent<Plate>().Init();
                     projectile.GetComponent<Plate>().EnablePhysics();
                     projectile.GetComponent<Plate>().SetForce((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized * maxSpeed);
