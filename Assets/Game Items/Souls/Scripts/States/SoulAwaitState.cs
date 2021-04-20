@@ -13,13 +13,14 @@ namespace HOM
         {
             if(!target) target = animator.gameObject.GetComponent<Soul>();
             if(!player) player = C_Garth.self;
+            
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if(!target.Agent) target.ActivatesAgent();
             if(target.BehaviourTreeActivated)
             {
-                Debug.Log("RUn");
                 if(target.IsFloating())
                 {
                     animator.SetTrigger("Floating");

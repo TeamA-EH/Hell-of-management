@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Animations;
 
 namespace HOM
@@ -13,7 +11,8 @@ namespace HOM
             if(!target) target = animator.gameObject.GetComponent<Soul>();
             target.SetAIState(Soul.MachineState.FLOATING);
             target.DeactivatesAgent();
-            target.DeactivatesArtificialIntelligence();
+            Debug.Log("Deativated");
+            //target.DeactivatesArtificialIntelligence();
         }
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {

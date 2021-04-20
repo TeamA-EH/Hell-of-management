@@ -139,8 +139,8 @@ namespace HOM
         public void Init()
         {
             agent = gameObject.GetComponent<NavMeshAgent>();
-            ActivatesAgent();
-            agent.isStopped = true;
+            //ActivatesAgent();
+            if(agent.enabled)agent.isStopped = true;
             rb = gameObject.GetComponent<Rigidbody>();
             originalMaterial = gameObject.GetComponentInChildren<MeshRenderer>().material;
         }
@@ -161,7 +161,7 @@ namespace HOM
             {
                 if(hit.collider.gameObject.GetComponent<Soul>())
                 {
-                    Debug.Log($"Tag: {hit.collider.gameObject.GetComponent<Soul>().Tag}");
+                    //Debug.Log($"Tag: {hit.collider.gameObject.GetComponent<Soul>().Tag}");
                     return hit.collider.gameObject;       
                 }
                 else
@@ -234,6 +234,7 @@ namespace HOM
 
         #region Artificial Intelligence
         NavMeshAgent agent = null;
+        public NavMeshAgent Agent => agent;
         public enum MachineState {NONE=-1, GROUNDED, FLOATING}
         MachineState soulState = MachineState.NONE;
 
@@ -250,16 +251,20 @@ namespace HOM
         public bool IsFloating()
         {
             RaycastHit hit;
-            if(Physics.Raycast(gameObject.transform.position, -gameObject.transform.up, out hit, 1f))
+            if(Physics.Raycast(gameObject.transform.position, Vector3.down, out hit, .1f))
             {
                 if(hit.collider == null)
                 {
                     return true;
                 }
-                else return false;
+                else 
+                {
+                    Debug.Log(hit.collider.name);
+                    return false;
+                }
             }
-
-            return false;
+            Debug.Log("FAIL!!");
+            return true;
         }
         ///<summary> Enables this artificial intelligence for navigating on the navmesh  </summary>
         public void ActivatesArtificialIntelligence() => agent.isStopped = false;

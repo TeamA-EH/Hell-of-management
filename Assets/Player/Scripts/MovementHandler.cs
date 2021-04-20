@@ -242,7 +242,7 @@ namespace HOM
             {
                 if(hit.collider != null)
                 {
-                    return hit.point;
+                    return DeheightVector(hit.point);
                 }
             }
 

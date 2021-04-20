@@ -26,10 +26,12 @@ namespace HOM
                     projectile = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_RED, position);
                     SoulsManager.SetSoulTag(projectile.GetComponent<Soul>(), SoulsManager.SOUL_TAG_RED);
                     projectile.GetComponent<Soul>().Init();
+                    projectile.GetComponent<Soul>().DeactivatesAgent();
                     projectile.GetComponent<Soul>().EnablePhysics();
                     projectile.GetComponent<Soul>().SetEnvironment(false);
-                    projectile.GetComponent<Soul>().ExecuteBehaviourTree();
-                    projectile.GetComponent<Soul>().SetForce((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized * maxSpeed);
+                    projectile.GetComponent<Animator>().SetTrigger("Floating");
+                    projectile.GetComponent<Soul>().ExecuteBehaviourTree(); //Avvia l'intelligenza artificiale delle anime all'entry-point(AWAIT STATE)
+                    projectile.GetComponent<Soul>().SetForce(((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized + Vector3.up) * maxSpeed);
                     
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(1));
                     
@@ -46,8 +48,9 @@ namespace HOM
                     projectile.GetComponent<Soul>().Init();
                     projectile.GetComponent<Soul>().EnablePhysics();
                     projectile.GetComponent<Soul>().SetEnvironment(false);
-                    projectile.GetComponent<Soul>().ExecuteBehaviourTree();
-                    projectile.GetComponent<Soul>().SetForce((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized * maxSpeed);
+                    projectile.GetComponent<Animator>().SetTrigger("Floating");
+                    projectile.GetComponent<Soul>().ExecuteBehaviourTree(); //Avvia l'intelligenza artificiale delle anime all'entry-point(AWAIT STATE)
+                    projectile.GetComponent<Soul>().SetForce(((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized + Vector3.up) * maxSpeed);
 
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(2));
 
@@ -65,8 +68,9 @@ namespace HOM
                     projectile.GetComponent<Soul>().Init();
                     projectile.GetComponent<Soul>().EnablePhysics();
                     projectile.GetComponent<Soul>().SetEnvironment(false);
-                    projectile.GetComponent<Soul>().ExecuteBehaviourTree();
-                    projectile.GetComponent<Soul>().SetForce((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized * maxSpeed);
+                     projectile.GetComponent<Animator>().SetTrigger("Floating");
+                    projectile.GetComponent<Soul>().ExecuteBehaviourTree(); //Avvia l'intelligenza artificiale delle anime all'entry-point(AWAIT STATE)
+                    projectile.GetComponent<Soul>().SetForce(((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized + Vector3.up) * maxSpeed);
 
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(3));
 

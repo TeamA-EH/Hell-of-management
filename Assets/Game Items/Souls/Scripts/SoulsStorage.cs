@@ -55,6 +55,7 @@ namespace HOM
                     {
                         var obj = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_RED, self.points[count].transform.position);
                         obj.GetComponent<Soul>().Init();
+                        obj.GetComponent<Soul>().ActivatesAgent();
                         obj.GetComponent<Soul>().SetEnvironment(true);
                         obj.GetComponent<Soul>().ExecuteBehaviourTree();
                         self.storedSouls.Add(obj);
@@ -65,6 +66,7 @@ namespace HOM
                     {
                         var obj = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_GREEN, self.points[count].transform.position);
                         obj.GetComponent<Soul>().Init();
+                        obj.GetComponent<Soul>().ActivatesAgent();
                         obj.GetComponent<Soul>().SetEnvironment(true);
                         obj.GetComponent<Soul>().ExecuteBehaviourTree();
                         self.storedSouls.Add(obj);
@@ -75,6 +77,7 @@ namespace HOM
                     {
                         var obj = SoulsManager.CreatesSoul(SoulsManager.SOUL_TAG_BLUE, self.points[count].transform.position);
                         obj.GetComponent<Soul>().Init();
+                        obj.GetComponent<Soul>().ActivatesAgent();
                         obj.GetComponent<Soul>().SetEnvironment(true);
                         obj.GetComponent<Soul>().ExecuteBehaviourTree();
                         self.storedSouls.Add(obj);

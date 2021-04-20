@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4323950032785711872}
   - component: {fileID: 4323950032785711874}
   - component: {fileID: 4323950032785711875}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Drink Machine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
