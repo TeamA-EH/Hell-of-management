@@ -42,6 +42,10 @@ namespace HOM
                 RestoreAvailablePoints();
                 SpawnSoulsInStorage();
             }
+            else if(collider.gameObject.GetComponent<Soul>())
+            {
+                collider.gameObject.GetComponent<Soul>().SetEnvironment(true);
+            }
         }
         void OnTriggerExit(Collider collider)
         {
@@ -56,6 +60,10 @@ namespace HOM
 
                     self.storedSouls.Clear();
                 }
+            }
+            else if(collider.gameObject.GetComponent<Soul>())
+            {
+                collider.gameObject.GetComponent<Soul>().SetEnvironment(false);
             }
         }
         #endregion
