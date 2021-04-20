@@ -50,8 +50,10 @@ namespace HOM
                             }
                         }
 
-                        Debug.Log($"Wrong Order: \n\n Order Type: {order.Type}\n Order red Souls: {order.RedSouls} \n Order Green Souls: {order.GreenSouls} \n Order Blue Souls: {order.BlueSouls}\n\n "
-                            +$"Plate Type: {plate.Type} \n Plate Red Souls: {plate.RedSouls} \n Plate Green Souls: {plate.GreenSouls} \n Plate Blue Souls: {plate.BlueSouls} \n\n");
+                        Debug.Log($"Wrong Order: \n\n Order Type: {order.Type}\n Order red Souls: {order.RedSouls} \n Order Green Souls: {order.GreenSouls} \n Order Blue Souls: {order.BlueSouls}\n"
+                            +$"Order Yellow Souls: {order.YellowSouls}\n Order Purple Souls: {order.PurpleSouls} \n\n"
+                            +$"Plate Type: {plate.Type} \n Plate Red Souls: {plate.RedSouls} \n Plate Green Souls: {plate.GreenSouls} \n Plate Blue Souls: {plate.BlueSouls} \n"
+                            +$"Plate Yellow Souls: {plate.YellowSouls} \n Plate Purple Souls: {plate.PurpleSouls} \n\n");
 
                         if(AnyDrinkOrder() && plate.Type == 2)
                         {
@@ -174,7 +176,9 @@ namespace HOM
             if  (order.Type == plate.Type && 
                 order.RedSouls == plate.RedSouls &&
                 order.GreenSouls == plate.GreenSouls && 
-                order.BlueSouls == plate.BlueSouls) return true;
+                order.BlueSouls == plate.BlueSouls && 
+                order.YellowSouls == plate.YellowSouls && 
+                order.PurpleSouls == plate.PurpleSouls) return true;
                 else return false;
         }
 

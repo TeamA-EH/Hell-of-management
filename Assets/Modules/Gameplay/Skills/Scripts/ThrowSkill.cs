@@ -65,7 +65,9 @@ namespace HOM
                         null,
                         C_Garth.self.PlayerHands[hand].plateInfos.RedSouls,
                         C_Garth.self.PlayerHands[hand].plateInfos.GreenSouls,
-                        C_Garth.self.PlayerHands[hand].plateInfos.BlueSouls);
+                        C_Garth.self.PlayerHands[hand].plateInfos.BlueSouls,
+                        C_Garth.self.PlayerHands[hand].plateInfos.YellowSouls,
+                        C_Garth.self.PlayerHands[hand].plateInfos.PurpleSouls);
                     projectile.GetComponent<Plate>().Init();
                     projectile.GetComponent<Plate>().EnablePhysics();
                     projectile.GetComponent<Plate>().SetForce((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized * maxSpeed);
@@ -82,7 +84,9 @@ namespace HOM
                         null,
                         C_Garth.self.PlayerHands[hand].plateInfos.RedSouls,
                         C_Garth.self.PlayerHands[hand].plateInfos.GreenSouls,
-                        C_Garth.self.PlayerHands[hand].plateInfos.BlueSouls);
+                        C_Garth.self.PlayerHands[hand].plateInfos.BlueSouls,
+                        C_Garth.self.PlayerHands[hand].plateInfos.YellowSouls,
+                        C_Garth.self.PlayerHands[hand].plateInfos.PurpleSouls);
                     projectile.GetComponent<Plate>().Init();
                     projectile.GetComponent<Plate>().EnablePhysics();
                     projectile.GetComponent<Plate>().SetForce((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized * maxSpeed);

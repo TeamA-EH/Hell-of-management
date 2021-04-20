@@ -34,6 +34,10 @@ namespace HOM
         public uint GreenSouls => greensouls;
         uint bluesouls;
         public uint BlueSouls => bluesouls;
+        uint yellowSouls;
+        public uint YellowSouls => yellowSouls;
+        uint purplesouls;
+        public uint PurpleSouls => purplesouls;
 
         #region Unity Callbacks
         void OnMouseEnter()
@@ -56,6 +60,8 @@ namespace HOM
                     C_Garth.self.PlayerHands[0].plateInfos.RedSouls = redsouls;
                     C_Garth.self.PlayerHands[0].plateInfos.GreenSouls = GreenSouls;
                     C_Garth.self.PlayerHands[0].plateInfos.BlueSouls = BlueSouls;
+                    C_Garth.self.PlayerHands[0].plateInfos.YellowSouls = yellowSouls;
+                    C_Garth.self.PlayerHands[0].plateInfos.PurpleSouls = purplesouls;
 
                     //Send pickup request
                     SkillManager.SendPickupSkillRequest(gameObject, type + 6, C_Garth.self.gameObject, 0, null, null);
@@ -74,6 +80,8 @@ namespace HOM
                     C_Garth.self.PlayerHands[1].plateInfos.RedSouls = redsouls;
                     C_Garth.self.PlayerHands[1].plateInfos.GreenSouls = GreenSouls;
                     C_Garth.self.PlayerHands[1].plateInfos.BlueSouls = BlueSouls;
+                    C_Garth.self.PlayerHands[1].plateInfos.YellowSouls = yellowSouls;
+                    C_Garth.self.PlayerHands[1].plateInfos.PurpleSouls = purplesouls;
 
                     //Send pickup request
                     SkillManager.SendPickupSkillRequest(gameObject, type + 6, C_Garth.self.gameObject, 1, null, null);
@@ -95,13 +103,15 @@ namespace HOM
             OriginalMaterial = gameObject.GetComponentInChildren<MeshRenderer>().material;
         }
 
-        public void OverrideRecipeInfos(uint type, GameObject customer, uint redSouls, uint greenSouls, uint blueSouls)
+        public void OverrideRecipeInfos(uint type, GameObject customer, uint redSouls, uint greenSouls, uint blueSouls, uint yellowSouls, uint purpleSouls)
         {
             this.type = type;
             this.customer = customer;
             this.redsouls = redSouls;
             this.greensouls = greenSouls;
             this.bluesouls = blueSouls;
+            this.yellowSouls = yellowSouls;
+            this.purplesouls = purpleSouls;
         }
 
         public void UpdateGFX()

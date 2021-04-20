@@ -13,9 +13,9 @@ namespace HOM
         [Space(10)]
         [SerializeField] GameObject orderTypeContainer;
 
-        Image[] fIcons = new Image[3]; 
-        Image[] sIcons = new Image[3]; 
-        Image[] tIcons = new Image[3]; 
+        Image[] fIcons = new Image[5]; 
+        Image[] sIcons = new Image[5]; 
+        Image[] tIcons = new Image[5]; 
         Image[] typeIcons = new Image[2];
  
         #region Unity Callbacks
@@ -49,7 +49,7 @@ namespace HOM
             backgroundPanel.SetActive(false);
         }
 
-        public void UpdateInterface(uint type, uint redSouls, uint greenSouls, uint blueSouls)
+        public void UpdateInterface(uint type, uint redSouls, uint greenSouls, uint blueSouls, uint yellowSouls, uint purpleSouls)
         {
             uint layer = 0;
 
@@ -84,6 +84,28 @@ namespace HOM
                     
                     var container = GetIconsByLayer(layer);
                     EnableIcon(ref container, 2);
+                }
+            }
+
+            if(yellowSouls > 0)
+            {
+                for(int i = 0; i < yellowSouls; i++)
+                {
+                    layer++;
+
+                    var container = GetIconsByLayer(layer);
+                    EnableIcon(ref container, 3);
+                }
+            }
+
+            if(purpleSouls > 0)
+            {
+                for(int i = 0; i < purpleSouls; i++)
+                {
+                    layer++;
+
+                    var container = GetIconsByLayer(layer);
+                    EnableIcon(ref container, 4);
                 }
             }
 

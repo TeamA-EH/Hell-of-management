@@ -117,6 +117,8 @@ namespace HOM
             uint redSouls = 0;
             uint greenSouls = 0;
             uint blueSouls = 0;
+            uint yellowSouls = 0;
+            uint purpleSouls = 0;
 
             /* DEFINES OUTPUT TYPE */
             switch(m_data.Output)
@@ -144,9 +146,17 @@ namespace HOM
                 {
                     blueSouls++;
                 }
+                else if(t == SoulsManager.SOUL_TAG_YELLOW)
+                {
+                    yellowSouls++;
+                }
+                else if(t == SoulsManager.SOUL_TAG_PURPLE)
+                {
+                    purpleSouls++;
+                }
             }
 
-            target.OverrideRecipeInfos(type, null, redSouls, greenSouls, blueSouls);
+            target.OverrideRecipeInfos(type, null, redSouls, greenSouls, blueSouls, yellowSouls, purpleSouls);
         }
 
         IEnumerator CraftPlate()
