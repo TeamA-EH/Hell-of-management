@@ -24,41 +24,40 @@ namespace HOM
             switch(itemType)
             {
                 case 0: //Red soul
-
                     CreateSoulProjectile(ref projectile, SoulsManager.SOUL_TAG_RED);
-
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(1));
-
-                     /* Sets Movement ID */
-                    if(C_Garth.self.PlayerHands[0].m_canBind && !C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 2);
-                    else if(!C_Garth.self.PlayerHands[0].m_canBind && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 1);
-                    else if(C_Garth.self.PlayerHands[0].m_canBind && C_Garth.self.PlayerHands[1].m_canBind) C_Garth.self.AnimationController.SetFloat("Item ID", 0);
+                    SetSkillAnimation();
 
                     OnSkillCompleted?.Invoke();
                     return;
                 case 1://Green soul
-
                     CreateSoulProjectile(ref projectile, SoulsManager.SOUL_TAG_GREEN);
-
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(2));
-
                     SetSkillAnimation();
-
 
                     OnSkillCompleted?.Invoke();
                     return;
                 case 2://Blue soul
-
                     CreateSoulProjectile(ref projectile, SoulsManager.SOUL_TAG_BLUE);
-
                     MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(3));
-
-                     SetSkillAnimation();
-
-
+                    SetSkillAnimation();
 
                     OnSkillCompleted?.Invoke();
                     return;
+                case 5: //Yellow soul
+                    CreateSoulProjectile(ref projectile, SoulsManager.SOUL_TAG_YELLOW);
+                    MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(10));
+                    SetSkillAnimation();
+
+                    OnSkillCompleted?.Invoke();
+                break;
+                case 6: //Purple soul
+                    CreateSoulProjectile(ref projectile, SoulsManager.SOUL_TAG_PURPLE);
+                    MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(11));
+                    SetSkillAnimation();
+
+                    OnSkillCompleted?.Invoke();
+                break;    
                     case 3:
                     projectile = PlatesManager.CreatePlate(PlatesManager.DISH_PLATE, position, orientation);
                     projectile.GetComponent<Plate>().OverrideRecipeInfos(

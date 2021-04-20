@@ -110,6 +110,8 @@ namespace HOM
         /// 7=MALE DEMON 
         /// 8=DISH PLATE
         /// 9=DRINK PLATE
+        /// 10=YELLOW SOUL
+        /// 11=PURPLE SOUL
         ///</param>
         public static float GetWeight(uint type)
         {
@@ -124,6 +126,8 @@ namespace HOM
                 case 7: return self.weightTable.MaleDemonWeight;
                 case 8: return self.weightTable.DishPlateWeight;
                 case 9: return self.weightTable.DrinkPlateWeight;
+                case 10: return self.weightTable.YellowSoulWeight;
+                case 11: return self.weightTable.PurpleSoulWeight;
                 default: return 0;
             }
         }

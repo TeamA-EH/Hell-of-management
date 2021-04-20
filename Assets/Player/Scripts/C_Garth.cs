@@ -31,6 +31,8 @@ namespace HOM
         [SerializeField] GameObject redSoulAsset;
         [SerializeField] GameObject greenSoulAsset;
         [SerializeField] GameObject blueSoulAsset;
+        [SerializeField] GameObject yellowSoulAsset;
+        [SerializeField] GameObject purpleSoulAsset;
         [Space(10)]
         [SerializeField] GameObject wasteAsset;
         [SerializeField] GameObject trashbagAsset;
@@ -78,12 +80,14 @@ namespace HOM
             MovementHandler.SwapMovementSettings(this, MovementHandler.MS_BASE, () =>  MovementHandler.SetMovementSurface(self.gameObject, MovementHandler.S_Normal));
 
             /* GENERATES TEMP BUFFERS DATA */
-            GameObject[] souls = new GameObject[3];
+            GameObject[] souls = new GameObject[5];
             GameObject[] drunkenDemons = new GameObject[2];
 
             souls[0] = greenSoulAsset;
             souls[1] = blueSoulAsset;
             souls[2] = redSoulAsset;
+            souls[3] = yellowSoulAsset;
+            souls[4] = purpleSoulAsset;
 
             drunkenDemons[0] = maleDrunkenDemon;
             drunkenDemons[1] = femaleDrunkenDemon;
@@ -96,6 +100,8 @@ namespace HOM
             redSoulAsset = null;
             greenSoulAsset = null;
             blueSoulAsset = null;
+            yellowSoulAsset = null;
+            purpleSoulAsset = null;
 
             wasteAsset = null;
             trashbagAsset = null;

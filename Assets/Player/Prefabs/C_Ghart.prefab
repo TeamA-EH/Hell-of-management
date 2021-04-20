@@ -164,6 +164,10 @@ MonoBehaviour:
     type: 3}
   blueSoulAsset: {fileID: 2814591758374110848, guid: 455b4745ed8aa70498db14d7dc1d9c96,
     type: 3}
+  yellowSoulAsset: {fileID: 2814591758374110848, guid: abbec8fce54bfec43b2b6626d820343c,
+    type: 3}
+  purpleSoulAsset: {fileID: 2814591758374110848, guid: 1503a9f0731913b4dab7131bb2db55d8,
+    type: 3}
   wasteAsset: {fileID: 1502113005321602505, guid: 059fbc5ab2bdbab47bdcf696c4767647,
     type: 3}
   trashbagAsset: {fileID: 1502113005321602505, guid: 059fbc5ab2bdbab47bdcf696c4767647,

@@ -43,6 +43,20 @@ namespace HOM
 
                     OnSkillCompleted?.Invoke();
                 return;
+                case 5: //Yellow soul
+                    InitializeSoulProjectile(ref projectile, SoulsManager.SOUL_TAG_YELLOW);
+                    MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(10));
+                    SetSkillAnimation();
+
+                    OnSkillCompleted?.Invoke();
+                return;
+                case 6: //Purple soul
+                    InitializeSoulProjectile(ref projectile, SoulsManager.SOUL_TAG_PURPLE);
+                    MovementHandler.DecreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(11));
+                    SetSkillAnimation();
+
+                    OnSkillCompleted();
+                return;
                 case 3: //Dish Plate
                     projectile = PlatesManager.CreatePlate(PlatesManager.DISH_PLATE, position, orientation);
                     projectile.GetComponent<Plate>().OverrideRecipeInfos(

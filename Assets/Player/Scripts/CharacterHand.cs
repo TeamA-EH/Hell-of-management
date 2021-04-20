@@ -37,7 +37,7 @@ namespace HOM
             this.drunkenDemonAssets = new GameObject[drunkenDemonAssets.Length];
 
             /* ALLOCATES DATA */
-            for(int i = 0; i < soulAssets.Length; i++) //generates souls istances
+            for(int i = 0; i < soulAssets.Length; i++) //generates souls istances [0: green soul, 1: blue soul, 2: red soul, 3: yellow soul, 4: purple soul]
             {
                 var soul = Instantiate(soulAssets[i], gameObject.transform);
                 soul.SetActive(false);
@@ -88,6 +88,16 @@ namespace HOM
                     soulAssets[1].SetActive(true);
                     holdedItem = soulAssets[1];
                     holdedItemIndex = 2;
+                break;
+                case SoulsManager.SOUL_TAG_YELLOW:
+                    soulAssets[3].SetActive(true);
+                    holdedItem = soulAssets[3];
+                    holdedItemIndex = 5;
+                break;
+                case SoulsManager.SOUL_TAG_PURPLE:
+                    soulAssets[4].SetActive(true);
+                    holdedItem = soulAssets[4];
+                    holdedItemIndex = 6;
                 break;
             }
         }

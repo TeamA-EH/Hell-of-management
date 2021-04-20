@@ -15,6 +15,8 @@ namespace HOM
         [SerializeField] GameObject green_soul_mesh;
         [SerializeField] GameObject blue_soul_mesh;
         [SerializeField] GameObject red_soul_mesh;
+        [SerializeField] GameObject yellow_soul_mesh;
+        [SerializeField] GameObject purple_soul_mesh;
 
         [Header("Movement"), Space(10)]
         [Tooltip("Determinates the minimum distance from the player before this soul starts to escape")]
@@ -81,6 +83,8 @@ namespace HOM
                     if(soul.Tag == SoulsManager.SOUL_TAG_RED) type = 0;
                     else if(soul.Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
                     else if(soul.Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_YELLOW) type = 9;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_PURPLE) type = 10;
 
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 0, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
                 }
@@ -105,9 +109,11 @@ namespace HOM
                     Soul soul = selection.GetComponent<Soul>();
 
                     uint type = 0;
-                    if      (soul.Tag == SoulsManager.SOUL_TAG_RED) type = 0;
-                    else if (soul.Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
-                    else if (soul.Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
+                    if(soul.Tag == SoulsManager.SOUL_TAG_RED) type = 0;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_YELLOW) type = 9;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_PURPLE) type = 10;
 
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 1, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
                 }
@@ -189,6 +195,8 @@ namespace HOM
                 green_soul_mesh.SetActive(true);
                 blue_soul_mesh.SetActive(false);
                 red_soul_mesh.SetActive(false);
+                yellow_soul_mesh.SetActive(false);
+                purple_soul_mesh.SetActive(false);
 
                 break;
                 case SoulsManager.SOUL_TAG_BLUE:
@@ -196,6 +204,8 @@ namespace HOM
                 green_soul_mesh.SetActive(false);
                 blue_soul_mesh.SetActive(true);
                 red_soul_mesh.SetActive(false);
+                yellow_soul_mesh.SetActive(false);
+                purple_soul_mesh.SetActive(false);
 
                 break;
                 case SoulsManager.SOUL_TAG_RED:
@@ -203,6 +213,26 @@ namespace HOM
                 green_soul_mesh.SetActive(false);
                 blue_soul_mesh.SetActive(false);
                 red_soul_mesh.SetActive(true);
+                yellow_soul_mesh.SetActive(false);
+                purple_soul_mesh.SetActive(false);
+
+                break;
+                case  SoulsManager.SOUL_TAG_YELLOW:
+
+                green_soul_mesh.SetActive(false);
+                blue_soul_mesh.SetActive(false);
+                red_soul_mesh.SetActive(false);
+                yellow_soul_mesh.SetActive(true);
+                purple_soul_mesh.SetActive(false);
+
+                break;
+                case SoulsManager.SOUL_TAG_PURPLE:
+                
+                green_soul_mesh.SetActive(false);
+                blue_soul_mesh.SetActive(false);
+                red_soul_mesh.SetActive(false);
+                yellow_soul_mesh.SetActive(false);
+                purple_soul_mesh.SetActive(true);
 
                 break;
                 default:

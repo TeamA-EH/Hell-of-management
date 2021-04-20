@@ -26,3 +26,7 @@ MonoBehaviour:
     type: 2}
   blueSoulLightMaterial: {fileID: 2100000, guid: 9714d4aaf72ab9944b9b0e75eea93083,
     type: 2}
+  yellowSoulLightMaterial: {fileID: 2100000, guid: 5790fbb09ee0c6c42aef4e1c53960ec4,
+    type: 2}
+  purpleSoulLightMaterial: {fileID: 2100000, guid: b67d8e4dabc89094fbd814e3fa963977,
+    type: 2}

@@ -83,6 +83,12 @@ namespace HOM
                 case SoulsManager.SOUL_TAG_BLUE:
                     machineLights[collecteditems - 1].GetComponent<MeshRenderer>().material = m_data.BlueSoulLightMaterial;
                 break;
+                case SoulsManager.SOUL_TAG_YELLOW:
+                        machineLights[collecteditems-1].GetComponent<MeshRenderer>().material = m_data.YellowSoulLightMaterial;
+                break;
+                case SoulsManager.SOUL_TAG_PURPLE:
+                        machineLights[collecteditems-1].GetComponent<MeshRenderer>().material = m_data.PurpleSoulLightMaterial;
+                break;
                 default:
                     Debug.LogError($"Soul {item.name} hasn't correct tag! {items[collecteditems -1]}");
                 break;
