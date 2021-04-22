@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b10fe6db797c44ab89700bec6df80f, type: 3}
+  m_Name: GroundedWalkMovementData
+  m_EditorClassIdentifier: 
+  rotationInterval: 0
+  maxMovementSpeed: 5
+  gravityForce: {x: 0, y: -2, z: 0}
+  environmentForce: {x: 0, y: 0, z: 0}
+  accellerationTime: 0.3
+  accellerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.9
+      inSlope: 3.1655052
+      outSlope: 3.1655052
+      tangentMode: 0
+      weightedMode: 2
+      inWeight: 0
+      outWeight: 0.1870101
+    - serializedVersion: 3
+      time: 0.1
+      value: 1
+      inSlope: 0.13655475
+      outSlope: 0.13655475
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.10362685
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxAcceleration: 14
+  decelerationTime: 0.1
+  decelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -2.0782568
+      outSlope: -2.0782568
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.05567011
+    - serializedVersion: 3
+      time: 0.1
+      value: 0
+      inSlope: -6.9627724
+      outSlope: -6.9627724
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.029895782
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxDeceleration: 0.15

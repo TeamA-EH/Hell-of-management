@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff18e23eb5e2b2b4fad64783331bc21a, type: 3}
+  m_Name: Dish Machine Data
+  m_EditorClassIdentifier: 
+  containerSize: 3
+  processingTime: 0.1
+  input: 1
+  output: 0
+  outputAsset: {fileID: 4583097593365036407, guid: 3a8efcc100349a54ab4aba2699c29379,
+    type: 3}
+  defaultLightMaterial: {fileID: 2100000, guid: 40a14b6b427c5cc4c913eead395e9876,
+    type: 2}
+  redSoulLightMaterial: {fileID: 2100000, guid: dd7859d614ebc2a419d803ef43a710ed,
+    type: 2}
+  greenSoulLightMaterial: {fileID: 2100000, guid: 55834915d38a5e8459888d098a96b63e,
+    type: 2}
+  blueSoulLightMaterial: {fileID: 2100000, guid: 9714d4aaf72ab9944b9b0e75eea93083,
+    type: 2}
+  yellowSoulLightMaterial: {fileID: 2100000, guid: 5790fbb09ee0c6c42aef4e1c53960ec4,
+    type: 2}
+  purpleSoulLightMaterial: {fileID: 2100000, guid: b67d8e4dabc89094fbd814e3fa963977,
+    type: 2}

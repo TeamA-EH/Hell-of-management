@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AC_Female_SittedCustomer_Animations
+  m_Controller: {fileID: 9100000, guid: 04306e4d15a80c84ca4869d421bdddb9, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -3100369314251171874, guid: e2fbd6b4c6f035844a50179901f2b109,
+      type: 3}
+    m_OverrideClip: {fileID: 3285722666755337290, guid: 03fba5672eecb61449b4a7a2d9dc0256,
+      type: 3}
+  - m_OriginalClip: {fileID: 3673095150341620287, guid: 7d66185ef11972348b19333a10b61540,
+      type: 3}
+    m_OverrideClip: {fileID: 3673095150341620287, guid: fc0270ebf222f4b4f96bf0788982c751,
+      type: 3}
