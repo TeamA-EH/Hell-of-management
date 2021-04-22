@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9bbad885061c54f93116c1a217beb8, type: 3}
   m_Name: ItemsWeightTable
   m_EditorClassIdentifier: 
-  redSoulWeight: 0.5
-  greenSoulWeight: 0.5
-  blueSoulWeight: 0.5
+  redSoulWeight: 1.5
+  greenSoulWeight: 1.5
+  blueSoulWeight: 1.5
+  yellowSoulWeight: 1.5
+  purpleSoulWeight: 1.5
+  dishPlateWeight: 0.5
+  drinkPlateWeight: 0.5
   trashWeight: 0.25
   trashbagWeight: 2.5
   femaleDemonWeight: 4
