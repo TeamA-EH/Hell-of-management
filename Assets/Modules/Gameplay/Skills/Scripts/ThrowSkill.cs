@@ -128,7 +128,8 @@ namespace HOM
             soul.GetComponent<Soul>().SetEnvironment(false);
             soul.GetComponent<Animator>().SetTrigger("Floating");
             soul.GetComponent<Soul>().ExecuteBehaviourTree();
-            soul.GetComponent<Soul>().SetForce(((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized) * maxSpeed);
+            soul.GetComponent<Soul>().SetForce(((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.PlayerHands[hand].gameObject.transform.position).normalized) * maxSpeed);
+            Debug.DrawLine(C_Garth.self.PlayerHands[hand].gameObject.transform.position, MovementHandler.ConvertMousePositionToWorldSpace(), Color.red, 5f);
         }
         ///<summary>Sends the movement information for performing the correct animation for this skill</summary>
         void SetSkillAnimation()
