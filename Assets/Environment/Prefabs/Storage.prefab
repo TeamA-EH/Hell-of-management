@@ -535,23 +535,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66f7ce1487926e47a713693b14edf16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soulsCount: 10
-  points:
-  - {fileID: 2785814814066328887}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  redSoulsCount: 2
-  greenSoulsCount: 2
-  blueSoulsCount: 2
-  yellowSoulsCount: 2
-  purpleSoulsCount: 2
+  minRedSoulsCount: 2
+  maxRedSoulsCount: 7
+  minGreenSoulsCount: 2
+  maxGreenSoulsAmount: 7
+  minBlueSoulsCount: 2
+  maxBlueSoulsCount: 7
+  minYellowSoulsCount: 2
+  maxYellowSoulsCount: 7
+  minPurpleSoulsCount: 2
+  maxPurpleSoulsCount: 7
 --- !u!65 &7017937782485331040
 BoxCollider:
   m_ObjectHideFlags: 0
