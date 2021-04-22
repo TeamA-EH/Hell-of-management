@@ -47,3 +47,5 @@ MonoBehaviour:
     type: 3}
   femaleDemonAsset: {fileID: 5622539978306358869, guid: d5c46d3652c6f274087d4db133958999,
     type: 3}
+  pubDoor: {fileID: 0}
+  customerSpawnInterval: 3
