@@ -85,7 +85,7 @@ namespace HOM
 
         ///<summary> Requests a pickup skill activation for a game object </summary>
         ///<param name="obj"> The game object to pickup </param>
-        ///<param name="type"> The obj unique identfier: 0 = Red Soul, 1 = Green Soul, 2 = Blue Soul, 3 = Waste, 4 = Trashbag, 5 = Female Demon, 6 = Male Demon </param>
+        ///<param name="type"> The obj unique identfier: 0 = Red Soul, 1 = Green Soul, 2 = Blue Soul, 3 = Waste, 4 = Trashbag, 5 = Female Demon, 6 = Male Demon,7= Dish Plate, 8= Drink Plate, 9= Yellow Soul, 10= Purple Soul </param>
         ///<param name="character"> The character who have to hold this item </param>
         ///<param name="hand"> The hand unique index </param>
         ///<param name="OnSuccess"> Callback called when the request has been processed with success </param>

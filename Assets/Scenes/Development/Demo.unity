@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    accuratePlacement: 1
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 503d7416c058c6144b59ead3e39a971e, type: 2}
@@ -805,7 +805,7 @@ PrefabInstance:
     - target: {fileID: 4323950032785711872, guid: e472f43052e87b94f8a23418115b1962,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.3271152e-19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4323950032785711872, guid: e472f43052e87b94f8a23418115b1962,
         type: 3}
@@ -1526,16 +1526,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 647956902056374403, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
-        type: 3}
-      propertyPath: m_NavMeshLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 647956902056374403, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1948967402797722164, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
         type: 3}
       propertyPath: m_RootOrder
@@ -1595,56 +1585,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Storage
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090467794764909930, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
-        type: 3}
-      propertyPath: m_NavMeshLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3090467794764909930, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4113796425792729009, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
-        type: 3}
-      propertyPath: m_NavMeshLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4113796425792729009, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5684799108480050267, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
-        type: 3}
-      propertyPath: roomSize.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5684799108480050267, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
-        type: 3}
-      propertyPath: roomSize.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6137794612600370758, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
-        type: 3}
-      propertyPath: m_NavMeshLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6137794612600370758, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980942685894245196, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
-        type: 3}
-      propertyPath: m_NavMeshLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980942685894245196, guid: d8bdc0801b39ca445827c80b1dcf3fa3,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8bdc0801b39ca445827c80b1dcf3fa3, type: 3}

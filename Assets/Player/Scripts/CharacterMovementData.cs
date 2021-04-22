@@ -6,6 +6,8 @@ namespace HOM
     public class CharacterMovementData : ScriptableObject
     {
         [Header("Settings"), Space(5)]
+        [Tooltip("Indica in quanto tempo il personaggio completa una rotazione durante l'esecuzione")]
+        [SerializeField] float rotationInterval = .25f;
         [Tooltip("Rappresenta la massima velocita che un personaggio puo raggiungere;")]
         [SerializeField] float maxMovementSpeed;
         [Tooltip("La costante gravitazione che spinge il giocatore sul terreno")]
@@ -30,6 +32,7 @@ namespace HOM
         [SerializeField] float maxDeceleration;
 
         /* DATA GETTERS */
+        public float m_rotationInterval => rotationInterval;
         public float m_maxMovementSpeed => maxAcceleration;
 
         public float m_accelerationTime => accellerationTime;

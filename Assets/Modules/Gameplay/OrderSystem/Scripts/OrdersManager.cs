@@ -18,6 +18,8 @@ namespace HOM
             public uint RedSouls;
             public uint GreenSouls;
             public uint BlueSouls;
+            public uint YellowSouls;
+            public uint PurpleSouls;
         }
 
         #region Events
@@ -75,14 +77,18 @@ namespace HOM
                     uint r = 0;
                     uint g = 0;
                     uint b = 0;
-                    while(r + g + b != 3)
+                    uint y = 0;
+                    uint p = 0;
+                    while(r + g + b + y + p != 3)
                     {
                         r = (uint)UnityEngine.Random.Range(0,4);
                         g = (uint)UnityEngine.Random.Range(0,4);
                         b = (uint)UnityEngine.Random.Range(0,4);
+                        y = (uint)UnityEngine.Random.Range(0,4);
+                        p = (uint)UnityEngine.Random.Range(0,4);
                     }
                     uint type = (uint)UnityEngine.Random.Range(1,3);
-                    item.GetComponent<IRecipe>().OverrideRecipeInfos(type, customer, r, g, b);
+                    item.GetComponent<IRecipe>().OverrideRecipeInfos(type, customer, r, g, b, y, p);
                     OnOrderCreated?.Invoke(self, customer, type, r, g, b);
                     return item;
                 }

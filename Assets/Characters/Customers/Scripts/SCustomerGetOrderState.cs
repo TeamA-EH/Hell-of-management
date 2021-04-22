@@ -10,7 +10,7 @@ namespace HOM
             var vignette = animator.gameObject.GetComponentInChildren<OrderVignetteUI>();
             vignette.Activate();
             vignette.ResetIcons();
-            vignette.UpdateInterface(order.Type, order.RedSouls, order.GreenSouls, order.BlueSouls);
+            vignette.UpdateInterface(order.Type, order.RedSouls, order.GreenSouls, order.BlueSouls, order.YellowSouls, order.PurpleSouls);
 
         }
     }

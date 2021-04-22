@@ -8,6 +8,7 @@ namespace HOM
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             if(!target) target = animator.gameObject.GetComponent<Soul>();
+            if(!target.Agent.enabled) target.ActivatesAgent();
 
             Vector3 direction = ( animator.gameObject.transform.position - C_Garth.self.gameObject.gameObject.transform.position).normalized;
             Debug.DrawLine(animator.gameObject.transform.position, animator.gameObject.transform.position + direction, Color.red, 1f);

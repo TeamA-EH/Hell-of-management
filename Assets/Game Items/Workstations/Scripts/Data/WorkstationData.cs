@@ -27,6 +27,8 @@ namespace HOM
         [SerializeField] Material redSoulLightMaterial;
         [SerializeField] Material greenSoulLightMaterial;
         [SerializeField] Material blueSoulLightMaterial;
+        [SerializeField] Material yellowSoulLightMaterial;
+        [SerializeField] Material purpleSoulLightMaterial;
 
         /* GETTERS */
         public uint ContainerSize => containerSize;
@@ -41,6 +43,8 @@ namespace HOM
         public Material RedSoulLightMaterial => redSoulLightMaterial;
         public Material GreenSoulLightMaterial => greenSoulLightMaterial;
         public Material BlueSoulLightMaterial => blueSoulLightMaterial;
+        public Material YellowSoulLightMaterial => yellowSoulLightMaterial;
+        public Material PurpleSoulLightMaterial => purpleSoulLightMaterial;
         
     }
 }

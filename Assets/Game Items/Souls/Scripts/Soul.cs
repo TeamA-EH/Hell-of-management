@@ -15,6 +15,8 @@ namespace HOM
         [SerializeField] GameObject green_soul_mesh;
         [SerializeField] GameObject blue_soul_mesh;
         [SerializeField] GameObject red_soul_mesh;
+        [SerializeField] GameObject yellow_soul_mesh;
+        [SerializeField] GameObject purple_soul_mesh;
 
         [Header("Movement"), Space(10)]
         [Tooltip("Determinates the minimum distance from the player before this soul starts to escape")]
@@ -81,6 +83,8 @@ namespace HOM
                     if(soul.Tag == SoulsManager.SOUL_TAG_RED) type = 0;
                     else if(soul.Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
                     else if(soul.Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_YELLOW) type = 9;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_PURPLE) type = 10;
 
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 0, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
                 }
@@ -105,9 +109,11 @@ namespace HOM
                     Soul soul = selection.GetComponent<Soul>();
 
                     uint type = 0;
-                    if      (soul.Tag == SoulsManager.SOUL_TAG_RED) type = 0;
-                    else if (soul.Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
-                    else if (soul.Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
+                    if(soul.Tag == SoulsManager.SOUL_TAG_RED) type = 0;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_GREEN) type = 1;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_BLUE) type = 2;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_YELLOW) type = 9;
+                    else if(soul.Tag == SoulsManager.SOUL_TAG_PURPLE) type = 10;
 
                     SkillManager.SendPickupSkillRequest(GetSelectedSoul(), type, C_Garth.self.gameObject, 1, () => MovementHandler.DisableCharacterRotation(C_Garth.self.gameObject), null);
                 }
@@ -139,8 +145,8 @@ namespace HOM
         public void Init()
         {
             agent = gameObject.GetComponent<NavMeshAgent>();
-            agent.enabled = true;
-            agent.isStopped = true;
+            //ActivatesAgent();
+            if(agent.enabled)agent.isStopped = true;
             rb = gameObject.GetComponent<Rigidbody>();
             originalMaterial = gameObject.GetComponentInChildren<MeshRenderer>().material;
         }
@@ -161,7 +167,7 @@ namespace HOM
             {
                 if(hit.collider.gameObject.GetComponent<Soul>())
                 {
-                    Debug.Log($"Tag: {hit.collider.gameObject.GetComponent<Soul>().Tag}");
+                    //Debug.Log($"Tag: {hit.collider.gameObject.GetComponent<Soul>().Tag}");
                     return hit.collider.gameObject;       
                 }
                 else
@@ -189,6 +195,8 @@ namespace HOM
                 green_soul_mesh.SetActive(true);
                 blue_soul_mesh.SetActive(false);
                 red_soul_mesh.SetActive(false);
+                yellow_soul_mesh.SetActive(false);
+                purple_soul_mesh.SetActive(false);
 
                 break;
                 case SoulsManager.SOUL_TAG_BLUE:
@@ -196,6 +204,8 @@ namespace HOM
                 green_soul_mesh.SetActive(false);
                 blue_soul_mesh.SetActive(true);
                 red_soul_mesh.SetActive(false);
+                yellow_soul_mesh.SetActive(false);
+                purple_soul_mesh.SetActive(false);
 
                 break;
                 case SoulsManager.SOUL_TAG_RED:
@@ -203,6 +213,26 @@ namespace HOM
                 green_soul_mesh.SetActive(false);
                 blue_soul_mesh.SetActive(false);
                 red_soul_mesh.SetActive(true);
+                yellow_soul_mesh.SetActive(false);
+                purple_soul_mesh.SetActive(false);
+
+                break;
+                case  SoulsManager.SOUL_TAG_YELLOW:
+
+                green_soul_mesh.SetActive(false);
+                blue_soul_mesh.SetActive(false);
+                red_soul_mesh.SetActive(false);
+                yellow_soul_mesh.SetActive(true);
+                purple_soul_mesh.SetActive(false);
+
+                break;
+                case SoulsManager.SOUL_TAG_PURPLE:
+                
+                green_soul_mesh.SetActive(false);
+                blue_soul_mesh.SetActive(false);
+                red_soul_mesh.SetActive(false);
+                yellow_soul_mesh.SetActive(false);
+                purple_soul_mesh.SetActive(true);
 
                 break;
                 default:
@@ -234,15 +264,45 @@ namespace HOM
 
         #region Artificial Intelligence
         NavMeshAgent agent = null;
+        public NavMeshAgent Agent => agent;
+        public enum MachineState {NONE=-1, GROUNDED, FLOATING}
+        MachineState soulState = MachineState.NONE;
+
+        public MachineState SoulState => soulState;
         public Vector3 NavigationDirection {private set; get;} = Vector3.zero;
         public Vector3 Goal => agent.destination;
         public bool InsideRoom {private set; get;} = true;
         public bool BehaviourTreeActivated {private set; get;} = false;
-
+        ///<summary>Activates the Navmesh-Agent for this actor</summary>
+        public void ActivatesAgent() => agent.enabled = true;
+        ///<summary>Deactivates the navmesh-agent for this actor</summary>
+        public void DeactivatesAgent() => agent.enabled = false;
+        ///<summary>Returns TRUE if the character is flying otherwise FALSE</summary>
+        public bool IsFloating()
+        {
+            RaycastHit hit;
+            if(Physics.Raycast(gameObject.transform.position, Vector3.down, out hit, .1f))
+            {
+                if(hit.collider == null)
+                {
+                    return true;
+                }
+                else 
+                {
+                    Debug.Log(hit.collider.name);
+                    return false;
+                }
+            }
+            Debug.Log("FAIL!!");
+            return true;
+        }
         ///<summary> Enables this artificial intelligence for navigating on the navmesh  </summary>
         public void ActivatesArtificialIntelligence() => agent.isStopped = false;
-        ///<summary> Disables this artificial intelligence for navigating on the navmesh </summary>
+        ///<summary> Disables this artificial intelligence for moving on the navmesh </summary>
         public void DeactivatesArtificialIntelligence() => agent.isStopped = true;
+        ///<summary>Sets the current state for this soul</summary>
+        ///<param name="newState">The new state to set</param>
+        public void SetAIState(MachineState newState) => soulState=newState;
         ///<summary> Sets the goal position on the navmesh </summary>
         ///<param name="goal"> The final destination where to move </param>
         public void SetAIGoal(Vector3 goal)

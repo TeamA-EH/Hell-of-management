@@ -12,7 +12,7 @@ namespace HOM
         }
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            controller.RotateCharacter(.25f, true, null);
+            controller.RotateCharacter(true, null);
         }
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {

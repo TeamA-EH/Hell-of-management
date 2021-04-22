@@ -118,6 +118,44 @@ namespace HOM
                         C_Garth.self.AnimationController.SetFloat("Item ID", 3);
                     }
                 break;
+                case 9: //YELLOW SOUL
+                    hand.BindSoul(SoulsManager.SOUL_TAG_YELLOW);
+                    MovementHandler.IncreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(10));
+
+                     /* SETUP ANIMATION ID*/
+                    if(handID == 0 && C_Garth.self.PlayerHands[1].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 1);
+                    }
+                    else if(handID == 1 && C_Garth.self.PlayerHands[0].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 2);
+                    }
+                    else
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 3);
+                    }
+
+                break;
+                case 10: //PURPLE SOUL
+                    hand.BindSoul(SoulsManager.SOUL_TAG_PURPLE);
+                    MovementHandler.IncreaseItemWeight(C_Garth.self, MovementHandler.GetWeight(11));
+                    
+                    /* SETUP ANIMATION ID*/
+                    if(handID == 0 && C_Garth.self.PlayerHands[1].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 1);
+                    }
+                    else if(handID == 1 && C_Garth.self.PlayerHands[0].m_canBind)
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 2);
+                    }
+                    else
+                    {
+                        C_Garth.self.AnimationController.SetFloat("Item ID", 3);
+                    }
+
+                break;
             }
 
             ObjToDrag.SetActive(false);
@@ -131,7 +169,7 @@ namespace HOM
 
         ///<summary> Changes values for pickup movement </summary>
         ///<param name="draggable"> Item to drag </param>
-        ///<param name="type"> The draggable item unique type: 0 = Red Soul, 1 = Green Soul, 2 = Blue Soul, 3 = Waste, 4 = Trashbag, 5 = Female Demon, 6 = Male Demon, 7 = Dish Plate, 8= Drink Plate </param>
+        ///<param name="type"> The draggable item unique type: 0 = Red Soul, 1 = Green Soul, 2 = Blue Soul, 3 = Waste, 4 = Trashbag, 5 = Female Demon, 6 = Male Demon, 7 = Dish Plate, 8= Drink Plate, 9= Yellow Soul, 10= Purple Soul </param>
         ///<param name="hand"> The character hand unique index </param>
         public void OverridePickupInfos(GameObject draggable, uint type, uint hand)
         {

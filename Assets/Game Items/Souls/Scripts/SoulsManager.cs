@@ -22,6 +22,8 @@ namespace HOM
         public const uint SOUL_TAG_GREEN = 1;
         public const uint SOUL_TAG_BLUE = 2;
         public const uint SOUL_TAG_RED = 3;
+        public const uint SOUL_TAG_YELLOW = 4;
+        public const uint SOUL_TAG_PURPLE = 5;
 
         #region Unity Callbacks
         void Start()

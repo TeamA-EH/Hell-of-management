@@ -110,6 +110,8 @@ namespace HOM
         /// 7=MALE DEMON 
         /// 8=DISH PLATE
         /// 9=DRINK PLATE
+        /// 10=YELLOW SOUL
+        /// 11=PURPLE SOUL
         ///</param>
         public static float GetWeight(uint type)
         {
@@ -124,6 +126,8 @@ namespace HOM
                 case 7: return self.weightTable.MaleDemonWeight;
                 case 8: return self.weightTable.DishPlateWeight;
                 case 9: return self.weightTable.DrinkPlateWeight;
+                case 10: return self.weightTable.YellowSoulWeight;
+                case 11: return self.weightTable.PurpleSoulWeight;
                 default: return 0;
             }
         }
@@ -232,6 +236,22 @@ namespace HOM
         public static void DisableCharacterRotation(GameObject character)
         {
             character.GetComponent<Animator>().SetBool("Can Rotate", false);
+        }
+
+        public static Vector3 ConvertMousePositionToWorldSpace()
+        {
+            Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if(Physics.Raycast(r, out hit))
+            {
+                if(hit.collider != null)
+                {
+                    return DeheightVector(hit.point);
+                }
+            }
+
+            return Vector3.zero;
+            
         }
 
         #endregion

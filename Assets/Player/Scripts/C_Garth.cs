@@ -31,6 +31,8 @@ namespace HOM
         [SerializeField] GameObject redSoulAsset;
         [SerializeField] GameObject greenSoulAsset;
         [SerializeField] GameObject blueSoulAsset;
+        [SerializeField] GameObject yellowSoulAsset;
+        [SerializeField] GameObject purpleSoulAsset;
         [Space(10)]
         [SerializeField] GameObject wasteAsset;
         [SerializeField] GameObject trashbagAsset;
@@ -78,12 +80,14 @@ namespace HOM
             MovementHandler.SwapMovementSettings(this, MovementHandler.MS_BASE, () =>  MovementHandler.SetMovementSurface(self.gameObject, MovementHandler.S_Normal));
 
             /* GENERATES TEMP BUFFERS DATA */
-            GameObject[] souls = new GameObject[3];
+            GameObject[] souls = new GameObject[5];
             GameObject[] drunkenDemons = new GameObject[2];
 
             souls[0] = greenSoulAsset;
             souls[1] = blueSoulAsset;
             souls[2] = redSoulAsset;
+            souls[3] = yellowSoulAsset;
+            souls[4] = purpleSoulAsset;
 
             drunkenDemons[0] = maleDrunkenDemon;
             drunkenDemons[1] = femaleDrunkenDemon;
@@ -96,6 +100,8 @@ namespace HOM
             redSoulAsset = null;
             greenSoulAsset = null;
             blueSoulAsset = null;
+            yellowSoulAsset = null;
+            purpleSoulAsset = null;
 
             wasteAsset = null;
             trashbagAsset = null;
@@ -167,10 +173,9 @@ namespace HOM
         }
 
         ///<summary> Rotates character toward the mouse position </summary>
-        ///<param name="duration"> amount on time in seconds to complete rotation </param>
         ///<param name="clockwise"> If TRUE calculate the angle using a frequency of 360 degrees otherwise calculate a signe angle (between -180, 180 degrees) </param>
         ///<param name="OnRotationCompleted"> Callback called when rotation has been completed </param>
-        public void RotateCharacter(float duration, bool clockwise = true, Action OnRotationCompleted = null)
+        public void RotateCharacter(bool clockwise = true, Action OnRotationCompleted = null)
         {
             Vector3 mouseDirection = Vector3.zero;
 
@@ -205,7 +210,7 @@ namespace HOM
             }
 
             /* Rotate Character */
-            gameObject.transform.DORotate(new Vector3(0, angle, 0), duration)
+            gameObject.transform.DORotate(new Vector3(0, angle, 0), movementSettings.m_rotationInterval)
             .OnComplete(() => {
                 OnRotationCompleted?.Invoke();
             });

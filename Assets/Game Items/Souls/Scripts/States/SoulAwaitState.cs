@@ -13,12 +13,20 @@ namespace HOM
         {
             if(!target) target = animator.gameObject.GetComponent<Soul>();
             if(!player) player = C_Garth.self;
+            
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if(!target.Agent) target.ActivatesAgent();
             if(target.BehaviourTreeActivated)
             {
+                if(target.IsFloating())
+                {
+                    animator.SetTrigger("Floating");
+                    return;
+                }
+
                 distance = (C_Garth.self.gameObject.transform.position - animator.gameObject.transform.position).magnitude;
                 if(distance < target.MaxDistanceFromPlayer && target.InsideRoom)
                 {
