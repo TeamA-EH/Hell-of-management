@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_data: {fileID: 11400000, guid: 43ec93f73cf04b3408e9b43554472a15, type: 2}
-  outputOffset: {x: 0, y: 2.1, z: 0}
+  outputOffset: {x: 1.3, y: 0.25, z: 0}
   machineLights:
   - {fileID: 4749124660862341190}
   - {fileID: 629410727006573890}
