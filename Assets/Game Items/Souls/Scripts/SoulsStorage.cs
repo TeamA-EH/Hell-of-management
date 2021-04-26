@@ -45,6 +45,7 @@ namespace HOM
             else if(collider.gameObject.GetComponent<Soul>())
             {
                 collider.gameObject.GetComponent<Soul>().SetEnvironment(true);
+                storedSouls.Add(collider.gameObject);//!@brief: verificare il funzionamento prima di committar il cambiamento
             }
         }
         void OnTriggerExit(Collider collider)

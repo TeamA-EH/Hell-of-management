@@ -165,7 +165,7 @@ namespace HOM
             RaycastHit hit;
             if(Physics.Raycast(r, out hit))
             {
-                if(hit.collider.gameObject.GetComponent<Soul>())
+                if(hit.collider.gameObject.GetComponent<Soul>() && hit.collider.isTrigger)
                 {
                     //Debug.Log($"Tag: {hit.collider.gameObject.GetComponent<Soul>().Tag}");
                     return hit.collider.gameObject;       

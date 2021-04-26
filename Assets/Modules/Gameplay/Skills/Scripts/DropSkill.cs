@@ -128,7 +128,8 @@ namespace HOM
             data.GetComponent<Soul>().SetEnvironment(false);
             data.GetComponent<Animator>().SetTrigger("Floating");
             data.GetComponent<Soul>().ExecuteBehaviourTree(); //Avvia l'intelligenza artificiale delle anime all'entry-point(AWAIT STATE)
-            data.GetComponent<Soul>().SetForce(((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.gameObject.transform.position).normalized + Vector3.up) * maxSpeed);
+            data.GetComponent<Soul>().SetForce(((MovementHandler.ConvertMousePositionToWorldSpace() - C_Garth.self.PlayerHands[hand].gameObject.transform.position).normalized + Vector3.up) * maxSpeed);
+            Debug.DrawLine(C_Garth.self.PlayerHands[hand].gameObject.transform.position, MovementHandler.ConvertMousePositionToWorldSpace(), Color.red, 5f);
         }
         ///<summary>Sends the movement information for performing the correct animation for this skill</summary>
         void SetSkillAnimation()
