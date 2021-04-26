@@ -9,12 +9,9 @@ EditorBuildSettings:
     path: Assets/UI/Scenes/MainMenu.unity
     guid: 31a2e334e7008b845bdcdfc22e2060b6
   - enabled: 1
-    path: Assets/Scenes/Development/Demo.unity
-    guid: 9286594ddd94f0746a8486f07473d194
-  - enabled: 1
     path: Assets/Managers/Scenes/Loading.unity
     guid: bc6b03bb995c1f041918df710b1272b0
   - enabled: 1
-    path: Assets/Scenes/Development/Order System.unity
-    guid: 30cac364026816a488c02d001be7a053
+    path: Assets/Scenes/Development/PubLevelDesign/Blockout.unity
+    guid: 4b33900af1b428e4c9a85e6de620b220
   m_configObjects: {}
