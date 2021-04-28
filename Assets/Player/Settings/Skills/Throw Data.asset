@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Throw Data
   m_EditorClassIdentifier: 
   distance: 30
-  flightTime: 1.5
+  flightTime: 1

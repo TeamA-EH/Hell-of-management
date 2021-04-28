@@ -30,7 +30,7 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.1870101
     - serializedVersion: 3
-      time: 0.1
+      time: 0.05
       value: 1
       inSlope: 0.13655475
       outSlope: 0.13655475
@@ -41,7 +41,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  maxAcceleration: 14
+  maxAcceleration: 12
   decelerationTime: 0.1
   decelerationCurve:
     serializedVersion: 2
