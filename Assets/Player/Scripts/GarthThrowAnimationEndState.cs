@@ -9,6 +9,7 @@ namespace HOM
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             MovementHandler.EnableCharacterRotation(C_Garth.self.gameObject);
+            MovementHandler.EnableInput(C_Garth.self);
         }
        
     }

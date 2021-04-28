@@ -13,7 +13,7 @@ namespace HOM
                 C_Garth.self.AnimationController.ResetTrigger("Start Throw");
                 C_Garth.self.AnimationController.SetTrigger("End Throw");
                 animator.ResetTrigger("Throw");
-                //animator.SetTrigger("Wait");
+                animator.SetTrigger("Wait");
             });
         }
     }
