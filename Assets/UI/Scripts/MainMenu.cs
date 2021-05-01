@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     /// </summary>
     public void PlayGame()
     {
-        Loader.Load(Loader.Scene.Demo);
+        Loader.Load(Loader.Scene.Blockout);
     }
 
     /// <summary>

@@ -20,7 +20,7 @@ namespace HOM
             if(menu)
             {
                 menu.SetActive(true);
-                menu.GetComponent<Animator>().SetTrigger("Pop-In");
+                //menu.GetComponent<Animator>().SetTrigger("Pop-In");
                 Debug.Log("trigger activated!");
             }
 
