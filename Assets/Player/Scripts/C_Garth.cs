@@ -14,6 +14,8 @@ namespace HOM
         [SerializeField]Animator animation_controller;
         public Animator AnimationController => animation_controller;
 
+        internal bool CanIteract = true;
+
         /* MOVEMENT SETTIGS */
         internal CharacterMovementData movementSettings;
         internal float itemWeight = 0.0f;
@@ -61,12 +63,12 @@ namespace HOM
         {
             if(Input.GetMouseButtonDown(0) && !PlayerHands[0].m_canBind)
             {
-                SkillManager.SendObjectReleaseRequest(gameObject, 0);
+                if(CanIteract) SkillManager.SendObjectReleaseRequest(gameObject, 0);
             }
 
             if(Input.GetMouseButton(1) &&  !PlayerHands[1].m_canBind)
             {
-                SkillManager.SendObjectReleaseRequest(gameObject, 1);
+                if(CanIteract) SkillManager.SendObjectReleaseRequest(gameObject, 1);
             }
 
             //animation_controller.SetFloat("speed", Mathf.Clamp(cc.velocity.magnitude,0,1));

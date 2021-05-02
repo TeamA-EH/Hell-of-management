@@ -13,7 +13,7 @@ namespace HOM
 
         public DropSkill(SkillData settings)
         {
-            maxSpeed=settings.MaxSpeed;
+            maxSpeed=settings.Distance / settings.FlightTime;
         }
 
         public void Execute(Action OnSkillCompleted = null)

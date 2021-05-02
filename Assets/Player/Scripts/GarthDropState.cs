@@ -15,7 +15,7 @@ namespace HOM
                 C_Garth.self.AnimationController.ResetTrigger("Start Drop");
                 C_Garth.self.AnimationController.SetTrigger("End Drop");
                 animator.ResetTrigger("Drop");
-                animator.SetTrigger("Wait");
+                //animator.SetTrigger("Wait");
             });
         }
     }

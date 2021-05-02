@@ -134,6 +134,17 @@ namespace HOM
         #endregion
 
         #region Movement Handlers
+
+        public static void EnableInput(C_Garth mainCharacter)
+        {
+            mainCharacter.CanIteract = true;
+        }
+
+        public static void DisableInput(C_Garth mainCharacter)
+        {
+            mainCharacter.CanIteract = false;
+        }
+
         ///<summary> Changes Movement Settings </summary>
         ///<param name="player"> Reference to Garth character </param>
         ///<param name="settings"> movement data uniques identifier(eg. MS_ICE) </param>

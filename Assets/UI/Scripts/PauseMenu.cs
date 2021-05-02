@@ -4,14 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using HOM;
 
-public class MainMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
     /// <summary>
-    /// This is used by the play button to start the game.
+    /// This is used by the play button to resume the game.
     /// </summary>
-    public void PlayGame()
+    public void Resume()
     {
-        Loader.Load(Loader.Scene.Blockout);
+        
     }
 
     /// <summary>
@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
     public void GoToSettings()
     {
         GUIHandler.ActivatesMenu("Settings Menu");
-        GUIHandler.DeactivatesMenu("Main Menu");
+        GUIHandler.DeactivatesMenu("Pause Menu");
     }
 
     /// <summary>
@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
     public void GoToControls()
     {
         GUIHandler.ActivatesMenu("Controls");
-        GUIHandler.DeactivatesMenu("Main Menu");
+        GUIHandler.DeactivatesMenu("Pause Menu");
     }
 
     /// <summary>
@@ -38,7 +38,7 @@ public class MainMenu : MonoBehaviour
     public void GoToCredits()
     {
         GUIHandler.ActivatesMenu("GoToCredits");
-        GUIHandler.DeactivatesMenu("Main Menu");
+        GUIHandler.DeactivatesMenu("Pause Menu");
     }
 
     /// <summary>

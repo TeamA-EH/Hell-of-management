@@ -9,7 +9,7 @@ public static class Loader
 {
     public enum Scene
     {
-        MainMenu, Demo, Loading
+        MainMenu, Blockout, Loading
     }
 
     private static Action onLoaderCallback;

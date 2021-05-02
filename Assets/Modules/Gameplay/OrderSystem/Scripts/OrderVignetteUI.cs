@@ -27,7 +27,7 @@ namespace HOM
 
         void Initialize()
         {
-            gameObject.transform.LookAt(Camera.main.transform, Camera.main.transform.up);
+            //gameObject.transform.LookAt(Camera.main.transform, Camera.main.transform.up);
 
             if(firsSoulContainer)           SetIcons(ref firsSoulContainer, ref fIcons);
             if(secondSoulContainer)         SetIcons(ref secondSoulContainer, ref sIcons);
