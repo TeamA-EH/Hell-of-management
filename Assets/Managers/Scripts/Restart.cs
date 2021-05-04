@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Restart : MonoBehaviour
+namespace HOM
 {
-    // Update is called once per frame
-    void Update()
+    public class Restart : MonoBehaviour
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        // Update is called once per frame
+        void Update()
         {
-            Loader.LoadCurrentScene();
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                //LevelManager.self.LoadLevel(1);
+            }
         }
     }
 }

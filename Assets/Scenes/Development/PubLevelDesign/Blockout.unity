@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1470,7 +1470,7 @@ PrefabInstance:
     - target: {fileID: 2638364819101920605, guid: f517dbb7430aae642bd600ccc739cc32,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7503663214174754232, guid: f517dbb7430aae642bd600ccc739cc32,
         type: 3}
@@ -3373,7 +3373,7 @@ PrefabInstance:
     - target: {fileID: 1380963593184403049, guid: 34d8bb6df0c1d544bb69a34144259a07,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6561611540034724750, guid: 34d8bb6df0c1d544bb69a34144259a07,
         type: 3}
@@ -3592,6 +3592,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Throw_Drop (Canvas)
+      objectReference: {fileID: 0}
+    - target: {fileID: 485032647225065657, guid: 135165fb17d0a574789253ea1ec37397,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1300735195776680001, guid: 135165fb17d0a574789253ea1ec37397,
         type: 3}
@@ -5753,7 +5758,7 @@ PrefabInstance:
     - target: {fileID: 7176631152249979301, guid: afc396d472104184f9157915a42615c9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afc396d472104184f9157915a42615c9, type: 3}

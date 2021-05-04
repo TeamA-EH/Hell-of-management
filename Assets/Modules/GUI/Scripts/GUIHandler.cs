@@ -9,7 +9,7 @@ namespace HOM
         void Start(){
 
             DontDestroyOnLoad(this);
-            ActivatesMenu("Main Menu");
+            GUIHandler.ActivatesMenu("Main Menu");
         }
        #endregion
 
