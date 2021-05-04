@@ -8,8 +8,7 @@ namespace HOM
        #region Unity Callbacks
         void Start(){
 
-            DontDestroyOnLoad(this);
-            GUIHandler.ActivatesMenu("Main Menu");
+            //DontDestroyOnLoad(this);
         }
        #endregion
 

@@ -11,7 +11,7 @@ namespace HOM
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                //LevelManager.self.LoadLevel(1);
+                //LevelManager.instance.ReloadGame();
             }
         }
     }

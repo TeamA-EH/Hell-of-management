@@ -7,9 +7,8 @@ namespace HOM
     public class UI_Manager : MonoBehaviour
     {
         static UI_Manager self;
-
-        bool sceneHasChanged;
-        public float checkScene;
+        public static bool GameIsPaused = false;
+        public int memorizedIndex;
 
         void Start()
         {
@@ -19,21 +18,22 @@ namespace HOM
         void Init()
         {
             self = this;
-            DontDestroyOnLoad(this);
-            //StartCoroutine(Alessiomiuccide(0.1f));
         }
 
-        IEnumerator Alessiomiuccide(float time)
+        void CheckScene()
         {
-            yield return new WaitForSeconds(time);
-
-            //checkScene = LevelManager.self.currentScene;
-            if (checkScene == 0)
+            if (!LevelManager.instance.isLoading && LevelManager.instance.currentIndex == 1 && memorizedIndex != LevelManager.instance.currentIndex)
+            {
                 OpenMainMenu();
-            else if (checkScene == 1)
+                memorizedIndex = LevelManager.instance.currentIndex;
+            }
+            else if (!LevelManager.instance.isLoading && LevelManager.instance.currentIndex == 2 && memorizedIndex != LevelManager.instance.currentIndex)
+            {
                 OpenHud();
+                memorizedIndex = LevelManager.instance.currentIndex;
+            }
         }
-
+        
         void OpenMainMenu()
         {
             GUIHandler.ActivatesMenu("Main Menu");
@@ -45,30 +45,42 @@ namespace HOM
             GUIHandler.DeactivatesMenu("Main Menu");
             GUIHandler.ActivatesMenu("Hud");
         }
-        
-        void LevelCheck()
+
+        void Update()
         {
-            //if (checkScene != LevelManager.self.currentScene)
-            //{
-            //    sceneHasChanged = true;
-            //    if (sceneHasChanged == true && LevelManager.self.currentScene == 0)
-            //    {
-            //        OpenMainMenu();
-            //        checkScene = LevelManager.self.currentScene;
-            //        sceneHasChanged = false;
-            //    }
-            //    else if (sceneHasChanged == true && LevelManager.self.currentScene == 1)
-            //    {
-            //        OpenHud();
-            //        checkScene = LevelManager.self.currentScene;
-            //        sceneHasChanged = false;
-            //    }
-            //}
+            CheckScene();
+            CheckStatus();
         }
 
-        //void Update()
-        //{
-        //    LevelCheck();
-        //}
+        void CheckStatus()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape) && !LevelManager.instance.isLoading && LevelManager.instance.currentIndex == 2)
+            {
+                if (GameIsPaused)
+                {
+                    Resume();
+                }
+                else
+                {
+                    Pause();
+                }
+            }
+        }
+
+        void Resume()
+        {
+            GUIHandler.DeactivatesMenu("Pause Menu");
+            GUIHandler.ActivatesMenu("Hud");
+            Time.timeScale = 1;
+            GameIsPaused = false;
+        }
+
+        void Pause()
+        {
+            GUIHandler.ActivatesMenu("Pause Menu");
+            GUIHandler.DeactivatesMenu("Hud");
+            Time.timeScale = 0;
+            GameIsPaused = true;
+        }
     }
 }
