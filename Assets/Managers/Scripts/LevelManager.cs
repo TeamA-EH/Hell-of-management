@@ -7,7 +7,7 @@ namespace HOM
 {
     public class LevelManager : MonoBehaviour
     {
-        public static LevelManager instance;
+        public static LevelManager self;
         public GameObject loadingScreen;
         public bool isLoading;
         public float loadingDuration;
@@ -15,16 +15,33 @@ namespace HOM
 
         public enum SceneIndexes { PersistentScene = 0, MainMenu = 1, Blockout = 2 };
 
+        #region UnityCallbacks
         private void Awake()
         {
-            instance = this;
-            DontDestroyOnLoad(this);
+            Init();
+            FirstScene();
+        }
+        #endregion
+
+        void Init()
+        {
+            self = this;
+        }
+
+        /// <summary>
+        /// This is the first scene when the game is booted up.
+        /// </summary>
+        void FirstScene()
+        {
             SceneManager.LoadSceneAsync((int)SceneIndexes.MainMenu, LoadSceneMode.Additive);
             currentIndex = (int)SceneIndexes.MainMenu;
         }
 
         List<AsyncOperation> sceneLoading = new List<AsyncOperation>();
 
+        /// <summary>
+        /// This is called from the MainMenu start game button, to start the game.
+        /// </summary>
         public void LoadGame()
         {
             loadingScreen.SetActive(true);
@@ -36,6 +53,9 @@ namespace HOM
             StartCoroutine(GetSceneLoadProgress(loadingDuration));
         }
 
+        /// <summary>
+        /// This is called from the PauseMenu quit game button, to return the MainMenu;
+        /// </summary>
         public void LoadMainMenu()
         {
             loadingScreen.SetActive(true);
@@ -48,6 +68,9 @@ namespace HOM
             StartCoroutine(GetSceneLoadProgress(loadingDuration));
         }
 
+        /// <summary>
+        /// This is used to give a timer to the loading screen, a customizable duration from inspector.
+        /// </summary>
         float totalSceneProgress;
         public IEnumerator GetSceneLoadProgress(float duration)
         {

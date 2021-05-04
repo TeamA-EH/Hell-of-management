@@ -11,7 +11,7 @@ namespace HOM
         /// </summary>
         public void PlayGame()
         {
-            LevelManager.instance.LoadGame();
+            LevelManager.self.LoadGame();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace HOM
         /// </summary>
         public void GoToCredits()
         {
-            GUIHandler.ActivatesMenu("GoToCredits");
+            GUIHandler.ActivatesMenu("Credits Menu");
             GUIHandler.DeactivatesMenu("Main Menu");
         }
 
