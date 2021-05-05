@@ -11,7 +11,8 @@ namespace HOM
         /// </summary>
         public void PlayGame()
         {
-            LevelManager.self.LoadGame();
+            GUIHandler.DeactivatesMenu("Main Menu");
+            LevelManager.LoadLevel("Blockout");
         }
 
         /// <summary>

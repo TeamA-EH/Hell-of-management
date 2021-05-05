@@ -13,74 +13,49 @@ namespace HOM
         public float loadingDuration;
         public int currentIndex;
 
-        public enum SceneIndexes { PersistentScene = 0, MainMenu = 1, Blockout = 2 };
-
         #region UnityCallbacks
         private void Awake()
         {
             Init();
-            FirstScene();
         }
         #endregion
 
         void Init()
         {
             self = this;
+            DontDestroyOnLoad(this);
         }
 
-        /// <summary>
-        /// This is the first scene when the game is booted up.
-        /// </summary>
-        void FirstScene()
+        public static void LoadLevel(string levelName)
         {
-            SceneManager.LoadSceneAsync((int)SceneIndexes.MainMenu, LoadSceneMode.Additive);
-            currentIndex = (int)SceneIndexes.MainMenu;
-        }
-
-        List<AsyncOperation> sceneLoading = new List<AsyncOperation>();
-
-        /// <summary>
-        /// This is called from the MainMenu start game button, to start the game.
-        /// </summary>
-        public void LoadGame()
-        {
-            loadingScreen.SetActive(true);
-            isLoading = true;
-            sceneLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.MainMenu));
-            sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.Blockout, LoadSceneMode.Additive));
-            currentIndex = (int)SceneIndexes.Blockout;
-
-            StartCoroutine(GetSceneLoadProgress(loadingDuration));
-        }
-
-        /// <summary>
-        /// This is called from the PauseMenu quit game button, to return the MainMenu;
-        /// </summary>
-        public void LoadMainMenu()
-        {
-            loadingScreen.SetActive(true);
-            isLoading = true;
-            sceneLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.Blockout));
-            sceneLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.MainMenu, LoadSceneMode.Additive));
-            currentIndex = (int)SceneIndexes.MainMenu;
-
-
-            StartCoroutine(GetSceneLoadProgress(loadingDuration));
-        }
-
-        /// <summary>
-        /// This is used to give a timer to the loading screen, a customizable duration from inspector.
-        /// </summary>
-        float totalSceneProgress;
-        public IEnumerator GetSceneLoadProgress(float duration)
-        {
-            for(int i=0; i<sceneLoading.Count; i++)
+            switch(levelName)
             {
-                while(!sceneLoading[i].isDone)
-                {
-                    yield return new WaitForSeconds(duration);
-                }
-            }
+                case "Main Menu":
+                    self.StartCoroutine(self.ExecuteLevelTransition(self.loadingDuration, 0));
+                    break;
+                case "Blockout":
+                    self.StartCoroutine(self.ExecuteLevelTransition(self.loadingDuration, 1));
+                    break;
+            }    
+        }
+
+        public void OnLevelWasLoaded(int level)
+        {
+            if (level == 1)
+                currentIndex = 1;
+            else
+                currentIndex = 2;
+        }
+
+        IEnumerator ExecuteLevelTransition(float duration, int levelIndex)
+        {
+            loadingScreen.SetActive(true);
+            isLoading = true;
+            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(duration);
+            SceneManager.LoadScene(levelIndex);
+            loadingScreen.GetComponent<Animator>().SetTrigger("Out");
+            yield return new WaitForSeconds(1);
             loadingScreen.SetActive(false);
             isLoading = false;
         }

@@ -8,13 +8,14 @@ namespace HOM
     {
         static UI_Manager self;
         static bool GameIsPaused = false;
-        int memorizedIndex;
+        public int memorizedIndex;
 
         #region UnityCallbacks
 
         void Start()
         {
             Init();
+            DontDestroyOnLoad(this);
         }
 
         void Update()
@@ -28,6 +29,7 @@ namespace HOM
         void Init()
         {
             self = this;
+            OpenMainMenu();
         }
 
         /// <summary>
@@ -35,12 +37,12 @@ namespace HOM
         /// </summary>
         void CheckScene()
         {
-            if (!LevelManager.self.isLoading && LevelManager.self.currentIndex == 1 && memorizedIndex != LevelManager.self.currentIndex)
+            if (!LevelManager.self.isLoading && LevelManager.self.currentIndex == 0 && memorizedIndex != LevelManager.self.currentIndex)
             {
                 OpenMainMenu();
                 memorizedIndex = LevelManager.self.currentIndex;
             }
-            else if (!LevelManager.self.isLoading && LevelManager.self.currentIndex == 2 && memorizedIndex != LevelManager.self.currentIndex)
+            else if (!LevelManager.self.isLoading && LevelManager.self.currentIndex == 1 && memorizedIndex != LevelManager.self.currentIndex)
             {
                 OpenHud();
                 memorizedIndex = LevelManager.self.currentIndex;
@@ -72,7 +74,7 @@ namespace HOM
         /// </summary>
         void CheckStatus()
         {
-            if (Input.GetKeyDown(KeyCode.Escape) && !LevelManager.self.isLoading && LevelManager.self.currentIndex == 2)
+            if (Input.GetKeyDown(KeyCode.Escape) && !LevelManager.self.isLoading)
             {
                 if (GameIsPaused)
                     Resume();

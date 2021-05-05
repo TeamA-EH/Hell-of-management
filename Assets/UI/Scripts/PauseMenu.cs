@@ -48,6 +48,6 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         GUIHandler.DeactivatesMenu("Pause Menu");
-        LevelManager.self.LoadMainMenu();
+        LevelManager.LoadLevel("Main Menu");
     }
 }
