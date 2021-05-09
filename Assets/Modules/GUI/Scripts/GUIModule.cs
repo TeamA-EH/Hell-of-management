@@ -11,9 +11,12 @@ namespace HOM.Modules
         [SerializeField] GameObject CreditsMenuAsset;
         [SerializeField] GameObject PauseMenuAsset;
         [SerializeField] GameObject QuitMenuAsset;
-        [SerializeField] GameObject ReviewMenuAsset;
-        [SerializeField] GameObject UpgradeMenuAsset;
-        [SerializeField] GameObject DayReplayMenuAsset;
+        [SerializeField] GameObject ClockAsset;
+        [SerializeField] GameObject DialogueBoxAsset;
+        [SerializeField] GameObject ScoreAsset;
+        [SerializeField] GameObject ThrowDropAsset;
+        [SerializeField] GameObject ToDoListAsset;
+
 
         Dictionary<string, GameObject> m_menuesMap = new Dictionary<string, GameObject>();
         static GUIModule self = null;
@@ -38,9 +41,12 @@ namespace HOM.Modules
             SetMenuResource("Credits Menu", ref CreditsMenuAsset);
             SetMenuResource("Pause Menu", ref PauseMenuAsset);
             SetMenuResource("Quit Menu", ref QuitMenuAsset);
-            SetMenuResource("Review Menu", ref ReviewMenuAsset);
-            SetMenuResource("Day Replay Menu", ref DayReplayMenuAsset);
-            
+            SetMenuResource("Clock", ref ClockAsset);
+            SetMenuResource("DialogueBox", ref DialogueBoxAsset);
+            SetMenuResource("Score", ref ScoreAsset);
+            SetMenuResource("Throw Drop", ref ThrowDropAsset);
+            SetMenuResource("ToDoList", ref ToDoListAsset);
+
             self = this;
         }
 

@@ -95,10 +95,10 @@ public class UI_ThrowDrop : MonoBehaviour
         // fade from opaque to transparent
         if (fadeAway)
         {
-            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            while(_status.color.a != 0) 
             {
-                _status.color = new Color(1, 1, 1, i);
-                yield return null;
+                _status.color -= new Color(0, 0, 0, Time.deltaTime);
+                    yield return Time.deltaTime;   
             }
         }
         // fade from transparent to opaque

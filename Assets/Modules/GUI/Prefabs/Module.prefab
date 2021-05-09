@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4378347171100111109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4378347171100111114}
+  - component: {fileID: 4378347171100111115}
+  m_Layer: 0
+  m_Name: Module
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4378347171100111114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378347171100111109}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4378347171100111115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4378347171100111109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48fa805684f78bd4e93e4efddf79df14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenuAsset: {fileID: 8768166058526336502, guid: 4bb5ad2aaf806624fbf65f3a2bc6904c,
+    type: 3}
+  SettingsMenuAsset: {fileID: 3972920276626537087, guid: ee20986e5406c584397d937d79ae0ec2,
+    type: 3}
+  ControlsMenuAsset: {fileID: 0}
+  CreditsMenuAsset: {fileID: 3972920276626537087, guid: c3a5a740e7d00934c80270ea9da81ce8,
+    type: 3}
+  PauseMenuAsset: {fileID: 4953439867840701579, guid: 995a11d02525fb747b1010107dec7ccf,
+    type: 3}
+  QuitMenuAsset: {fileID: 8897685261649862123, guid: 00269758a49dc8a499fff22f27887692,
+    type: 3}
+  ClockAsset: {fileID: 2638364819101920605, guid: f517dbb7430aae642bd600ccc739cc32,
+    type: 3}
+  DialogueBoxAsset: {fileID: 7362380979588611159, guid: 9156f73aa6c14e4439c0be5559a3afb5,
+    type: 3}
+  ScoreAsset: {fileID: 1380963593184403049, guid: 34d8bb6df0c1d544bb69a34144259a07,
+    type: 3}
+  ThrowDropAsset: {fileID: 485032647225065657, guid: 135165fb17d0a574789253ea1ec37397,
+    type: 3}
+  ToDoListAsset: {fileID: 7176631152249979301, guid: afc396d472104184f9157915a42615c9,
+    type: 3}
