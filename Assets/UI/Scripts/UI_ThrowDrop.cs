@@ -20,6 +20,8 @@ public class UI_ThrowDrop : MonoBehaviour
 
     void Start()
     {
+        _throw = Resources.Load<Sprite>("Icon_Throw_1024");
+        _drop = Resources.Load<Sprite>("Icon_Drop_1024");
         currentSprite = _status.sprite;
         currentTimeAfterFade = timeAfterFade;
     }
