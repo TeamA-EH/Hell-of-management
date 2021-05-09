@@ -65,7 +65,7 @@ namespace HOM
             GUIHandler.ActivatesMenu("Clock");
             //GUIHandler.ActivatesMenu("DialogueBox");
             GUIHandler.ActivatesMenu("Score");
-            GUIHandler.ActivatesMenu("Throw Drop");
+            //GUIHandler.ActivatesMenu("Throw Drop");
             GUIHandler.ActivatesMenu("ToDoList");
         }
 
@@ -92,7 +92,7 @@ namespace HOM
             GUIHandler.ActivatesMenu("Clock");
             //GUIHandler.ActivatesMenu("DialogueBox");
             GUIHandler.ActivatesMenu("Score");
-            GUIHandler.ActivatesMenu("Throw Drop");
+            //GUIHandler.ActivatesMenu("Throw Drop");
             GUIHandler.ActivatesMenu("ToDoList");
             Time.timeScale = 1;
             GameIsPaused = false;
@@ -107,7 +107,7 @@ namespace HOM
             GUIHandler.DeactivatesMenu("Clock");
             //GUIHandler.DeactivatesMenu("DialogueBox");
             GUIHandler.DeactivatesMenu("Score");
-            GUIHandler.DeactivatesMenu("Throw Drop");
+            //GUIHandler.DeactivatesMenu("Throw Drop");
             GUIHandler.DeactivatesMenu("ToDoList");
             Time.timeScale = 0;
             GameIsPaused = true;

@@ -7,14 +7,14 @@ namespace HOM.Modules
     {
         [SerializeField] GameObject MainMenuAsset;
         [SerializeField] GameObject SettingsMenuAsset;
-        [SerializeField] GameObject ControlsMenuAsset;
+        //[SerializeField] GameObject ControlsMenuAsset;
         [SerializeField] GameObject CreditsMenuAsset;
         [SerializeField] GameObject PauseMenuAsset;
         [SerializeField] GameObject QuitMenuAsset;
         [SerializeField] GameObject ClockAsset;
         [SerializeField] GameObject DialogueBoxAsset;
         [SerializeField] GameObject ScoreAsset;
-        [SerializeField] GameObject ThrowDropAsset;
+        //[SerializeField] GameObject ThrowDropAsset;
         [SerializeField] GameObject ToDoListAsset;
 
 
@@ -37,14 +37,14 @@ namespace HOM.Modules
             /* Adds menues to the collection */
             SetMenuResource("Main Menu", ref MainMenuAsset);
             SetMenuResource("Settings Menu", ref SettingsMenuAsset);
-            SetMenuResource("Controls Menu", ref ControlsMenuAsset);
+            //SetMenuResource("Controls Menu", ref ControlsMenuAsset);
             SetMenuResource("Credits Menu", ref CreditsMenuAsset);
             SetMenuResource("Pause Menu", ref PauseMenuAsset);
             SetMenuResource("Quit Menu", ref QuitMenuAsset);
             SetMenuResource("Clock", ref ClockAsset);
             SetMenuResource("DialogueBox", ref DialogueBoxAsset);
             SetMenuResource("Score", ref ScoreAsset);
-            SetMenuResource("Throw Drop", ref ThrowDropAsset);
+            //SetMenuResource("Throw Drop", ref ThrowDropAsset);
             SetMenuResource("ToDoList", ref ToDoListAsset);
 
             self = this;
