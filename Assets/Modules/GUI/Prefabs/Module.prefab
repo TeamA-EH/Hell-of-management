@@ -60,7 +60,6 @@ MonoBehaviour:
     type: 3}
   ScoreAsset: {fileID: 1380963593184403049, guid: 34d8bb6df0c1d544bb69a34144259a07,
     type: 3}
-  ThrowDropAsset: {fileID: 485032647225065657, guid: 135165fb17d0a574789253ea1ec37397,
-    type: 3}
+  ThrowDropAsset: {fileID: 0}
   ToDoListAsset: {fileID: 7176631152249979301, guid: afc396d472104184f9157915a42615c9,
     type: 3}
