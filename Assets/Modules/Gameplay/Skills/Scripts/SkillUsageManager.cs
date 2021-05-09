@@ -5,12 +5,12 @@ namespace HOM
 {
     public class SkillUsageManager : MonoBehaviour
     {
-        public static SkillUsageManager self {private set; get;} = null;
+        public static SkillUsageManager self { private set; get; } = null;
 
-        public enum SelectedType {NONE = -1, DROP, THROW}
+        public enum SelectedType { NONE = -1, DROP, THROW }
         ///<summary> Repesent the modality for use an item; possible valie: DROP or Throw </summary>
-        SelectedType itemMod = SelectedType.DROP;
-        public SelectedType ItemMod 
+        SelectedType itemMod = SelectedType.THROW;
+        public SelectedType ItemMod
         {
             get => itemMod;
             private set
@@ -27,15 +27,15 @@ namespace HOM
         #region Unity Callbacks
         void Start()
         {
-            if(!self) self = this;  // singleton reference
+            if (!self) self = this;  // singleton reference
         }
-        void Update()
+        /* void Update()
         {
             if(Input.GetKeyDown(KeyCode.LeftShift))
             {
-                SwapItemUsage();
+                //SwapItemUsage();
             }
-        }
+        }*/
         #endregion
 
         void SwapItemUsage()

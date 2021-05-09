@@ -46,6 +46,8 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void GoToQuitMenu()
     {
-        GUIHandler.ActivatesMenu("Quit Menu");
+        Time.timeScale = 1;
+        GUIHandler.DeactivatesMenu("Pause Menu");
+        LevelManager.LoadLevel("Main Menu");
     }
 }

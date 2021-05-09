@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2436235257657726195}
-  - component: {fileID: 2436235257657726196}
   m_Layer: 0
   m_Name: Task (3)
   m_TagString: Untagged
@@ -39,22 +38,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 233, y: 50}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &2436235257657726196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2436235257657726194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3085c650091742641b79f916c7e76247, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskFinished: 0
-  unticked: {fileID: 21300000, guid: 0b760d4acc23eac4aa9f234021dd4ed3, type: 3}
-  ticked: {fileID: 21300000, guid: df77e593f0081f24fb36112f962465dd, type: 3}
-  taskbox: {fileID: 2436235258724537592}
 --- !u!1 &2436235257661788170
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +241,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2436235258018647272}
-  - component: {fileID: 2436235258018647273}
   m_Layer: 0
   m_Name: Task (2)
   m_TagString: Untagged
@@ -288,22 +270,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 233, y: 50}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &2436235258018647273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2436235258018647271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3085c650091742641b79f916c7e76247, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskFinished: 0
-  unticked: {fileID: 21300000, guid: 0b760d4acc23eac4aa9f234021dd4ed3, type: 3}
-  ticked: {fileID: 21300000, guid: df77e593f0081f24fb36112f962465dd, type: 3}
-  taskbox: {fileID: 2436235259024798473}
 --- !u!1 &2436235258175301796
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +353,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2436235258272931157}
-  - component: {fileID: 2436235258272931158}
   m_Layer: 0
   m_Name: Task (1)
   m_TagString: Untagged
@@ -417,22 +382,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 233, y: 50}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &2436235258272931158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2436235258272931156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3085c650091742641b79f916c7e76247, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  taskFinished: 0
-  unticked: {fileID: 21300000, guid: 0b760d4acc23eac4aa9f234021dd4ed3, type: 3}
-  ticked: {fileID: 21300000, guid: df77e593f0081f24fb36112f962465dd, type: 3}
-  taskbox: {fileID: 2436235258476092039}
 --- !u!1 &2436235258476092039
 GameObject:
   m_ObjectHideFlags: 0
