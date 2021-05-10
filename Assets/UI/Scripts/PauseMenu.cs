@@ -11,7 +11,8 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void Resume()
     {
-        
+        Time.timeScale = 1;
+        GUIHandler.DeactivatesMenu("Pause Menu");
     }
 
     /// <summary>
