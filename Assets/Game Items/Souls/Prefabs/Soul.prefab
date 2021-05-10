@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6881355932537580832}
   - component: {fileID: 1222370688915384199}
   - component: {fileID: 7789920302180024179}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: yellow soul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1945304896065134359}
   - component: {fileID: 7853801010352517373}
   - component: {fileID: 4347244348953936329}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: purple soul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 5462101146035493153}
   - component: {fileID: 5120501238998844665}
   - component: {fileID: 1855806983612761600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: green soul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5462101146087855041}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 5462101146790390569}
   - component: {fileID: 600522306746996174}
   - component: {fileID: 1563950416061797143}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: blue soul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 6657840632422418734}
   - component: {fileID: 2866140910481126820}
   - component: {fileID: 2498983145300205062}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Soul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 5462101148031533474}
   - component: {fileID: 7195139334708244333}
   - component: {fileID: 5963429467778265287}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: red soul
   m_TagString: Untagged
   m_Icon: {fileID: 0}

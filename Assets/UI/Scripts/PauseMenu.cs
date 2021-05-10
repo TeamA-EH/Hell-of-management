@@ -11,7 +11,10 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void Resume()
     {
-        
+        Time.timeScale = 1;
+        GUIHandler.DeactivatesMenu("Pause Menu");
+        GUIHandler.ActivatesMenu("Clock");
+        GUIHandler.ActivatesMenu("ToDoList");
     }
 
     /// <summary>
@@ -37,7 +40,7 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void GoToCredits()
     {
-        GUIHandler.ActivatesMenu("GoToCredits");
+        GUIHandler.ActivatesMenu("Credits Menu");
         GUIHandler.DeactivatesMenu("Pause Menu");
     }
 

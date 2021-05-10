@@ -265,7 +265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9088624591323880275
 RectTransform:
   m_ObjectHideFlags: 0
@@ -532,6 +532,8 @@ MonoBehaviour:
   star2: {fileID: 2551685894167761512}
   star3: {fileID: 9088624592142771203}
   fillImg: {fileID: 9088624592225177210}
+  scoreNumber: {fileID: 9088624591323880274}
+  scoreBar: {fileID: 9088624592431399297}
 --- !u!1 &9088624592225177212
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,7 +749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9088624592431399310
 RectTransform:
   m_ObjectHideFlags: 0
