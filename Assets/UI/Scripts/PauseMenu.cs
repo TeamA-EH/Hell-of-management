@@ -37,7 +37,7 @@ public class PauseMenu : MonoBehaviour
     /// </summary>
     public void GoToCredits()
     {
-        GUIHandler.ActivatesMenu("GoToCredits");
+        GUIHandler.ActivatesMenu("Credits Menu");
         GUIHandler.DeactivatesMenu("Pause Menu");
     }
 

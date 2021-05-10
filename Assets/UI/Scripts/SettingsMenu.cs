@@ -34,8 +34,16 @@ namespace HOM
 
         public void Back()
         {
-            GUIHandler.DeactivatesMenu("Settings Menu");
-            GUIHandler.ActivatesMenu("Main Menu");
+            if (LevelManager.self.currentIndex == 0)
+            {
+                GUIHandler.DeactivatesMenu("Settings Menu");
+                GUIHandler.ActivatesMenu("Main Menu");
+            }
+            else if (LevelManager.self.currentIndex == 1)
+            {
+                GUIHandler.DeactivatesMenu("Settings Menu");
+                GUIHandler.ActivatesMenu("Pause Menu");
+            }
         }
     }
 }
