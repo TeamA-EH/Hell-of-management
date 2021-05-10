@@ -10,6 +10,10 @@ public class UI_Score : MonoBehaviour
     [SerializeField] Image star2;
     [SerializeField] Image star3;
     [SerializeField] Image fillImg;
+    [SerializeField] GameObject scoreNumber;
+    [SerializeField] GameObject scoreBar;
+    private bool isActive = false;
+    private bool isPaused = false;
 
     #region Unity Callbacks
     public void Awake()
@@ -20,6 +24,11 @@ public class UI_Score : MonoBehaviour
     {
         Score.OnProgressChanged -= UpdateGraphics;
     }
+
+    void Update()
+    {
+        Activate();
+    }
     #endregion
 
     void Init()
@@ -29,6 +38,28 @@ public class UI_Score : MonoBehaviour
         scoreText.text = $"Score: {0}";
 
         Score.OnProgressChanged+=UpdateGraphics;
+    }
+
+    void Activate()
+    {
+        if (!LevelManager.self.isLoading && LevelManager.self.currentIndex == 1 && isActive == false)
+        {
+            scoreBar.SetActive(true);
+            scoreNumber.SetActive(true);
+            isActive = true;
+        }
+        if (Time.timeScale == 0 && isPaused == false)
+        {
+            scoreBar.SetActive(false);
+            scoreNumber.SetActive(false);
+            isPaused = true;
+        }
+        if (Time.timeScale == 1 && isPaused == true)
+        {
+            scoreBar.SetActive(true);
+            scoreNumber.SetActive(true);
+            isPaused = false;
+        }
     }
 
     public void UpdateGraphics(Score sender, float score)

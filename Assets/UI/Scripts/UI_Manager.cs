@@ -7,7 +7,6 @@ namespace HOM
     public class UI_Manager : MonoBehaviour
     {
         static UI_Manager self;
-        static bool GameIsPaused = false;
         public int memorizedIndex;
 
         #region UnityCallbacks
@@ -63,9 +62,6 @@ namespace HOM
         void OpenHud()
         {
             GUIHandler.ActivatesMenu("Clock");
-            //GUIHandler.ActivatesMenu("DialogueBox");
-            GUIHandler.ActivatesMenu("Score");
-            //GUIHandler.ActivatesMenu("Throw Drop");
             GUIHandler.ActivatesMenu("ToDoList");
         }
 
@@ -76,9 +72,9 @@ namespace HOM
         {
             if (Input.GetKeyDown(KeyCode.Escape) && !LevelManager.self.isLoading)
             {
-                if (GameIsPaused)
+                if (Time.timeScale == 0)
                     Resume();
-                else
+                else if(Time.timeScale == 1)
                     Pause();
             }
         }
@@ -90,12 +86,8 @@ namespace HOM
         {
             GUIHandler.DeactivatesMenu("Pause Menu");
             GUIHandler.ActivatesMenu("Clock");
-            //GUIHandler.ActivatesMenu("DialogueBox");
-            GUIHandler.ActivatesMenu("Score");
-            //GUIHandler.ActivatesMenu("Throw Drop");
             GUIHandler.ActivatesMenu("ToDoList");
             Time.timeScale = 1;
-            GameIsPaused = false;
         }
 
         /// <summary>
@@ -105,12 +97,8 @@ namespace HOM
         {
             GUIHandler.ActivatesMenu("Pause Menu");
             GUIHandler.DeactivatesMenu("Clock");
-            //GUIHandler.DeactivatesMenu("DialogueBox");
-            GUIHandler.DeactivatesMenu("Score");
-            //GUIHandler.DeactivatesMenu("Throw Drop");
             GUIHandler.DeactivatesMenu("ToDoList");
             Time.timeScale = 0;
-            GameIsPaused = true;
         }
     }
 }

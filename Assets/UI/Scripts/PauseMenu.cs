@@ -13,6 +13,8 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         GUIHandler.DeactivatesMenu("Pause Menu");
+        GUIHandler.ActivatesMenu("Clock");
+        GUIHandler.ActivatesMenu("ToDoList");
     }
 
     /// <summary>

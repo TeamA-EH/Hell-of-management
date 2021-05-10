@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 8897685261649862132}
   - component: {fileID: 8897685261649862133}
   m_Layer: 0
-  m_Name: Pop Up Quit Canvas
+  m_Name: Pop Up Quit (Canvas)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -639,7 +639,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &8897685261649862132
 MonoBehaviour:
