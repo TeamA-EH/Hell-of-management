@@ -8,7 +8,7 @@ namespace HOM
     {
         public void Back()
         {
-            GUIHandler.DeactivatesMenu("Settings Menu");
+            GUIHandler.DeactivatesMenu("Credits Menu");
             GUIHandler.ActivatesMenu("Main Menu");
         }
     }
