@@ -42,23 +42,26 @@ public class UI_Score : MonoBehaviour
 
     void Activate()
     {
-        if (!LevelManager.self.isLoading && LevelManager.self.currentIndex == 1 && isActive == false)
+        if (LevelManager.self != null)
         {
-            scoreBar.SetActive(true);
-            scoreNumber.SetActive(true);
-            isActive = true;
-        }
-        if (Time.timeScale == 0 && isPaused == false)
-        {
-            scoreBar.SetActive(false);
-            scoreNumber.SetActive(false);
-            isPaused = true;
-        }
-        if (Time.timeScale == 1 && isPaused == true)
-        {
-            scoreBar.SetActive(true);
-            scoreNumber.SetActive(true);
-            isPaused = false;
+            if (!LevelManager.self.isLoading && LevelManager.self.currentIndex == 1 && isActive == false)
+            {
+                scoreBar.SetActive(true);
+                scoreNumber.SetActive(true);
+                isActive = true;
+            }
+            if (Time.timeScale == 0 && isPaused == false)
+            {
+                scoreBar.SetActive(false);
+                scoreNumber.SetActive(false);
+                isPaused = true;
+            }
+            if (Time.timeScale == 1 && isPaused == true)
+            {
+                scoreBar.SetActive(true);
+                scoreNumber.SetActive(true);
+                isPaused = false;
+            }
         }
     }
 

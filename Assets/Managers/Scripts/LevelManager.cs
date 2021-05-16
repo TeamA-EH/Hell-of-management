@@ -12,6 +12,7 @@ namespace HOM
         public bool isLoading;
         public float loadingDuration;
         public int currentIndex;
+        Animator ui_Animator;
 
         #region UnityCallbacks
         private void Awake()
@@ -24,6 +25,7 @@ namespace HOM
         {
             self = this;
             DontDestroyOnLoad(this);
+            ui_Animator = GameObject.Find("UI_Manager").GetComponent<Animator>();
         }
 
         public static void LoadLevel(string levelName)
@@ -41,10 +43,16 @@ namespace HOM
 
         public void OnLevelWasLoaded(int level)
         {
-            if (level == 1)
-                currentIndex = 1;
+            if (level == 0)
+            {
+                ui_Animator.SetInteger("Index", 0);
+                currentIndex = 0;
+            }
             else
-                currentIndex = 2;
+            {
+                ui_Animator.SetInteger("Index", 1);
+                currentIndex = 1;
+            }
         }
 
         IEnumerator ExecuteLevelTransition(float duration, int levelIndex)
@@ -58,6 +66,7 @@ namespace HOM
             yield return new WaitForSeconds(1);
             loadingScreen.SetActive(false);
             isLoading = false;
+            ui_Animator.SetTrigger("SceneChanged");
         }
     }
 }

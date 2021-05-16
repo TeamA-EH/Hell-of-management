@@ -24,7 +24,7 @@ namespace HOM.Modules
         #region UnityCallbacks
         private void Start()
         {
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
 
             Initialize();
 

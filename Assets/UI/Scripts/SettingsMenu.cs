@@ -6,6 +6,12 @@ namespace HOM
 {
     public class SettingsMenu : MonoBehaviour
     {
+        Animator animator;
+
+        public void Start()
+        {
+            animator = GameObject.Find("UI_Manager").GetComponent<Animator>();
+        }
 
         public void Resolution()
         {
@@ -34,16 +40,7 @@ namespace HOM
 
         public void Back()
         {
-            if (LevelManager.self.currentIndex == 0)
-            {
-                GUIHandler.DeactivatesMenu("Settings Menu");
-                GUIHandler.ActivatesMenu("Main Menu");
-            }
-            else if (LevelManager.self.currentIndex == 1)
-            {
-                GUIHandler.DeactivatesMenu("Settings Menu");
-                GUIHandler.ActivatesMenu("Pause Menu");
-            }
+                animator.SetTrigger("Back");
         }
     }
 }
