@@ -8,7 +8,7 @@ namespace HOM
        #region Unity Callbacks
         void Start(){
 
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
        #endregion
 

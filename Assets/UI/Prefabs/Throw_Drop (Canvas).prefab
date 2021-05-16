@@ -412,8 +412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054f958d4c1693045bb6e0b87df31781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _throw: {fileID: 21300000, guid: d653da3817a355a429414fe3e7b79270, type: 3}
-  _drop: {fileID: 21300000, guid: 30a1a6fdeb4d4074eb6e2b8f5e64adda, type: 3}
+  _throw: {fileID: 0}
+  _drop: {fileID: 0}
   _status: {fileID: 2610473996784593072}
   throwdropText: {fileID: 3392912293485266003}
   timeAfterFade: 5

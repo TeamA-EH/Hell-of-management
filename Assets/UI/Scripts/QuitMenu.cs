@@ -5,9 +5,16 @@ using HOM;
 
 public class QuitMenu : MonoBehaviour
 {
+    Animator animator;
+
+    public void Start()
+    {
+        animator = GameObject.Find("UI_Manager").GetComponent<Animator>();
+    }
+
     public void GoBack()
     {
-        GUIHandler.DeactivatesMenu("Quit Menu");
+        animator.SetTrigger("Back");
     }
 
     public void QuitGame()
