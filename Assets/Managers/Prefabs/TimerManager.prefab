@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8316190758069487889}
   - component: {fileID: 8316190758069487890}
   m_Layer: 0
-  m_Name: Timer
+  m_Name: TimerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,6 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9518ca519ac611e41876c3d626d8a926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 0}
-  circle: {fileID: 0}
-  totaltime: 60
+  totaltime: 180
+  currentTime: 0
