@@ -9,5 +9,7 @@ public class OnStateLoseSequence : StateMachineBehaviour
     {
         loseScreen = Resources.Load<GameObject>("TempLostScreen (Canvas)");
         Instantiate(loseScreen, new Vector3(0, 0, 0), Quaternion.identity);
+        Time.timeScale = 0;
+        Debug.Log("Lost");
     }
 }

@@ -6,8 +6,8 @@ namespace HOM
 {
     public class UI_Manager : MonoBehaviour
     {
-        static UI_Manager self;
-        public int memorizedIndex;
+        public static UI_Manager self;
+        Animator animator;
 
         #region UnityCallbacks
 
@@ -19,7 +19,6 @@ namespace HOM
 
         void Update()
         {
-            CheckScene();
             CheckStatus();
         }
 
@@ -28,41 +27,8 @@ namespace HOM
         void Init()
         {
             self = this;
-            OpenMainMenu();
-        }
-
-        /// <summary>
-        /// This checks the current scene and if it was changed..
-        /// </summary>
-        void CheckScene()
-        {
-            if (!LevelManager.self.isLoading && LevelManager.self.currentIndex == 0 && memorizedIndex != LevelManager.self.currentIndex)
-            {
-                OpenMainMenu();
-                memorizedIndex = LevelManager.self.currentIndex;
-            }
-            else if (!LevelManager.self.isLoading && LevelManager.self.currentIndex == 1 && memorizedIndex != LevelManager.self.currentIndex)
-            {
-                OpenHud();
-                memorizedIndex = LevelManager.self.currentIndex;
-            }
-        }
-        
-        /// <summary>
-        /// This is used to open the main menu when its scene is loaded.
-        /// </summary>
-        void OpenMainMenu()
-        {
-            GUIHandler.ActivatesMenu("Main Menu");
-        }
-
-        /// <summary>
-        /// This is used to open the hud when its scene is loaded.
-        /// </summary>
-        void OpenHud()
-        {
-            GUIHandler.ActivatesMenu("Clock");
-            GUIHandler.ActivatesMenu("ToDoList");
+            animator = gameObject.GetComponent<Animator>();
+            animator.SetInteger("Index", LevelManager.self.currentIndex);
         }
 
         /// <summary>
@@ -72,33 +38,28 @@ namespace HOM
         {
             if (Input.GetKeyDown(KeyCode.Escape) && !LevelManager.self.isLoading)
             {
-                if (Time.timeScale == 0)
-                    Resume();
-                else if(Time.timeScale == 1)
-                    Pause();
+                if (animator.GetBool("Paused"))
+                {
+                    animator.SetBool("Paused", false);
+                }
+                else if (!animator.GetBool("Paused"))
+                {
+                    animator.SetBool("Paused", true);
+                }
+                PauseGame();
             }
         }
 
-        /// <summary>
-        /// This is used to resume the game.
-        /// </summary>
-        void Resume()
+        void PauseGame()
         {
-            GUIHandler.DeactivatesMenu("Pause Menu");
-            GUIHandler.ActivatesMenu("Clock");
-            GUIHandler.ActivatesMenu("ToDoList");
-            Time.timeScale = 1;
-        }
-
-        /// <summary>
-        /// This is used to pause the game.
-        /// </summary>
-        void Pause()
-        {
-            GUIHandler.ActivatesMenu("Pause Menu");
-            GUIHandler.DeactivatesMenu("Clock");
-            GUIHandler.DeactivatesMenu("ToDoList");
-            Time.timeScale = 0;
+            if (animator.GetBool("Paused"))
+            {
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
         }
     }
 }

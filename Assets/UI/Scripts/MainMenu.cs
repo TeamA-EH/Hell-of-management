@@ -6,13 +6,18 @@ namespace HOM
 {
     public class MainMenu : MonoBehaviour
     {
+        Animator animator;
+
+        public void Start()
+        {
+            animator = GameObject.Find("UI_Manager").GetComponent<Animator>();
+        }
         /// <summary>
         /// This is used by the play button to start the game.
         /// </summary>
         public void PlayGame()
         {
-            GUIHandler.DeactivatesMenu("Main Menu");
-            LevelManager.LoadLevel("Blockout");
+            animator.SetTrigger("StartGame");
         }
 
         /// <summary>
@@ -20,8 +25,7 @@ namespace HOM
         /// </summary>
         public void GoToSettings()
         {
-            GUIHandler.ActivatesMenu("Settings Menu");
-            GUIHandler.DeactivatesMenu("Main Menu");
+            animator.SetTrigger("Settings");
         }
 
         /// <summary>
@@ -29,8 +33,7 @@ namespace HOM
         /// </summary>
         public void GoToControls()
         {
-            GUIHandler.ActivatesMenu("Controls");
-            GUIHandler.DeactivatesMenu("Main Menu");
+            //animator.SetTrigger("Controls");
         }
 
         /// <summary>
@@ -38,8 +41,7 @@ namespace HOM
         /// </summary>
         public void GoToCredits()
         {
-            GUIHandler.ActivatesMenu("Credits Menu");
-            GUIHandler.DeactivatesMenu("Main Menu");
+            animator.SetTrigger("Credits");
         }
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace HOM
         /// </summary>
         public void GoToQuitMenu()
         {
-            GUIHandler.ActivatesMenu("Quit Menu");
+            animator.SetTrigger("QuitGame");
         }
     }
 }

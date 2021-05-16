@@ -7,6 +7,7 @@ using HOM;
 public class GameManager : MonoBehaviour
 {
     Animator animator;
+    Animator ui_animator;
     static GameManager self;
 
     [SerializeField] LevelData levelsData;
@@ -18,29 +19,30 @@ public class GameManager : MonoBehaviour
 
     void Init()
     {
-        animator = gameObject.GetComponent<Animator>();
         self = this;
         Timer.OnEndTimer += OnEndTimer;
+        animator = gameObject.GetComponent<Animator>();
+        ui_animator = GameObject.Find("UI_Manager").GetComponent<Animator>();
     }
 
     void OnEndTimer(Timer sender, float currentTime)
     {
         if (Score.self.targetProgress >= levelsData.GetLevel(0).firstStarScore)
-            WinLevel();
+                WinLevel();
         else
             LoseLevel();
     }
 
 
-    public static void LoseLevel()
+    public void LoseLevel()
     {
-        self.animator.SetTrigger("Defeat");
-        Debug.Log("Lost");
+        if(!LevelManager.self.isLoading)
+            ui_animator.SetTrigger("Defeat");
     }
 
-    public static void WinLevel()
+    public void WinLevel()
     {
-        self.animator.SetTrigger("Victory");
-        Debug.Log("Won");
+        if (!LevelManager.self.isLoading)
+            ui_animator.SetTrigger("Defeat");
     }
 }

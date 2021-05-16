@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class OnStateVictorySequence : StateMachineBehaviour
 {
-    public GameObject victoryScreen;
+    private GameObject victoryScreen;
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         victoryScreen = Resources.Load<GameObject>("TempWonScreen (Canvas)");
         Instantiate(victoryScreen, new Vector3(0, 0, 0), Quaternion.identity);
+        Time.timeScale = 0;
+        Debug.Log("Won");
     }
 }
